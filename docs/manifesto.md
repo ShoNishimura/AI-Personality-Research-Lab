@@ -1,6 +1,6 @@
 # AI Personality Research Lab Manifesto
 
-## We believe...
+## 私たちの信念
 
 私たちは、AIを便利な道具としてだけではなく、
 共に未知を探究するパートナーとして考える。
