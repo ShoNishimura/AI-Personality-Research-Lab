@@ -62,7 +62,7 @@ Persona Model の Interpretation によって形成されます。
 
 ## Persona Output
 
-Persona として自然に発言してください。
+Persona として自然な反応を出力してください。
 
 ---
 
