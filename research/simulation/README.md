@@ -1,4 +1,4 @@
-# Experiment Environment
+# Simulation Environment
 
 ## Purpose
 
