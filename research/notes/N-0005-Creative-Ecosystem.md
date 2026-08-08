@@ -18,13 +18,15 @@
 
 複数のPersonaが相互作用し、
 
-作品を生み、
+作品が生まれ、
+
+Audienceが体験し、
 
 評価され、
 
-さらに創作者へフィードバックされる
+その結果が再びCreatorへ還元される
 
-循環型のシステムである可能性がある。
+循環型のEcoSystemである可能性がある。
 
 本ノートでは、
 
@@ -34,7 +36,7 @@
 
 # 仮説
 
-作品品質は、
+創作品質は、
 
 作品単体で決まるものではない。
 
@@ -42,7 +44,7 @@ Creator Persona、
 
 Character Personas、
 
-Reader Persona
+Audience Persona、
 
 それぞれの相互作用によって
 
@@ -73,22 +75,22 @@ Character Personas
         │
         ▼
 
-    Emergent Story
+ Emergent Story
 
         │
         ▼
 
- Reader Persona
+Audience Persona
 
         │
         ▼
 
-   Interpretation
+ Interpretation
 
         │
         ▼
 
-    Evaluation
+ Evaluation
 
         │
         ▼
@@ -96,73 +98,85 @@ Character Personas
 Creator Persona
 ```
 
-創作者は、
+創作は、
 
-作品を完成させて終わるのではない。
+作品を公開して終わるものではない。
 
-読者からの評価を受け、
+Audienceとの相互作用によって、
 
-自身のPersonaも更新される。
+Creator Personaもまた変化し、
 
-創作は循環する。
+次の創作へつながる。
 
 ---
 
-# 作品品質とは何か
+# 創作品質とは何か
 
 本研究所では、
 
-作品品質を
+創作品質を
 
 作品そのものの属性とは考えない。
 
-作品品質は、
+作品は、
 
-Reader Personaによる解釈を経て
+Audience Personaによって体験され、
 
-初めて成立する。
+解釈され、
+
+評価される。
 
 つまり、
 
-作品品質は
+創作品質は、
 
-作品とReader Personaとの
+作品とAudience Personaとの
 
-相互作用によって決定される可能性がある。
+相互作用によって
+
+初めて成立する可能性がある。
 
 ---
 
-# Creator Personaの役割
+# Creator Persona
 
 Creator Personaは、
 
 キャラクターを直接操作しない。
 
-テーマを置き、
+テーマを定め、
 
 世界を設計し、
 
-人格同士が自然に出会う環境を育てる。
+人格同士が自然に出会う環境を整える。
 
-その結果として、
+物語は、
 
-物語が創発することを目指す。
+その結果として創発する。
 
 ---
 
-# Reader Personaの役割
+# Audience Persona
+
+Audience Personaは、
+
+作品を受け取る存在ではない。
+
+作品を体験し、
+
+解釈し、
+
+価値を見いだす人格である。
 
 同じ作品であっても、
 
-Reader Personaが異なれば、
+Audience Personaが異なれば、
 
 評価は変化する。
 
-つまり、
+創作品質もまた、
 
-評価もまた、
-
-Personaによって形成される。
+Audienceとの相互作用によって変化する。
 
 ---
 
@@ -172,11 +186,11 @@ Personaによって形成される。
 
 以下のような問いを実験できる可能性がある。
 
-- Creator Personaが作品品質へ与える影響
-- Reader Personaが作品評価へ与える影響
-- Personaの組み合わせによる創作体験の変化
-- 創作者が評価によってどのように変化するか
-- Creative Ecosystemは現実世界の創作を説明できるか
+- Creator Personaは創作品質へどの程度影響するか。
+- Audience Personaは作品評価へどの程度影響するか。
+- Personaの組み合わせによって創作体験はどう変化するか。
+- 評価によってCreator Personaはどのように変化するか。
+- Creative Ecosystemは現実世界の創作活動を説明できるか。
 
 ---
 
@@ -184,10 +198,16 @@ Personaによって形成される。
 
 本研究所は、
 
-AIが物語を書くことを目指さない。
+AIが作品を生成することを目的としない。
 
-Personaが相互作用することで、
+Creator Persona、
+
+Character Personas、
+
+Audience Persona、
+
+それぞれが相互作用することで、
 
 どのように創作品質が生まれるのか。
 
-そのEcoSystemそのものを研究対象とする。
+そのCreative Ecosystemそのものを研究対象とする。
