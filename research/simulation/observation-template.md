@@ -1,9 +1,3 @@
-
----
-
-## `simulation/observation-template.md`
-
-```markdown
 # Observation
 
 **Experiment**
