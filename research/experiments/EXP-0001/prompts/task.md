@@ -12,3 +12,4 @@ Describe the Character's stated interpretation and chosen response. Use each 1-7
 
 Choose the closest action_category. The action must remain a context-sensitive choice, not a direct restatement of temperament.
 
+Rate only what is actually expressed in this response to this Experience. Do not use a temperament level as the scale value. Different temperament levels can produce overlapping ratings when the situation supports them. Use plain ASCII quotation marks and apostrophes in text fields.
