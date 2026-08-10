@@ -2,5 +2,8 @@
 __pycache__/
 .pytest_cache/
 .ruff_cache/
-runs/pilot/*.jsonl
-
+runs/*/*.jsonl
+runs/*/blind/
+!runs/pilot-001/manifest.jsonl
+!runs/pilot-001/status.yaml
+!runs/pilot-002/manifest.jsonl

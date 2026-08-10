@@ -205,7 +205,7 @@ EXP-0001/
 
 ## Pilot implementation
 
-このpilotは技術的妥当性、刺激・promptの不具合、費用を確認するためのもので、仮説検定には使用しない。`experiment.yaml` の `max_runs: 24` はpilot用の暫定上限であり、confirmatory sample sizeではない。
+このpilotは技術的妥当性、刺激・promptの不具合、費用を確認するためのもので、仮説検定には使用しない。pilot-001は設計上の問題を検出したため、次回は独立したpilot-002として実行する。いずれもconfirmatory sampleには含めない。
 
 Python 3.12とuvを使用する。
 
@@ -216,23 +216,39 @@ uv run pytest
 uv run ruff check .
 ```
 
-dry-runは24 runのmanifestを生成するがAPIを呼び出さない。内容を確認後、pilotを実行する。
+dry-runは8条件×12刺激の均衡した96 runのmanifestを `runs/pilot-002/` に生成するが、APIを呼び出さない。既存manifestと内容が異なる場合は上書きせず停止する。
 
 ```powershell
 uv run python -m src.pilot
 uv run python -m src.validate
 ```
 
-結果は `runs/pilot/results.jsonl` へ追記され、成功済みrunは再実行時にスキップされる。技術的失敗だけを同一設定で最大1回再試行し、全attemptを保存する。API呼び出しは常に `store=False` を指定する。
+結果は `runs/pilot-002/results.jsonl` へ追記され、成功済みrunは再実行時にスキップされる。技術的失敗だけを同一設定で最大1回再試行し、全attemptを保存する。API呼び出しは常に `store=False` を指定する。
+
+実行後、条件名・刺激ID・仮説を含まない人手評価用ファイルを生成する。saltはrun固有の秘密値とし、Gitへcommitしない。
+
+```powershell
+uv run python -m src.blind --salt "run固有のランダムな値"
+```
+
+`runs/pilot-002/blind/evaluation.jsonl` を評価者へ渡す。対応表 `key.jsonl` は評価完了まで評価者から隔離する。raw results、blind用salt、対応表はいずれも公開GitHubへ置かない。
 
 ### Pilot-only decisions
 
 - model: `gpt-5.6`
 - development stimuli: 6 Event Type × 2 = 12
 - temperament conditions: 8（完全要因）
-- pilot cap: 24 run
+- pilot-002: 96 run（8条件×12刺激の完全な均衡割当）
 - API seed: 使用しない
 - replicate ID: `R001`
-- manifest randomization seed: `20260810`
+- manifest randomization seed: `20260811`
+
+pilot-002ではpilot-001で検出した次の問題だけを修正する。
+
+- Cの記述を弱化し、尺度値・Actionへ直接写像しないことを明記
+- 各刺激を全8条件へ割り当て、刺激固定と条件差を分離可能にする
+- 文字化けらしい文字列をvalidationで検出
+- 条件を伏せた人手評価ファイルと非公開対応表を生成
+- pilot-001および既存manifestを上書きしない
 
 モデル、刺激、prompt、run数、主要指標、評価者数はpilot後かつconfirmatory outputを見る前に凍結し、preregistrationへ記録する。

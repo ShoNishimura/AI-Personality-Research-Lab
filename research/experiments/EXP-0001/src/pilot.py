@@ -25,8 +25,8 @@ AXIS_TEXT = {
         "low": "Possible threat, rejection, loss, and failure exert a quieter pull unless the situation supplies strong evidence.",
     },
     "effortful_control": {
-        "high": "Attention is readily maintained or shifted, and an initially dominant response is readily paused and adjusted.",
-        "low": "Attention and an initially dominant response are less readily paused, shifted, or deliberately adjusted.",
+        "high": "When the situation calls for it, pausing, redirecting attention, or adjusting an initial response comes somewhat more readily.",
+        "low": "When the situation calls for it, pausing, redirecting attention, or adjusting an initial response takes somewhat more situational support.",
     },
 }
 
@@ -86,6 +86,12 @@ def build_manifest(config: dict[str, Any]) -> list[dict[str, Any]]:
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        existing = path.read_text(encoding="utf-8")
+        proposed = "".join(canonical_json(row) + "\n" for row in rows)
+        if existing != proposed:
+            raise FileExistsError(f"refusing to overwrite a different manifest: {path}")
+        return
     with path.open("w", encoding="utf-8", newline="\n") as handle:
         for row in rows:
             handle.write(canonical_json(row) + "\n")
