@@ -16,11 +16,11 @@
 |---|---|---|
 | [Manifesto](manifesto.md) | Active | 正本を補助する思想・価値観 |
 | [Philosophy](philosophy.md) | Active | 正本を補助する創作哲学 |
-| [Glossary](glossary.md) | Review required | v1.0.3との用語整合を確認中 |
-| [Personality Theory](personality-theory.md) | Review required | 旧概念を含むため正本より優先しない |
-| [AI Personality Blueprint](ai-personality-blueprint.md) | Review required | Biography中心モデルとの整合を確認中 |
+| [Glossary](glossary.md) | `retained-for-reassessment` | 実験結果と照合し、v1.0.3との用語整合を再評価するため保持 |
+| [Personality Theory](personality-theory.md) | `retained-for-reassessment` | 旧概念を実験結果と照合し、再構成の要否を評価するため保持 |
+| [AI Personality Blueprint](ai-personality-blueprint.md) | `retained-for-reassessment` | Biography中心モデルとの関係を実験を通して再評価するため保持 |
 
-`Review required` の文書は研究履歴として参照できますが、内容が正本と矛盾する場合はv1.0.3を優先します。整合確認なしに現行仕様として引用しないでください。
+`retained-for-reassessment` の文書は現行仕様ではありません。今後の実験結果との比較、概念の再評価、再構成のために保持します。内容が正本と矛盾する場合はv1.0.3を優先し、整合確認なしに現行仕様として引用しないでください。
 
 ## Documentation principle
 
@@ -28,5 +28,5 @@
 
 - `Canonical`: 唯一の正本
 - `Active`: 正本と整合する補助文書
-- `Review required`: 整合確認が完了していない文書
+- `retained-for-reassessment`: 現行仕様ではないが、実験を通じた再評価のために保持する文書
 - `Superseded`: 新しい正本に置き換えられた文書
