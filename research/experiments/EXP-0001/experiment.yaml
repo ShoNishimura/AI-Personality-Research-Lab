@@ -1,0 +1,15 @@
+experiment_id: EXP-0001
+phase: pilot
+canonical_model: APRL Concept Model v1.0.3 Canonical Edition
+model: gpt-5.6
+store: false
+max_output_tokens: 700
+randomization_seed: 20260810
+replicates: 1
+max_runs: 24
+max_retries: 1
+stimulus_split: development
+output_schema: output.schema.json
+results_path: runs/pilot/results.jsonl
+manifest_path: runs/pilot/manifest.jsonl
+

@@ -1,0 +1,10 @@
+conditions:
+  - {id: T000, surgency: low, negative_affectivity: low, effortful_control: low}
+  - {id: T001, surgency: low, negative_affectivity: low, effortful_control: high}
+  - {id: T010, surgency: low, negative_affectivity: high, effortful_control: low}
+  - {id: T011, surgency: low, negative_affectivity: high, effortful_control: high}
+  - {id: T100, surgency: high, negative_affectivity: low, effortful_control: low}
+  - {id: T101, surgency: high, negative_affectivity: low, effortful_control: high}
+  - {id: T110, surgency: high, negative_affectivity: high, effortful_control: low}
+  - {id: T111, surgency: high, negative_affectivity: high, effortful_control: high}
+
