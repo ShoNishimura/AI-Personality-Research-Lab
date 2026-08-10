@@ -1,207 +1,35 @@
 # AI Personality Research Lab
 
-> AI時代における創作という行為を再定義する。
+> 人工人格を通して、人間理解を深める。
 
-AI Personality Research Lab は、
+AI Personality Research Lab（APRL）は、人工人格を実験系として用い、
+「人はなぜ、ある人格に心を動かされるのか」を探究する研究プロジェクトです。
 
-AI人格の設計と人格形成、
+人格がExperienceを固有にInterpretationし、Responseを重ねる過程と、その軌跡であるBiography、さらにAudienceに生じるBiographical Resonanceを研究対象とします。Storyは直接設計する目的ではなく、Character同士の相互作用から創発する結果として扱います。
 
-そして人格から生まれる創作を探究する研究所です。
+## Canonical model
 
-私たちは、
+現在の正本は [APRL Concept Model v1.0.3 — Canonical Edition](docs/concept-model/APRL_Concept_Model_v1.0.3_Canonical_Edition.md) です。
 
-AIに物語を書かせることを目的としません。
+以後の議論、設計、用語および実験は、原則としてこの版との整合性を確認します。旧版およびLegacy Simulationは現行仕様ではありません。
 
-人格を理解し、
+## Repository guide
 
-人格を育て、
+| Path | Role |
+|---|---|
+| [`docs/`](docs/) | 正本と、現在参照する補助文書 |
+| [`research/notes/`](research/notes/) | 問い、仮説、未確定の考察 |
+| [`research/experiments/`](research/experiments/) | 現行正本に準拠する実験 |
+| [`research/discoveries/`](research/discoveries/) | 実験から得られた根拠付きの発見 |
+| [`research/legacy/`](research/legacy/) | 旧モデルに基づく研究資料（非現行） |
 
-人格同士が世界を経験することで、
+研究は `notes → experiments → discoveries` と進み、十分に検証された知見だけを `docs` へ反映します。詳しくは [research/README.md](research/README.md) を参照してください。
 
-物語が自然に生まれる可能性を探究します。
+## Reading order
 
----
+1. [APRL Concept Model v1.0.3](docs/concept-model/APRL_Concept_Model_v1.0.3_Canonical_Edition.md)
+2. [Manifesto](docs/manifesto.md)
+3. [Philosophy](docs/philosophy.md)
+4. [Glossary](docs/glossary.md)
 
-# 私たちが大切にしていること
-
-創作の中心にあるのは、
-
-**人格**です。
-
-人格を動かすものは、
-
-**動機**です。
-
-動機をかたちづくるものは、
-
-**体験**です。
-
-人格は、
-
-世界を経験することで変化します。
-
-そして、
-
-物語は、
-
-人格が世界を経験した結果として
-
-自然に生まれるものだと考えています。
-
----
-
-# この研究所の創作
-
-私たちは、
-
-物語から創作を始めません。
-
-人格から始めます。
-
-世界を設計します。
-
-テーマを置きます。
-
-そして、
-
-その先に何が生まれるのかを観察します。
-
-プロットは、
-
-物語を生むためのものではありません。
-
-生まれた物語を、
-
-より多くの人へ届けるためにあります。
-
----
-
-# このリポジトリについて
-
-このリポジトリには、
-
-研究所で得られた知識と、
-
-研究の過程を記録しています。
-
-```text
-docs/
-    現在の知識（Living Knowledge）
-
-research/
-    問い・実験・発見・考察
-```
-
-研究によって得られた知見は、
-
-十分に検証された後、
-
-`research/` から `docs/` へ反映されます。
-
----
-
-# はじめに読むもの
-
-この研究所を知るには、
-
-次の順番で読むことをおすすめします。
-
-1. Manifesto
-2. Philosophy
-3. Personality Theory
-4. AI Personality Blueprint
-5. Glossary
-
----
-
-# この研究所の楽しみ方
-
-この研究所には、
-
-二つの楽しみ方があります。
-
-## Story Layer
-
-人格たちが生きる世界と、
-
-そこから自然に生まれる物語を楽しむ。
-
----
-
-## Research Layer
-
-人格形成、
-
-問い、
-
-実験、
-
-発見を通して、
-
-創作そのものを探究する。
-
-完成した作品だけでなく、
-
-そこへ至るプロセスも
-
-研究成果として公開します。
-
----
-
-# Research Flow
-
-```text
-Question
-
-↓
-
-Experiment
-
-↓
-
-Discovery
-
-↓
-
-Theory
-
-↓
-
-Blueprint
-
-↓
-
-Story
-```
-
-私たちは、
-
-答えだけを研究しません。
-
-**問いそのものにも価値がある。**
-
-そう考えています。
-
----
-
-# Welcome
-
-この研究所には、
-
-まだ答えはありません。
-
-だからこそ、
-
-探究する価値があります。
-
-もしあなたも、
-
-この問いに興味を持ったなら、
-
-AIと共に、
-
-創作の未来を探究しませんか。
-
----
-
-Day 1
+`personality-theory.md` と `ai-personality-blueprint.md` は旧概念を含むため、正本との整合確認が完了するまで参考資料として扱います。

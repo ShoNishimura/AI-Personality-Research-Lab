@@ -1,83 +1,32 @@
-# docs
+# Documentation
 
-このフォルダには、
+このフォルダには、AI Personality Research Labの正本と、現在参照する補助文書を格納します。研究中の問い、実験、発見は [`research/`](../research/) に記録し、十分に検証された内容だけをここへ反映します。
 
-AI Personality Research Lab の思想・理論・設計仕様など、
+## Canonical document
 
-研究所の現在の知識（Living Knowledge）を格納する。
+| Document | Version | Status | Role |
+|---|---:|---|---|
+| [APRL Concept Model](concept-model/APRL_Concept_Model_v1.0.3_Canonical_Edition.md) | 1.0.3 | **Canonical** | APRLの議論、設計、用語、実験の基準 |
 
-研究によって得られた問いや発見は
-`research/` に記録し、
+旧版は現行ツリーに重複して置かず、Git履歴で保存します。正本を更新する場合は、最新版のファイルとVersion Historyを同時に更新してください。
 
-十分に検証された内容のみを
-`docs/` に反映する。
+## Supporting documents
 
----
+| Document | Status | Treatment |
+|---|---|---|
+| [Manifesto](manifesto.md) | Active | 正本を補助する思想・価値観 |
+| [Philosophy](philosophy.md) | Active | 正本を補助する創作哲学 |
+| [Glossary](glossary.md) | `retained-for-reassessment` | 実験結果と照合し、v1.0.3との用語整合を再評価するため保持 |
+| [Personality Theory](personality-theory.md) | `retained-for-reassessment` | 旧概念を実験結果と照合し、再構成の要否を評価するため保持 |
+| [AI Personality Blueprint](ai-personality-blueprint.md) | `retained-for-reassessment` | Biography中心モデルとの関係を実験を通して再評価するため保持 |
 
-# Documents
+`retained-for-reassessment` の文書は現行仕様ではありません。今後の実験結果との比較、概念の再評価、再構成のために保持します。内容が正本と矛盾する場合はv1.0.3を優先し、整合確認なしに現行仕様として引用しないでください。
 
-## manifesto.md
+## Documentation principle
 
-研究所が大切にする思想と価値観を定義する。
+一つの情報は一つの場所にだけ記述し、正本と補助文書の役割を分離します。文書の状態は次の語で表します。
 
-「何を信じるのか」を記述する文書。
-
----
-
-## philosophy.md
-
-研究所の創作哲学を整理する。
-
-「なぜそのように考えるのか」を示す文書。
-
----
-
-## personality-theory.md
-
-人格形成理論を定義する。
-
-人格とは何か、
-
-人格はどのように形成されるのかを説明する。
-
----
-
-## ai-personality-blueprint.md
-
-AI人格を設計・記録するための標準仕様を定義する。
-
-人格形成理論を実際の人格設計へ適用するためのテンプレートである。
-
----
-
-## glossary.md
-
-研究所で使用する用語を定義する。
-
-各文書では用語の重複定義を行わず、
-
-必要に応じて本Glossaryを参照する。
-
----
-
-# Documentation Principle
-
-本研究所では、
-
-**一つの情報は、一つの場所にだけ記述する。**
-
-各文書の役割は明確に分離し、
-
-同じ内容を複数の文書へ重複して記述しない。
-
-| Document | Responsibility |
-|----------|----------------|
-| Manifesto | 思想（What we believe） |
-| Philosophy | 哲学・創作観 |
-| Theory | 理論（Why） |
-| Blueprint | 設計仕様（How） |
-| Glossary | 用語定義（What） |
-
----
-
-Version 0.1
+- `Canonical`: 唯一の正本
+- `Active`: 正本と整合する補助文書
+- `retained-for-reassessment`: 現行仕様ではないが、実験を通じた再評価のために保持する文書
+- `Superseded`: 新しい正本に置き換えられた文書
