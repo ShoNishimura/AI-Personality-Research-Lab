@@ -14,8 +14,11 @@ started_at_utc: "2026-08-10T12:39:08.298747+00:00"
 completed_at_utc: "2026-08-10T12:42:08.261965+00:00"
 execution_commit: 1dfd784
 canonical_model: APRL Concept Model v1.0.3 Canonical Edition
-raw_results_file: results.json
-raw_results_sha256: 1d36c283e985068f17145c8a4f0557c118126a610e5842de1c204cb4a7a6745a
+raw_results_in_git: false
+raw_storage: controlled_private_storage
+raw_storage_location_disclosed: false
+raw_record_count: 24
+raw_sha256: 1d36c283e985068f17145c8a4f0557c118126a610e5842de1c204cb4a7a6745a
 manifest_file: manifest.jsonl
 manifest_sha256: 34298fc815fe44bfad839bf1ad399db750329f24addffac74d03dffc314b4c52
 confirmatory_exclusion_reasons:
