@@ -2,9 +2,10 @@ import json
 from pathlib import Path
 
 import jsonschema
+from openai import Omit
 
 from src.blind import build_blind_files
-from src.pilot import ROOT, build_manifest, load_yaml, write_jsonl
+from src.pilot import ROOT, build_manifest, create_openai_client, load_yaml, write_jsonl
 from src.validate import validate
 
 
@@ -64,3 +65,20 @@ def test_blind_export_omits_condition_and_hypothesis(tmp_path):
     evaluations, key = build_blind_files(path, 1, "private")
     assert set(evaluations[0]) == {"blind_id", "experience", "interpretation", "action", "ratings"}
     assert key[0]["condition_id"] == "T111"
+
+
+def test_client_uses_canonical_endpoint_and_explicit_key(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "diagnostic-test-key")
+    monkeypatch.setenv("OPENAI_BASE_URL", "https://example.invalid/stale-route")
+    monkeypatch.setenv("OPENAI_ORG_ID", "org_stale")
+    monkeypatch.setenv("OPENAI_PROJECT_ID", "proj_stale")
+
+    client = create_openai_client()
+
+    assert str(client.base_url) == "https://api.openai.com/v1/"
+    assert client.api_key == "diagnostic-test-key"
+    assert client.auth_headers == {"Authorization": "Bearer diagnostic-test-key"}
+    assert client.organization is None
+    assert client.project is None
+    assert isinstance(client.default_headers["OpenAI-Organization"], Omit)
+    assert isinstance(client.default_headers["OpenAI-Project"], Omit)

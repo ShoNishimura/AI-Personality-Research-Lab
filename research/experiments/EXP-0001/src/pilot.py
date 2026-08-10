@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import random
 import sys
 import time
@@ -123,6 +124,19 @@ def usage_dict(response: Any) -> dict[str, Any]:
     return usage.model_dump(mode="json") if hasattr(usage, "model_dump") else dict(usage)
 
 
+def create_openai_client() -> Any:
+    """Create the experiment client without inheriting unrelated SDK routing metadata."""
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ["OPENAI_API_KEY"],
+        base_url="https://api.openai.com/v1",
+    )
+    client.organization = None
+    client.project = None
+    return client
+
+
 def execute_run(client: Any, config: dict[str, Any], row: dict[str, Any], schema: dict[str, Any]) -> dict[str, Any]:
     conditions = {item["id"]: item for item in load_yaml(ROOT / "conditions.yaml")["conditions"]}
     stimuli = {item["id"]: item for item in load_yaml(ROOT / "stimuli.yaml")["stimuli"]}
@@ -147,6 +161,8 @@ def execute_run(client: Any, config: dict[str, Any], row: dict[str, Any], schema
         "model_requested": config["model"],
         "model_returned": getattr(response, "model", None),
         "response_id": getattr(response, "id", None),
+        "x_request_id": getattr(response, "_request_id", None),
+        "http_status": 200,
         "store": False,
         "raw_output": raw_text,
         "parsed_output": parsed,
@@ -165,13 +181,14 @@ def run(config_path: Path, dry_run: bool) -> int:
         print("dry-run: no API requests sent")
         return 0
 
-    from openai import OpenAI, OpenAIError
+    from openai import APIStatusError, OpenAIError
 
     schema = json.loads((ROOT / config["output_schema"]).read_text(encoding="utf-8"))
-    client = OpenAI()
+    client = create_openai_client()
     technical_errors = (OpenAIError, json.JSONDecodeError, jsonschema.ValidationError, ValueError)
     completed = completed_run_ids(results_path)
     failures = 0
+    halt_new_requests = False
     for index, row in enumerate(manifest, start=1):
         if row["run_id"] in completed:
             print(f"[{index}/{len(manifest)}] skip {row['run_id']}")
@@ -184,19 +201,33 @@ def run(config_path: Path, dry_run: bool) -> int:
                 print(f"[{index}/{len(manifest)}] ok {row['run_id']}")
                 break
             except technical_errors as exc:  # preserve every technical failure before retrying
-                append_jsonl(results_path, {
+                failure_record = {
                     **row,
                     "status": "failed",
                     "attempt": attempt + 1,
                     "failed_at": datetime.now(UTC).isoformat(),
                     "error_type": type(exc).__name__,
                     "error": str(exc),
-                })
+                }
+                if isinstance(exc, APIStatusError):
+                    body = exc.body if isinstance(exc.body, dict) else {}
+                    detail = body.get("error", body) if isinstance(body, dict) else {}
+                    failure_record.update({
+                        "http_status": exc.status_code,
+                        "api_error_type": detail.get("type") if isinstance(detail, dict) else None,
+                        "api_error_code": detail.get("code") if isinstance(detail, dict) else None,
+                        "x_request_id": exc.response.headers.get("x-request-id") if exc.response is not None else None,
+                    })
+                append_jsonl(results_path, failure_record)
                 if attempt >= int(config["max_retries"]):
                     failures += 1
                     print(f"[{index}/{len(manifest)}] failed {row['run_id']}: {type(exc).__name__}", file=sys.stderr)
+                    if isinstance(exc, OpenAIError):
+                        halt_new_requests = True
                 else:
                     time.sleep(1)
+        if halt_new_requests:
+            break
     return 1 if failures else 0
 
 
