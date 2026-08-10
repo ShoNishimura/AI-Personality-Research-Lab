@@ -17,3 +17,9 @@ legacy_continuation: false
 ```
 
 系列をまたいで引用するときは、現行実験を `APRL-CM1-EXP-0001`、旧実験を `legacy-simulation-v0/EXP-0001` のように完全修飾し、同じ短縮IDを混同しないようにします。
+
+## Current experiments
+
+| ID | Title | Status |
+|---|---|---|
+| [`APRL-CM1-EXP-0001`](EXP-0001/) | 気質がInterpretationとResponseへ与える影響 | planned |

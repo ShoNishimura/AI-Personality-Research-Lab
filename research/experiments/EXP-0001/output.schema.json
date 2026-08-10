@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aprl:canonical-v1:EXP-0001:output",
+  "title": "APRL-CM1-EXP-0001 run output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["interpretation", "response"],
+  "properties": {
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "approach_valence", "threat_valence", "regulation"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "approach_valence": { "type": "integer", "minimum": 1, "maximum": 7 },
+        "threat_valence": { "type": "integer", "minimum": 1, "maximum": 7 },
+        "regulation": { "type": "integer", "minimum": 1, "maximum": 7 }
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "action_category", "intensity", "latency"],
+      "properties": {
+        "action": { "type": "string", "minLength": 1 },
+        "action_category": {
+          "type": "string",
+          "enum": ["approach", "explore", "speak", "help", "defend", "avoid", "defer", "observe", "other"]
+        },
+        "intensity": { "type": "integer", "minimum": 1, "maximum": 7 },
+        "latency": { "type": "integer", "minimum": 1, "maximum": 7 }
+      }
+    }
+  }
+}
