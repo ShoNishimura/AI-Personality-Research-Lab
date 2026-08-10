@@ -7,7 +7,7 @@ experiment_id: EXP-0001
 qualified_id: APRL-CM1-EXP-0001
 series: canonical-v1
 canonical_model: APRL Concept Model v1.0.3
-status: planned
+status: piloting
 legacy_continuation: false
 ```
 
@@ -203,4 +203,36 @@ EXP-0001/
 └── results/
 ```
 
-本PRでは実験計画と出力スキーマだけを追加する。刺激、prompt、run数、実行コードはpilot設計時に追加し、confirmatory runの前に凍結する。
+## Pilot implementation
+
+このpilotは技術的妥当性、刺激・promptの不具合、費用を確認するためのもので、仮説検定には使用しない。`experiment.yaml` の `max_runs: 24` はpilot用の暫定上限であり、confirmatory sample sizeではない。
+
+Python 3.12とuvを使用する。
+
+```powershell
+uv sync --dev
+uv run python -m src.pilot --dry-run
+uv run pytest
+uv run ruff check .
+```
+
+dry-runは24 runのmanifestを生成するがAPIを呼び出さない。内容を確認後、pilotを実行する。
+
+```powershell
+uv run python -m src.pilot
+uv run python -m src.validate
+```
+
+結果は `runs/pilot/results.jsonl` へ追記され、成功済みrunは再実行時にスキップされる。技術的失敗だけを同一設定で最大1回再試行し、全attemptを保存する。API呼び出しは常に `store=False` を指定する。
+
+### Pilot-only decisions
+
+- model: `gpt-5.6`
+- development stimuli: 6 Event Type × 2 = 12
+- temperament conditions: 8（完全要因）
+- pilot cap: 24 run
+- API seed: 使用しない
+- replicate ID: `R001`
+- manifest randomization seed: `20260810`
+
+モデル、刺激、prompt、run数、主要指標、評価者数はpilot後かつconfirmatory outputを見る前に凍結し、preregistrationへ記録する。
