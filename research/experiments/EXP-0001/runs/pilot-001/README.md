@@ -14,7 +14,7 @@
 - randomization seed: `20260810`
 - OpenAI側の保存: `store=false`
 
-`results.json` は取得した24件のraw run記録を内容変更せず保存したもの、`manifest.jsonl` は実行時manifestである。各ファイルのSHA-256は `status.yaml` に記録する。
+`manifest.jsonl` は実行時manifestであり、GitHubで公開する。24件のraw run記録は内容を変更せず管理対象の非公開ストレージで保持し、raw本体と具体的な保存場所はGitHubに掲載しない。監査用にrawのレコード数、SHA-256、Git非掲載の状態だけを `status.yaml` に記録する。
 
 ## 合格基準ごとの判定
 
@@ -47,4 +47,4 @@
 4. 刺激ごとの割当数を増やして固定傾向を再確認する。
 5. 修正後のrunは`pilot-002`として別保存し、本データを削除・上書きしない。
 
-raw dataの訂正が必要になった場合も`results.json`自体は変更せず、変更理由と変換手順を伴う派生データとして追加する。
+raw dataの訂正が必要になった場合も保存済みraw自体は変更せず、変更理由と変換手順を伴う派生データとして追加する。
