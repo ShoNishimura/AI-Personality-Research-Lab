@@ -16,6 +16,12 @@ AI Personality Research Lab の思想・理論・設計仕様など、
 
 # Documents
 
+## concept-model/
+
+APRLの最新版の概念モデル正本を格納する。
+
+他の文書・設計・実験と内容が衝突する場合は、正本を優先する。
+
 ## manifesto.md
 
 研究所が大切にする思想と価値観を定義する。
@@ -72,6 +78,7 @@ AI人格を設計・記録するための標準仕様を定義する。
 
 | Document | Responsibility |
 |----------|----------------|
+| Concept Model | 正本・研究全体の基準 |
 | Manifesto | 思想（What we believe） |
 | Philosophy | 哲学・創作観 |
 | Theory | 理論（Why） |

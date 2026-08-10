@@ -4,9 +4,9 @@
 
 AI Personality Research Lab は、
 
-AI人格の設計と人格形成、
+人工人格を実験系として用い、
 
-そして人格から生まれる創作を探究する研究所です。
+人格形成と人生への共鳴を探究する研究所です。
 
 私たちは、
 
@@ -24,21 +24,11 @@ AIに物語を書かせることを目的としません。
 
 # 私たちが大切にしていること
 
-創作の中心にあるのは、
+研究の中心にあるのは、
 
-**人格**です。
+世界の中で経験を積み、人格を形成する **Character** と、
 
-人格を動かすものは、
-
-**動機**です。
-
-動機をかたちづくるものは、
-
-**体験**です。
-
-人格は、
-
-世界を経験することで変化します。
+その過程である **Biography（人格形成史）** です。
 
 そして、
 
@@ -106,11 +96,13 @@ research/
 
 次の順番で読むことをおすすめします。
 
-1. Manifesto
-2. Philosophy
-3. Personality Theory
-4. AI Personality Blueprint
-5. Glossary
+1. [APRL Concept Model v1.0.2 Canonical Edition](docs/concept-model/APRL_Concept_Model_v1.0.2_Canonical_Edition.md)
+2. [Manifesto](docs/manifesto.md)
+3. [Philosophy](docs/philosophy.md)
+4. [Personality Theory](docs/personality-theory.md)
+5. [AI Personality Blueprint](docs/ai-personality-blueprint.md)
+6. [Glossary](docs/glossary.md)
+7. [Experiment Roadmap](research/simulation/experiment-roadmap.md)
 
 ---
 

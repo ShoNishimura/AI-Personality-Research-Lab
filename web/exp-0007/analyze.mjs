@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 const file = process.argv[2];
 
 if (!file) {
-  console.error("Usage: node web/exp-0003/analyze.mjs <results.json>");
+  console.error("Usage: node web/exp-0007/analyze.mjs <results.json>");
   process.exit(1);
 }
 
@@ -15,8 +15,8 @@ try {
   process.exit(1);
 }
 
-if (payload.experiment_id !== "EXP-0003" || !Array.isArray(payload.responses)) {
-  console.error("EXP-0003の結果ファイルではありません。");
+if (payload.experiment_id !== "EXP-0007" || !Array.isArray(payload.responses)) {
+  console.error("EXP-0007の結果ファイルではありません。");
   process.exit(1);
 }
 
@@ -32,7 +32,7 @@ for (const response of payload.responses) {
 const total = payload.responses.length;
 const rate = total ? (counts.memory_selection / total * 100).toFixed(1) : "0.0";
 
-console.log(`EXP-0003 回答数: ${total}`);
+console.log(`EXP-0007 回答数: ${total}`);
 console.log(`事実中心: ${counts.fact}`);
 console.log(`Memory Selection: ${counts.memory_selection} (${rate}%)`);
 if (counts.unknown) console.log(`不明: ${counts.unknown}`);

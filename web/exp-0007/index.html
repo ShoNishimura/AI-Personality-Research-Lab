@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>APRL EXP-0003</title>
+  <title>APRL EXP-0007</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #1d2433; background: #f4f2ed; }
     * { box-sizing: border-box; }
@@ -41,7 +41,7 @@
 <body>
   <main>
     <header>
-      <div class="eyebrow">AI Personality Research Lab · EXP-0003</div>
+      <div class="eyebrow">AI Personality Research Lab · EXP-0007</div>
       <h1>どちらと、続きを話したいですか？</h1>
       <p>二つの短い応答を読み、直感に近いほうを選んでください。正解はありません。回答はこのブラウザ内だけに保存されます。</p>
     </header>
@@ -87,7 +87,7 @@
     (() => {
       "use strict";
 
-      const STORAGE_KEY = "aprl-exp-0003-responses-v1";
+      const STORAGE_KEY = "aprl-exp-0007-responses-v1";
       const stimuli = [
         {
           condition: "fact",
@@ -158,7 +158,7 @@
         const responses = getResponses();
         responses.push({
           schema_version: 1,
-          experiment_id: "EXP-0003",
+          experiment_id: "EXP-0007",
           response_id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
           recorded_at: new Date().toISOString(),
           selected_condition: data.get("choice"),
@@ -182,7 +182,7 @@
           return;
         }
         const payload = {
-          experiment_id: "EXP-0003",
+          experiment_id: "EXP-0007",
           exported_at: new Date().toISOString(),
           response_count: responses.length,
           responses
@@ -191,7 +191,7 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = `EXP-0003-results-${new Date().toISOString().slice(0, 10)}.json`;
+        link.download = `EXP-0007-results-${new Date().toISOString().slice(0, 10)}.json`;
         link.click();
         URL.revokeObjectURL(url);
         status.textContent = `${responses.length}件の結果を保存しました。`;
@@ -202,7 +202,7 @@
           status.textContent = "消去する回答がありません。";
           return;
         }
-        if (window.confirm("このブラウザに保存されたEXP-0003の回答をすべて消去しますか？")) {
+        if (window.confirm("このブラウザに保存されたEXP-0007の回答をすべて消去しますか？")) {
           localStorage.removeItem(STORAGE_KEY);
           updateCount();
           status.textContent = "保存結果を消去しました。";

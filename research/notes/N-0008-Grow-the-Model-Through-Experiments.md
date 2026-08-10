@@ -88,7 +88,7 @@ Emotion を独立したモデルとして導入する。
 
 # 今後
 
-Persona、
+Character、
 
 Memory、
 

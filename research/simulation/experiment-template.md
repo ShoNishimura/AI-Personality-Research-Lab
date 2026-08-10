@@ -50,9 +50,9 @@ Discoveryと関係しているのかを記述する。
 
 # 実験条件
 
-## Persona
+## Character
 
-使用するPersonaを記述する。
+使用するCharacterと、Creatorが設定可能な初期気質を記述する。
 
 ---
 
@@ -107,9 +107,9 @@ Discoveryと関係しているのかを記述する。
 - 意思決定
 - 行動
 - 記憶
-- Personaの変化
+- Characterの人格の変化
 - Worldの変化
-- Persona同士の相互作用
+- Character同士の相互作用
 
 ---
 
@@ -157,7 +157,7 @@ Discoveryと関係しているのかを記述する。
 
 # 実験環境への反映
 
-Persona、
+Character、
 
 World、
 

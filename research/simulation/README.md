@@ -7,7 +7,7 @@ AI Personality Research Lab における
 
 ここでは、
 
-Persona、
+Character、
 
 World、
 
@@ -19,7 +19,10 @@ Observation
 
 を組み合わせ、
 
-人格形成や創作に関する仮説を検証する。
+正本の4層と人格形成過程に関する仮説を検証する。
+
+実験は[`experiment-roadmap.md`](experiment-roadmap.md)のGate順に実行する。
+過去のRunにある`Persona`は正本確立前の旧称であり、新規実験では`Character`を用いる。
 
 ---
 

@@ -1,4 +1,4 @@
-# EXP-0003 実験ページ
+# EXP-0007 実験ページ
 
 「記憶の選び方は、人格の魅力を高めるのか」を5人程度で探索する、ビルド不要の実験ページです。
 
@@ -11,7 +11,7 @@
 ローカルHTTPサーバーを使う場合：
 
 ```bash
-python3 -m http.server 8000 --directory web/exp-0003
+python3 -m http.server 8000 --directory web/exp-0007
 ```
 
 その後、`http://localhost:8000` を開きます。
@@ -23,7 +23,7 @@ python3 -m http.server 8000 --directory web/exp-0003
 Node.js がある場合は、簡易集計も実行できます。
 
 ```bash
-node web/exp-0003/analyze.mjs EXP-0003-results-2026-08-10.json
+node web/exp-0007/analyze.mjs EXP-0007-results-2026-08-10.json
 ```
 
 - `selected_condition`: 選択された実験条件（`fact` / `memory_selection`）
@@ -32,4 +32,4 @@ node web/exp-0003/analyze.mjs EXP-0003-results-2026-08-10.json
 - `presentation_order`: 表示順
 - `elapsed_ms`: 回答時間
 
-成功条件と研究上の位置づけは [`research/simulation/experiments/EXP-0003.md`](../../research/simulation/experiments/EXP-0003.md) を参照してください。
+成功条件と研究上の位置づけは [`research/simulation/experiments/EXP-0007.md`](../../research/simulation/experiments/EXP-0007.md) を参照してください。
