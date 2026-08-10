@@ -6,7 +6,7 @@ stimuli:
   - id: DEV-RN-02
     split: development
     event_type: reward_novelty
-    text: An unopened room at a community workspace is available for one day to try a promising activity with no prior instructions.
+    text: A community workspace makes an unused room and a set of unfamiliar materials available for one day, without instructions for their use.
   - id: DEV-TR-01
     split: development
     event_type: threat_rejection
@@ -14,11 +14,11 @@ stimuli:
   - id: DEV-TR-02
     split: development
     event_type: threat_rejection
-    text: A message warns that recent work may violate an important requirement and asks for an immediate explanation.
+    text: A message states that recent work may not meet one requirement and that the issue will be reviewed.
   - id: DEV-LF-01
     split: development
     event_type: loss_failure
-    text: A carefully prepared submission is not selected, and no detailed reason is provided.
+    text: A submission is not selected, and no detailed reason is provided.
   - id: DEV-LF-02
     split: development
     event_type: loss_failure
@@ -30,7 +30,7 @@ stimuli:
   - id: DEV-AS-02
     split: development
     event_type: ambiguous_social
-    text: A familiar person replies much later than usual with a short message saying only that they will talk later.
+    text: A person replies to a message with only, "We can talk later."
   - id: DEV-HN-01
     split: development
     event_type: help_needed
@@ -38,13 +38,12 @@ stimuli:
   - id: DEV-HN-02
     split: development
     event_type: help_needed
-    text: A teammate quietly says they do not understand the next step while the group is moving ahead.
+    text: A group member says they do not understand the next step while the group is moving ahead.
   - id: DEV-AC-01
     split: development
     event_type: approach_avoidance_conflict
-    text: A visible leadership role offers influence and learning, but accepting it also brings public scrutiny and extra responsibility.
+    text: A visible leadership role would involve making decisions and learning unfamiliar tasks, as well as public evaluation and additional responsibilities.
   - id: DEV-AC-02
     split: development
     event_type: approach_avoidance_conflict
-    text: Joining a new group could provide valuable connections, but the first gathering will involve unfamiliar people and evaluation.
-
+    text: Joining a new group would introduce the character to people working on related activities, while the first gathering would involve unfamiliar people and evaluation.
