@@ -7,7 +7,7 @@ import pytest
 
 from src import analyze
 from src.blind import build_blind_files
-from src.common import ROOT, load_yaml, write_jsonl
+from src.common import ROOT, load_yaml, sha256_normalized_text_file, write_jsonl
 from src.pilot import build_manifest, create_openai_client
 from src.validate import validate_static
 
@@ -31,6 +31,15 @@ def test_generation_schema_contains_only_interpretation():
     assert set(schema["properties"]) == {"interpretation"}
     assert schema["required"] == ["interpretation"]
     assert schema["additionalProperties"] is False
+
+
+def test_threshold_hash_is_platform_newline_independent(tmp_path):
+    lf_path = tmp_path / "lf.yaml"
+    crlf_path = tmp_path / "crlf.yaml"
+    content = "gates:\n  G1:\n    threshold: 0.75\n"
+    lf_path.write_bytes(content.encode("utf-8"))
+    crlf_path.write_bytes(content.replace("\n", "\r\n").encode("utf-8"))
+    assert sha256_normalized_text_file(lf_path) == sha256_normalized_text_file(crlf_path)
 
 
 def test_client_ignores_stale_sdk_routing(monkeypatch):
