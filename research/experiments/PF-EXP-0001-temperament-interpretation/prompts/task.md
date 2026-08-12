@@ -1,0 +1,4 @@
+次のExperienceを受け取った直後、このCharacterにとってそれがどのような意味を持つ状態として処理されるかだけを記述する。
+
+Experience:
+{stimulus}

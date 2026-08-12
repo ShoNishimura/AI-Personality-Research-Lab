@@ -1,0 +1,16 @@
+# Frozen before pilot responses are observed.
+# Scores use the blind evaluator's 0-4 scales.
+gates:
+  G1_seeking_main_effect:
+    min_mean_difference: 0.75
+  G2_negative_main_effect:
+    min_mean_difference: 0.75
+  G3_discriminant_validity:
+    max_cross_to_main_ratio: 0.50
+  G4_conflict_coactivation:
+    min_t11_mean_seeking: 2.00
+    min_t11_mean_negative: 2.00
+    min_joint_activation_rate: 0.67
+    joint_activation_min_score_each: 2
+  G5_neutrality:
+    max_condition_mean_range_each_axis: 0.75

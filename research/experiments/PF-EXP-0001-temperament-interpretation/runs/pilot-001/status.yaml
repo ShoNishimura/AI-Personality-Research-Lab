@@ -1,0 +1,26 @@
+experiment_id: PF-EXP-0001
+run_id: pilot-001
+phase: pilot
+status: ready_to_run
+canonical_framework: APRL Research Framework v1.0
+canonical_model: APRL Personality Formation Model v1.0
+model_requested: gpt-5.6
+evaluation_model_requested: gpt-5.6
+store: false
+pilot_response_seen: false
+manifest_definition_frozen: true
+manifest_generated_on_dry_run: true
+thresholds_frozen: true
+manifest_file: manifest.jsonl
+manifest_sha256: 68eb99bd3f361033651a15453c4ef5b8d27c5b80b9d5b2ee3f8c3a336f6bbb8a
+thresholds_sha256: e88a6d29cb25ace271dede271efcb33ffa2606079f565013ad772c2177b39e08
+run_count_planned: 96
+evaluation_count_planned: 96
+condition_count: 4
+stimulus_count: 12
+replicates: 2
+randomization_seed: 20260813
+blind_randomization_seed: 2026081301
+raw_results_in_git: false
+private_artifacts_in_git: false
+confirmatory_eligible: false
