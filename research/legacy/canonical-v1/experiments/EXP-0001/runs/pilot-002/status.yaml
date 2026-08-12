@@ -1,0 +1,87 @@
+experiment_id: EXP-0001
+run_id: pilot-002
+phase: pilot
+status: completed
+confirmatory_eligible: false
+canonical_model: APRL Concept Model v1.0.3 Canonical Edition
+model_requested: gpt-5.6
+store: false
+max_output_tokens: 700
+max_retries: 1
+randomization_seed: 20260811
+manifest_file: manifest.jsonl
+manifest_sha256: 775b70dc5a22028683cb1fe5a4c4041eb95c57715de40d8693bcc1bc500dcd52
+run_count_planned: 96
+condition_count: 8
+runs_per_condition_planned: 12
+canary_run_id: 0a428397a5c135ac
+run_count_succeeded: 96
+run_count_failed: 0
+attempt_count: 96
+remaining_run_count_not_started: 0
+failure_http_status: 401
+failure_error_type: null
+failure_error_code: unauthorized_unknown
+first_attempt_at_utc: "2026-08-10T16:34:38.543279+00:00"
+final_attempt_at_utc: "2026-08-10T16:34:39.600966+00:00"
+authentication_probe_http_status: 200
+authentication_probe_counted_as_experiment_run: false
+bulk_execution_started: true
+post_run_validation_completed: true
+blind_files_generated: true
+raw_results_in_git: false
+raw_storage_location_disclosed: false
+raw_attempt_record_count: 98
+raw_sha256: 501a176a3230ede78807c8c2944f91a712b92923f126ea72e2044925a52fbb11
+audit_history_preserved: true
+diagnostic_route_root_cause: inherited_nonstandard_openai_base_url
+diagnostic_runner_endpoint: https://api.openai.com/v1/responses
+diagnostic_runner_sdk: openai-python
+diagnostic_authorization_format_verified: true
+diagnostic_organization_header_present: false
+diagnostic_project_header_present: false
+diagnostic_key_length: 164
+diagnostic_key_sha256_prefix: 218ef80b
+diagnostic_key_fingerprints_match: true
+diagnostic_canary_attempt_count: 1
+diagnostic_canary_http_status: 200
+diagnostic_canary_error_type: null
+diagnostic_canary_error_code: null
+diagnostic_canary_x_request_id: null
+diagnostic_canary_x_request_id_note: not_captured_response_id_not_substituted
+diagnostic_bulk_execution_started: false
+resumed_after_diagnostic_canary: true
+diagnostic_canary_reused_as_formal_run_1: true
+diagnostic_canary_resent: false
+remaining_runs_sent: 95
+remaining_runs_succeeded: 95
+remaining_runs_failed: 0
+historical_wrong_route_failed_run_count: 1
+historical_wrong_route_failed_attempt_count: 2
+model_returned: gpt-5.6-sol
+started_at_utc: "2026-08-10T16:40:32.329603+00:00"
+completed_at_utc: "2026-08-10T17:03:17.732575+00:00"
+successful_http_200_count: 96
+x_request_id_available_count: 95
+x_request_id_missing_count: 1
+manifest_match: true
+missing_run_count: 0
+duplicate_success_run_count: 0
+manifest_mismatch_count: 0
+mojibake_count: 0
+condition_counts:
+  T000: 12
+  T001: 12
+  T010: 12
+  T011: 12
+  T100: 12
+  T101: 12
+  T110: 12
+  T111: 12
+stimulus_count: 12
+runs_per_stimulus: 8
+blind_evaluation_record_count: 96
+blind_key_record_count: 96
+blind_evaluation_sha256: 30e73a2e2ead7c377505f1970ae6618b146bcde14638acf3ee504c0a27359759
+blind_key_sha256: 8f9d6b450ce13355660d17427135993da8960bd543c9b090a5362cab1a9e7214
+private_artifacts_in_git: false
