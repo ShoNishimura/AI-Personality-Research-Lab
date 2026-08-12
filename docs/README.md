@@ -1,32 +1,35 @@
 # Documentation
 
-このフォルダには、AI Personality Research Labの正本と、現在参照する補助文書を格納します。研究中の問い、実験、発見は [`research/`](../research/) に記録し、十分に検証された内容だけをここへ反映します。
+このフォルダには、AI Personality Research Lab（APRL）の**現行正本だけ**を置く。
 
-## Canonical document
+APRLの正本は、2026-08-12から次の二段構造で管理する。
 
-| Document | Version | Status | Role |
-|---|---:|---|---|
-| [APRL Concept Model](concept-model/APRL_Concept_Model_v1.0.3_Canonical_Edition.md) | 1.0.3 | **Canonical** | APRLの議論、設計、用語、実験の基準 |
+## Canonical documents
 
-旧版は現行ツリーに重複して置かず、Git履歴で保存します。正本を更新する場合は、最新版のファイルとVersion Historyを同時に更新してください。
-
-## Supporting documents
-
-| Document | Status | Treatment |
+| Layer | Canonical document | Role |
 |---|---|---|
-| [Manifesto](manifesto.md) | Active | 正本を補助する思想・価値観 |
-| [Philosophy](philosophy.md) | Active | 正本を補助する創作哲学 |
-| [Glossary](glossary.md) | `retained-for-reassessment` | 実験結果と照合し、v1.0.3との用語整合を再評価するため保持 |
-| [Personality Theory](personality-theory.md) | `retained-for-reassessment` | 旧概念を実験結果と照合し、再構成の要否を評価するため保持 |
-| [AI Personality Blueprint](ai-personality-blueprint.md) | `retained-for-reassessment` | Biography中心モデルとの関係を実験を通して再評価するため保持 |
+| Upper | [APRL Research Framework v1.0](APRL_Research_Framework.md) | GRQとAPRL全体の研究地図を定義する |
+| Current Research Model | [Personality Formation Model v1.0](models/Personality_Formation_Model.md) | 直近の研究対象である人格形成の詳細モデルを定義する |
 
-`retained-for-reassessment` の文書は現行仕様ではありません。今後の実験結果との比較、概念の再評価、再構成のために保持します。内容が正本と矛盾する場合はv1.0.3を優先し、整合確認なしに現行仕様として引用しないでください。
+両者は**独立してversioning**する。下位Research Modelの改訂だけで、上位Frameworkのversionを上げる必要はない。
+
+## Supporting document
+
+- [Glossary](glossary.md) — 現行Framework / Modelで用いる共通語彙
+
+## Historical documents
+
+旧版・旧概念を含む文書は `docs/` に混在させない。
+
+- [Legacy Research Archive](../research/legacy/README.md)
+- [旧Concept Model v1.0と二段構造への仕分け](../research/legacy/concept-model-v1/README.md)
+
+旧Manifesto、Philosophy、Personality Theory、AI Personality Blueprintは [pre-canonical archive](../research/legacy/pre-canonical/) へ隔離した。
 
 ## Documentation principle
 
-一つの情報は一つの場所にだけ記述し、正本と補助文書の役割を分離します。文書の状態は次の語で表します。
+- `docs/`：現行正本と、それに整合する現行用語だけ
+- `research/`：問い、仮説、実験、発見
+- `research/legacy/`：旧版・旧モデル・旧実験。読み取り専用の研究史
 
-- `Canonical`: 唯一の正本
-- `Active`: 正本と整合する補助文書
-- `retained-for-reassessment`: 現行仕様ではないが、実験を通じた再評価のために保持する文書
-- `Superseded`: 新しい正本に置き換えられた文書
+一つの概念の正本は一か所に置き、詳細化が必要な場合は上位Frameworkへ詰め込まず、下位Research Modelとして分離する。

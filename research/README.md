@@ -1,20 +1,38 @@
 # Research
 
-このディレクトリには、APRLの問いから検証、発見までの研究過程を記録します。現行の研究は [APRL Concept Model v1.0](../docs/concept-model/APRL_Concept_Model_v1.0_Canonical_Edition.md) との整合性を確認します。
+このディレクトリには、APRLの問いから検証、発見までの研究過程を記録する。
+
+現行研究は、上位の [APRL Research Framework v1.0](../docs/APRL_Research_Framework.md) と、直近のPrimary Research Modelである [Personality Formation Model v1.0](../docs/models/Personality_Formation_Model.md) との整合性を確認する。
+
+## Current focus
+
+**Primary Research Track: Personality Formation**
+
+中心的な問いは、
+
+**「人格はどのように形成されるのか。」**
+
+である。
+
+## Directory roles
 
 | Directory | Role |
 |---|---|
-| [`notes/`](notes/) | 問い、仮説、未確定の考察 |
-| [`experiments/`](experiments/) | 事前に定義した条件、実行記録、分析、報告 |
-| [`discoveries/`](discoveries/) | 実験結果から得られた根拠付きの発見 |
-| [`legacy/`](legacy/) | 旧モデルに基づく研究資料（非現行） |
+| [`notes/`](notes/) | 現行Framework / Modelに整合する問い、仮説、未確定の考察 |
+| [`experiments/`](experiments/) | 現行モデルを検証する実験設計、実行記録、分析、報告 |
+| [`discoveries/`](discoveries/) | 現行系列の実験結果から得られた根拠付きの発見 |
+| [`legacy/`](legacy/) | 旧版、旧モデル、旧実験を隔離した読み取り専用Archive |
 
-研究成果は `notes → experiments → discoveries` と進み、複数回の検証と正本との整合確認を経たものだけを `docs/` へ反映します。
+研究は原則として `notes → experiments → discoveries → docs/models` と進める。
 
-## Canonical reset note
+APRL全体のFrameworkを変更する必要がある発見だけを、十分な検証後に `docs/APRL_Research_Framework.md` へ反映する。
 
-APRLの公開Canonical versioningは2026-08-12の **v1.0** から開始します。
+## Canonical reset
 
-それ以前に実施した `T0=(S,N,C)` を前提とする実験・分析は、研究履歴として保持しますが、新しい正本のTemperament定義 `T0=(S,N)` およびRegulation分離モデルとの再整合を確認するまでは、現行正本の直接的な検証結果とはみなしません。
+2026-08-12の二段構造化に伴い、旧 `T0=(S,N,C)` を用いた `EXP-0001` は [`legacy/canonical-v1/`](legacy/canonical-v1/) へ移した。
 
-Legacyの内容は履歴の検証と再解釈のために保持します。現行の実験テンプレート、用語、変数定義の根拠として使用しないでください。
+その実験記録は研究史・監査資料として保持するが、現行 `T0=(S,N)` + Regulation分離モデルの直接的な検証結果とはみなさない。
+
+初期のNotes、D-0001、旧Manifesto / Philosophy等も [`legacy/pre-canonical/`](legacy/pre-canonical/) へ隔離した。
+
+新しい研究では、現行Framework / Modelのversionを実験記録に明示し、Legacy資料を現行仕様として引用しない。
