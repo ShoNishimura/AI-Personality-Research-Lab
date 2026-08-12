@@ -1,0 +1,24 @@
+experiment_id: PF-EXP-0001
+phase: pilot-001
+canonical_framework: APRL Research Framework v1.0
+canonical_model: APRL Personality Formation Model v1.0
+model: gpt-5.6
+evaluation_model: gpt-5.6
+store: false
+max_output_tokens: 220
+evaluation_max_output_tokens: 120
+randomization_seed: 20260813
+blind_randomization_seed: 2026081301
+replicates: 2
+max_runs: null
+max_retries: 1
+stimulus_split: pilot
+output_schema: output.schema.json
+evaluation_schema: evaluation.schema.json
+thresholds: thresholds.yaml
+manifest_path: runs/pilot-001/manifest.jsonl
+results_path: runs/pilot-001/results.jsonl
+blind_set_path: runs/pilot-001/private/blind-evaluation.jsonl
+blind_key_path: runs/pilot-001/private/blind-key.jsonl
+evaluation_results_path: runs/pilot-001/evaluation-results.jsonl
+analysis_path: runs/pilot-001/private/gates.json

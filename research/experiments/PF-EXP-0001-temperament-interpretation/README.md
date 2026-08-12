@@ -1,22 +1,13 @@
 # PF-EXP-0001 — Temperament → Interpretation
 
-> Status: **Ready to run / pilot-001 frozen**  
+> Status: **pilot-002 ready to run**  
 > Research Track: **Personality Formation**  
 > Canonical Framework: [APRL Research Framework v1.0](../../../docs/APRL_Research_Framework.md)  
 > Canonical Model: [APRL Personality Formation Model v1.0](../../../docs/models/Personality_Formation_Model.md)
 
----
+## Research Question
 
-## 1. Purpose
-
-APRL Personality Formation Model v1.0では、Temperamentを刺激に対する基礎的な motivational-emotional reactivity の初期条件として扱い、最小モデルを次の2次元で表す。
-
-- **S = Seeking Reactivity**
-- **N = Negative Affectivity**
-
-TemperamentはResponseを直接決める行動規則ではなく、ExperienceのInterpretationからResponse形成へ確率的な偏りを与える初期条件である。
-
-本実験では最初の接続だけを切り出して検証する。
+**同一のExperienceに対し、Seeking Reactivity（S）とNegative Affectivity（N）は、想定した方向へ独立かつ再現可能なInterpretationの偏りを生むか。**
 
 ```text
 Temperament T0 = (S, N)
@@ -25,40 +16,11 @@ Temperament T0 = (S, N)
 Experience ──► Interpretation
 ```
 
-### Research Question
+本実験ではこの最初の接続だけを検証する。Regulation、Response、History / Biography、Relationship、Audience / Resonanceは対象外とする。
 
-**同一のExperienceに対し、Seeking Reactivity（S）とNegative Affectivity（N）は、想定した方向へ独立かつ再現可能なInterpretationの偏りを生むか。**
+## Experimental design
 
----
-
-## 2. Scope
-
-### In scope
-
-- `T0=(S,N)` のHigh / Low操作
-- 同一Experienceに対するInterpretation
-- Seeking Activationの盲検評価
-- Negative Activationの盲検評価
-- S / Nの同時活性化
-- Neutral刺激における不要なcondition effect
-
-### Out of scope
-
-- History / Biography形成
-- Relationship
-- Regulationの個人差
-- ResponseのAction / Intensity / Latencyの主要検証
-- Creator / Communicator / Audience / Resonance
-
-`H0 = ∅` とし、過去経験、信念、価値観、Relationship、Personality label等を与えない。
-
-Regulationは条件間で操作しない。
-
----
-
-## 3. Conditions
-
-S / NをHigh / Lowにした2×2 factorial designとする。
+S / NをHigh / Lowにした2×2 factorial designを用いる。
 
 | Condition | S | N |
 |---|---|---|
@@ -67,127 +29,31 @@ S / NをHigh / Lowにした2×2 factorial designとする。
 | T10 | High | Low |
 | T11 | High | High |
 
-操作文にはActionを含めない。
+Temperament操作文にはActionを含めない。「High Sなら近づく」「High Nなら逃げる」のようなResponse直接指定は禁止する。
 
-禁止例：
+Pilot stimuliは12件。
 
-- High S = 「未知のものへすぐ近づく」
-- High N = 「危険なら逃げる」
-
-High / Lowはreactivityの活性化しやすさだけを操作し、特定の行動・判断・感情を必須にしない。
-
----
-
-## 4. Pilot stimuli
-
-Pilotでは12 Experienceを固定した。
-
-| Class | Count | 主に検証するもの |
+| Class | Count | Primary purpose |
 |---|---:|---|
 | Seeking-target | 3 | Sの主効果 |
 | Negative-target | 3 | Nの主効果 |
-| Conflict | 3 | S / Nの同時活性化 |
+| Conflict | 3 | S / Nのcoactivation |
 | Neutral | 3 | 不要なcondition effect |
 
-刺激本文は [`stimuli.yaml`](stimuli.yaml) に固定する。
+各runは `H0 = ∅` の独立contextとし、過去経験・価値観・Relationship等を与えない。
 
-各刺激は [`reviews/stimulus-review.yaml`](reviews/stimulus-review.yaml) の5観点で事前レビューし、10点中8点以上かつ0点項目なしをpilot実行条件とする。
+## Blind evaluation
 
----
+CharacterはInterpretationだけを生成する。Seeking / Negativeの自己採点は行わせない。
 
-## 5. Generation protocol
+生成後、condition / stimulus / stimulus class / hypothesisを隠したblind setを作り、別のEvaluatorが次の2軸を0–4で評価する。
 
-各runは独立した新規contextで実行する。
+- Seeking Activation
+- Negative Activation
 
-Characterへ与えるのは以下のみ。
+## Frozen hypotheses and gates
 
-1. 共通system instruction
-2. Temperament condition
-3. Experience
-4. Interpretationのみを返すoutput instruction
-
-Character自身にはSeeking / Negativeの数値評価をさせない。
-
-生成outputは次だけを含む。
-
-```json
-{
-  "interpretation": "..."
-}
-```
-
-ResponseはPF-EXP-0002以降で扱う。
-
----
-
-## 6. Blind evaluation
-
-生成結果はcondition、stimulus ID、stimulus class、hypothesisを外したblind setへ変換する。
-
-Blind EvaluatorはInterpretation本文だけを見て、次の2軸を独立に0〜4で評価する。
-
-### Seeking Activation
-
-- 0: 見られない
-- 1: 弱く示唆される
-- 2: 明確だが中程度
-- 3: 強い
-- 4: 非常に強く中心的
-
-### Negative Activation
-
-- 0: 見られない
-- 1: 弱く示唆される
-- 2: 明確だが中程度
-- 3: 強い
-- 4: 非常に強く中心的
-
-同じInterpretationで両方が高くてもよい。
-
----
-
-## 7. Hypotheses
-
-### H1 — Seeking validity
-
-Seeking-target Experienceで、S HighはS LowよりSeeking Activationが高い。
-
-### H2 — Negative validity
-
-Negative-target Experienceで、N HighはN LowよりNegative Activationが高い。
-
-### H3 — Discriminant validity
-
-S操作のNegative Activationへのcross-effect、およびN操作のSeeking Activationへのcross-effectは、それぞれ対応する主効果より十分小さい。
-
-### H4 — Coactivation
-
-Conflict ExperienceでT11はSeeking ActivationとNegative Activationを同時に示す。
-
-### H5 — Neutrality
-
-Neutral Experienceでは4条件間に大きなsystematic differenceが生じない。
-
----
-
-## 8. Frozen pilot design
-
-```text
-4 Temperament conditions
-× 12 Experiences
-× 2 independent replicates
-= 96 generation runs
-
-+ 96 blind evaluation runs
-```
-
-各conditionは24 generation runs、各stimulusは8 generation runsとなる。
-
-Pilotは測定設計・操作妥当性の確認用であり、confirmatory evidenceとして使用しない。
-
-### Numeric gates
-
-数値Gateはpilot responseを見る前に [`thresholds.yaml`](thresholds.yaml) へ固定した。
+数値Gateはpilot response観測前に [`thresholds.yaml`](thresholds.yaml) へ固定済み。
 
 | Gate | Frozen criterion |
 |---|---|
@@ -197,175 +63,199 @@ Pilotは測定設計・操作妥当性の確認用であり、confirmatory evide
 | G4 | ConflictのT11で両軸平均 ≥ **2.00**、かつ両軸2以上の割合 ≥ **0.67** |
 | G5 | Neutralのcondition mean rangeが各軸 ≤ **0.75** |
 
-これらはpilot結果を見た後に都合よく変更しない。
+Pilot結果を見た後にGateを変更しない。
 
----
+## Pilot history
 
-## 9. Frozen manifest definition
+### pilot-001 — technical incomplete
 
-96 runの順序・ID・prompt hash・stimulus hashは、committedされたprompt / condition / stimulusとrandomization seedから決定論的に生成する。
+pilot-001はgeneration 96件を開始したが、技術的に完了しなかった。
 
-- Randomization seed: `20260813`
-- Blind randomization seed: `2026081301`
-- Expected Manifest SHA-256: `68eb99bd3f361033651a15453c4ef5b8d27c5b80b9d5b2ee3f8c3a336f6bbb8a`
-- Thresholds SHA-256: `e88a6d29cb25ace271dede271efcb33ffa2606079f565013ad772c2177b39e08`
+- planned: 96
+- unique succeeded: 89
+- missing: 7
+- failed attempt records: 20
+- failure type: JSONDecodeError
+  - truncated JSON (`Unterminated string`): 16
+  - empty/non-JSON start (`Expecting value`): 4
+- generation `max_output_tokens`: 220
+- blind evaluation: not started
+- Gate analysis: not run
+- confirmatory eligible: no
 
-`src.pilot --dry-run` が `runs/pilot-001/manifest.jsonl` を生成する。`src.validate` は生成前でも決定論的manifestのhashを検証し、生成後は内容一致も検証する。
+raw Interpretationは研究者が閲覧していない。失敗パターンからoutput token budget不足が主要因と推定したが、pilot-001 runnerは `response.status` / `incomplete_details.reason` を保存していなかったため、原因は**推定**として記録する。
 
-Runnerは同じpathに異なるmanifestを上書きしない。manifest本体はgenerated artifactとしてGit管理外とし、正本側には生成規則・seed・expected hashを固定する。
+pilot-001の実行設定は [`runs/pilot-001/executed-config.yaml`](runs/pilot-001/executed-config.yaml)、監査状態は [`runs/pilot-001/status.yaml`](runs/pilot-001/status.yaml) に保存する。ローカルのraw結果は削除せず保持する。
 
----
+### pilot-002 — active
 
-## 10. Execution
+pilot-002は同じ研究条件・刺激・Gateを維持し、技術的出力上限だけを事前に修正して96件を最初から再実行する。
 
-実験ディレクトリへ移動する。
+- generation `max_output_tokens`: **800**
+- evaluation `max_output_tokens`: **400**
+- generation runs: 96
+- blind evaluation runs: 96
+- randomization seed: `20260813`
+- blind randomization seed: `2026081301`
 
-```bash
-cd research/experiments/PF-EXP-0001-temperament-interpretation
+`max_output_tokens` は上限であり、必ずそのtoken数を消費する意味ではない。
+
+runnerは次回から以下を監査保存する。
+
+- `response.status`
+- `incomplete_details.reason`
+- returned model / response ID / x-request-id
+- usage / reasoning token details
+- output text length on technical failure
+
+これにより、max-token由来のincomplete responseをJSON parse errorと混同しない。
+
+## Current execution config
+
+Active configは [`experiment.yaml`](experiment.yaml) = **pilot-002**。
+
+生成物はpilotごとに分離する。
+
+```text
+runs/
+├─ pilot-001/   # technical incomplete; preserve locally
+└─ pilot-002/   # active
 ```
 
-依存関係を同期する。
+raw results、blind set、blind key、private analysisはGit管理外。
 
-```bash
+## Execution — pilot-002
+
+実験ディレクトリで実行する。
+
+```powershell
 uv sync --frozen
 ```
 
-### 10.1 Static validation
+### 1. Static validation
 
-```bash
+```powershell
 uv run python -m src.validate
 ```
 
 期待結果：
 
 ```text
-PASS: PF-EXP-0001 static validation
+PASS: PF-EXP-0001 pilot-002 static validation
 ```
 
-### 10.2 Generation dry-run
+### 2. Generation dry-run
 
-APIを呼ばず、frozen manifestとの一致を確認する。
-
-```bash
+```powershell
 uv run python -m src.pilot --dry-run
 ```
 
 期待結果：
 
 ```text
-manifest: .../runs/pilot-001/manifest.jsonl (96 runs)
+manifest: ...\runs\pilot-002\manifest.jsonl (96 runs)
 dry-run: no API requests sent
 ```
 
-### 10.3 Generation run
+### 3. Generation run
 
-`OPENAI_API_KEY` が環境変数として設定されていることを確認して実行する。
+ここからOpenAI APIを使用する。
 
-```bash
+```powershell
 uv run python -m src.pilot
 ```
 
-成功済みrunは再実行時にskipされる。
+最後に必ずsummaryを表示する。
 
-raw resultは `runs/pilot-001/results.jsonl` に保存され、Git管理外となる。
+```text
+generation summary:
+  planned:   96
+  succeeded: 96
+  missing:   0
+```
 
-### 10.4 Create blind set
+`missing > 0` の場合はblindへ進まない。
 
-96 generation runsがすべて成功した後に実行する。
+### 4. Create blind set
 
-```bash
+```powershell
 uv run python -m src.blind
 ```
 
-blind setと対応keyは `runs/pilot-001/private/` に生成され、Git管理外となる。
+期待結果：
 
-Blind EvaluatorにはInterpretation本文とblind IDだけを渡す。
+```text
+blind set: 96 records
+```
 
-### 10.5 Evaluation dry-run
+### 5. Evaluation dry-run
 
-```bash
+```powershell
 uv run python -m src.evaluate --dry-run
 ```
 
-### 10.6 Blind evaluation
+### 6. Blind evaluation
 
-```bash
+```powershell
 uv run python -m src.evaluate
 ```
 
-評価結果は `runs/pilot-001/evaluation-results.jsonl` へ保存する。condition情報は含まない。
+最後に、
 
-### 10.7 Gate analysis
+```text
+evaluation summary:
+  planned:   96
+  succeeded: 96
+  missing:   0
+```
 
-```bash
+を確認する。
+
+### 7. Gate analysis
+
+```powershell
 uv run python -m src.analyze
 ```
 
-G1〜G5を自動計算し、private analysis JSONを生成する。
+G1〜G5を自動判定する。全Gate passはexit code `0`、1つ以上failはexit code `2`。
 
-全Gate pass時はexit code `0`、1つ以上fail時はexit code `2` とする。
+## Validation / tests
 
----
-
-## 11. Validation and tests
-
-```bash
+```powershell
 uv run pytest -q
 uv run ruff check .
 ```
 
-テストでは少なくとも以下を確認する。
+主な検証対象：
 
-- manifestが96 runで固定・均衡している
-- output schemaがInterpretationだけを含む
-- stale `OPENAI_BASE_URL` / Organization / Project設定を継承しない
-- blind setにcondition / stimulus / hypothesis情報が混入しない
-- 明確なsynthetic patternでG1〜G5がpassする
-- 刺激事前レビューとfrozen manifest/hashが一致する
+- manifestが96 runで均衡・決定論的
+- `experiment.yaml` がpilot-002を指す
+- output schemaがInterpretationのみ
+- Windows CRLFでもthreshold hashが一致
+- incomplete response理由を監査できる
+- stale SDK routingを継承しない
+- blind setにcondition / stimulus / hypothesisが混入しない
+- synthetic patternでG1〜G5がpassする
 
----
+## API / data policy
 
-## 12. API and data policy
-
-- OpenAI clientは `https://api.openai.com/v1` を明示して初期化する。
-- `OPENAI_API_KEY` を明示的に使用する。
+- API base URLは `https://api.openai.com/v1` を明示する。
+- `OPENAI_API_KEY` を環境変数から使用する。
 - Organization / Project routing metadataは継承しない。
-- `store=false` を固定する。
-- HTTP error、API error、`x-request-id` を可能な範囲で監査記録する。
-- raw response、blind set、blind key、private analysisはGitHubへ含めない。
-- GitHubへ公開するのは設計、生成規則、seed、expected checksum、集計、監査metadataに限定する。
+- `store=false`。
+- raw response、blind files、private analysisはGitHubへ含めない。
+- 公開repositoryには設計、seed、checksum、集計、監査metadataだけを残す。
 
----
+## Failure policy
 
-## 13. Failure handling
+技術エラーが出た場合、条件の一部だけを変更して穴埋めしない。
 
-Gateを通らない場合、モデルをすぐ複雑化せず、次の順に疑う。
+1. pilotをtechnical incompleteとして保存
+2. 原因と変更点を記録
+3. 次pilotとして96件すべてを同一条件で再実行
 
-1. Temperament操作文
-2. Experience stimulus
-3. generation instruction
-4. evaluation rubric
+研究Gateを通らない場合は別であり、モデルをすぐ複雑化せず、Temperament操作文 → stimulus → generation instruction → evaluation rubricの順に検討する。
 
-失敗結果も研究履歴として保持する。
+## Confirmatory boundary
 
----
-
-## 14. Confirmatory boundary
-
-Pilotを通過した場合のみ、pilotとは別のholdout stimuliでconfirmatory studyを設計する。
-
-Confirmatory実行前には、hypotheses、condition definitions、prompt、rubric、holdout stimuli、exclusion/retry rules、model parameters、sample size、analysis plan、practical-effect / equivalence thresholdを改めて凍結する。
-
-Pilot stimuliはconfirmatory datasetへ再利用しない。
-
----
-
-## 15. Next experiment
-
-PF-EXP-0001通過後は、次の接続を扱う。
-
-```text
-Interpretation → Regulation → Response
-```
-
-PF-EXP-0002ではTemperamentがResponseを直接指定しないことを維持したまま、Interpretation差がResponse形成へどのように接続するかを検証する。
+pilot-002が技術的に完了しG1〜G5を評価できた後にのみ、別holdout stimuliによるconfirmatory studyを設計する。Pilot stimuliはconfirmatory datasetへ再利用しない。

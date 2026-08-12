@@ -91,7 +91,7 @@ def validate_static(config: dict[str, Any]) -> list[str]:
         if frozen != manifest:
             errors.append("generated manifest does not match current prompts/stimuli/config")
 
-    status_path = ROOT / "runs/pilot-001/status.yaml"
+    status_path = ROOT / config.get("status_path", f"runs/{config['phase']}/status.yaml")
     if status_path.exists():
         status = load_yaml(status_path)
         proposed_manifest = "".join(canonical_json(row) + "\n" for row in manifest)
@@ -99,6 +99,10 @@ def validate_static(config: dict[str, Any]) -> list[str]:
             errors.append("status manifest_sha256 does not match deterministic manifest definition")
         if status.get("thresholds_sha256") != sha256_normalized_text_file(ROOT / config["thresholds"]):
             errors.append("status thresholds_sha256 does not match thresholds.yaml")
+        if status.get("generation_max_output_tokens") not in (None, int(config["max_output_tokens"])):
+            errors.append("status generation_max_output_tokens does not match config")
+        if status.get("evaluation_max_output_tokens") not in (None, int(config["evaluation_max_output_tokens"])):
+            errors.append("status evaluation_max_output_tokens does not match config")
 
     return errors
 
@@ -113,7 +117,7 @@ def main() -> int:
         for error in errors:
             print(f"FAIL: {error}")
         return 1
-    print("PASS: PF-EXP-0001 static validation")
+    print(f"PASS: PF-EXP-0001 {config['phase']} static validation")
     return 0
 
 

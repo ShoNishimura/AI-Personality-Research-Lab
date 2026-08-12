@@ -2,18 +2,29 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
 from src import analyze
 from src.blind import build_blind_files
-from src.common import ROOT, load_yaml, sha256_normalized_text_file, write_jsonl
+from src.common import (
+    ROOT,
+    ResponseOutputError,
+    load_yaml,
+    parse_structured_response,
+    sha256_normalized_text_file,
+    write_jsonl,
+)
 from src.pilot import build_manifest, create_openai_client
 from src.validate import validate_static
 
 
 def test_static_validation_passes():
     config = load_yaml(ROOT / "experiment.yaml")
+    assert config["phase"] == "pilot-002"
+    assert config["max_output_tokens"] == 800
+    assert config["evaluation_max_output_tokens"] == 400
     assert validate_static(config) == []
 
 
@@ -40,6 +51,25 @@ def test_threshold_hash_is_platform_newline_independent(tmp_path):
     lf_path.write_bytes(content.encode("utf-8"))
     crlf_path.write_bytes(content.replace("\n", "\r\n").encode("utf-8"))
     assert sha256_normalized_text_file(lf_path) == sha256_normalized_text_file(crlf_path)
+
+
+def test_incomplete_response_preserves_reason_without_parsing_output():
+    schema = json.loads((ROOT / "output.schema.json").read_text(encoding="utf-8"))
+    response = SimpleNamespace(
+        status="incomplete",
+        incomplete_details=SimpleNamespace(reason="max_tokens"),
+        output_text='{"interpretation":"truncated',
+        model="test-model",
+        id="resp_test",
+        _request_id="req_test",
+        usage=None,
+    )
+    with pytest.raises(ResponseOutputError) as caught:
+        parse_structured_response(response, schema)
+    assert caught.value.error_type == "IncompleteResponse"
+    assert caught.value.metadata["response_status"] == "incomplete"
+    assert caught.value.metadata["incomplete_reason"] == "max_tokens"
+    assert caught.value.metadata["output_text_length"] > 0
 
 
 def test_client_ignores_stale_sdk_routing(monkeypatch):

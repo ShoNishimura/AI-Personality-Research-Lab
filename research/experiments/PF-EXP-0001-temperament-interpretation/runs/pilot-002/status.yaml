@@ -1,7 +1,7 @@
 experiment_id: PF-EXP-0001
-run_id: pilot-001
+run_id: pilot-002
 phase: pilot
-status: technical_incomplete
+status: ready_to_run
 canonical_framework: APRL Research Framework v1.0
 canonical_model: APRL Personality Formation Model v1.0
 model_requested: gpt-5.6
@@ -13,24 +13,17 @@ thresholds_frozen: true
 manifest_file: manifest.jsonl
 manifest_sha256: 68eb99bd3f361033651a15453c4ef5b8d27c5b80b9d5b2ee3f8c3a336f6bbb8a
 thresholds_sha256: e88a6d29cb25ace271dede271efcb33ffa2606079f565013ad772c2177b39e08
-generation_max_output_tokens: 220
-evaluation_max_output_tokens: 120
+generation_max_output_tokens: 800
+evaluation_max_output_tokens: 400
 run_count_planned: 96
-generation_succeeded_unique: 89
-generation_missing_unique: 7
-failed_attempt_records: 20
-failure_type: JSONDecodeError
-failure_breakdown:
-  unterminated_string: 16
-  expecting_value_at_start: 4
-root_cause: likely_output_token_budget_exhaustion
-root_cause_status: inferred_from_truncated_or_empty_json
-blind_creation_attempted: true
-blind_created: false
-evaluation_started: false
-gate_analysis_started: false
+evaluation_count_planned: 96
+condition_count: 4
+stimulus_count: 12
+replicates: 2
+randomization_seed: 20260813
+blind_randomization_seed: 2026081301
 raw_results_in_git: false
 private_artifacts_in_git: false
 confirmatory_eligible: false
-superseded_by: pilot-002
-recorded_on: 2026-08-13
+predecessor: pilot-001
+predecessor_status: technical_incomplete

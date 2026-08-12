@@ -1,9 +1,9 @@
 # Generated/private experiment artifacts
-runs/pilot-001/manifest.jsonl
-runs/pilot-001/results.jsonl
-runs/pilot-001/evaluation-results.jsonl
-runs/pilot-001/private/*
-!runs/pilot-001/private/.gitkeep
+runs/pilot-*/manifest.jsonl
+runs/pilot-*/results.jsonl
+runs/pilot-*/evaluation-results.jsonl
+runs/pilot-*/private/*
+!runs/pilot-*/private/.gitkeep
 
 # Local environment
 .venv/
