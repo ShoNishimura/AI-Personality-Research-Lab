@@ -8,7 +8,7 @@ from typing import Any
 
 import jsonschema
 
-from .common import ROOT, canonical_json, load_yaml, read_jsonl, sha256_file, sha256_text
+from .common import ROOT, canonical_json, load_yaml, read_jsonl, sha256_normalized_text_file, sha256_text
 from .pilot import build_manifest
 
 EXPECTED_CLASSES = {"seeking-target", "negative-target", "conflict", "neutral"}
@@ -97,7 +97,7 @@ def validate_static(config: dict[str, Any]) -> list[str]:
         proposed_manifest = "".join(canonical_json(row) + "\n" for row in manifest)
         if status.get("manifest_sha256") != sha256_text(proposed_manifest):
             errors.append("status manifest_sha256 does not match deterministic manifest definition")
-        if status.get("thresholds_sha256") != sha256_file(ROOT / config["thresholds"]):
+        if status.get("thresholds_sha256") != sha256_normalized_text_file(ROOT / config["thresholds"]):
             errors.append("status thresholds_sha256 does not match thresholds.yaml")
 
     return errors
