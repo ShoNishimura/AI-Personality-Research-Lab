@@ -105,12 +105,16 @@ $$
 
 | 記号 | APRLでの名称 | 理論上の由来 | APRLでの意味 |
 |---|---|---|---|
-| $S$ | **Approach Reactivity** | Surgency / Extraversion | 報酬、新奇性、快、機会などに対して接近方向の反応が活性化しやすい傾向 |
-| $N$ | **Aversion Reactivity** | Negative Affectivity | 脅威、喪失、拒絶、不快などに対して嫌悪・防御方向の反応が活性化しやすい傾向 |
+| $S$ | **Surgency-derived Seeking Reactivity** | Surgency / Extraversion | 報酬、新奇性、快、機会などに価値を感じ、それを求め、探索しようとする反応性 |
+| $N$ | **Negative Affectivity** | Negative Affectivity | 脅威、喪失、拒絶、不快などに対して、恐怖、不快、悲しみ、苛立ちなどのネガティブ情動が活性化しやすい反応性 |
+
+SはRothbart系のSurgency / Extraversionを主要な理論的起点とするが、APRLではその全内容をそのまま採用するのではなく、報酬、新奇性、快、機会などを求める基礎的な反応性に焦点を当ててSeeking Reactivityとして操作的に定義する。
+
+NはRothbart系のNegative Affectivityという名称をそのまま用いる。
 
 SとNはResponseを直接決定する固定ルールではない。CharacterがExperienceをInterpretationし、Responseを形成する過程へ初期的な確率的偏りを与える。
 
-SとNが統計的に完全に独立していることは仮定しない。また、両者は同時に活性化し得る。たとえば、魅力的だが危険でもある対象では、接近と嫌悪・警戒が同時に生じ得る。
+SとNが統計的に完全に独立していることは仮定しない。また、両者は同時に活性化し得る。たとえば、魅力的だが危険でもある対象では、「知りたい・試したい」というSeekingと、「怖い・不快だ」というNegative Affectivityが同時に生じ得る。
 
 ## 5.2 Rothbart理論との関係
 
@@ -239,10 +243,10 @@ Affiliationは、他者との暖かさ、親密さ、結びつきを求めるCha
 
 AffiliationはSと同一ではない。
 
-- S / Approach Reactivityは、人や対象への接近を起こしやすくすることがある。
+- S / Seeking Reactivityは、人や対象に価値や新奇性を感じ、それを求めたり探索したりする反応を起こしやすくすることがある。
 - Affiliationは、特定の他者との親密な関係を求める傾向を表す。
 
-したがって、社交的に多くの人へ接近するが深い関係を求めないCharacterも、接近性は低いが少数の相手との強い結びつきを求めるCharacterも表現できる。
+したがって、多くの人や対象へ積極的に探索・接近するが深い関係を求めないCharacterも、Seekingは低いが少数の相手との強い結びつきを求めるCharacterも表現できる。
 
 AffiliationはCore Temperamentには含めず、Relationship Modelで必要になった時点で導入・検証する。
 
@@ -333,6 +337,8 @@ APRLのCore Modelは既存理論の再現ではなく、研究のための最小
 APRLはこれらを踏まえつつ、正本ではモデルの簡潔さを優先して、
 
 - motivational-emotional reactivityを **Temperament = (S,N)**
+- Sを **Surgency-derived Seeking Reactivity**
+- Nを **Negative Affectivity**
 - responseの調整機能を **Regulation**
 - 親密な他者との結びつきへの動機を **Affiliation / Relationship Model**
 
@@ -344,7 +350,7 @@ APRLはこれらを踏まえつつ、正本ではモデルの簡潔さを優先�
 
 APRLは、Characterを静的な人格設定ではなく、Experienceを固有にInterpretationし、Regulationを経てResponseを重ねながら形成される動的な存在として扱う。
 
-Characterの最小初期条件として、接近方向の反応性Sと嫌悪・防御方向の反応性NからなるTemperamentを置く。
+Characterの最小初期条件として、報酬、新奇性、快、機会などを求めるSeeking Reactivity（S）と、脅威、喪失、拒絶、不快などに対するNegative Affectivity（N）からなるTemperamentを置く。
 
 ResponseはAction、Intensity、Latencyによって記述され、Regulationはこれらを調整する。
 
