@@ -18,8 +18,8 @@ APRLの公開Canonical versioningはこのv1.0から開始します。以後の�
 ```text
 Temperament T₀ = (S, N)
 
-S: Surgency-derived Approach Reactivity
-N: Negative Affectivity-derived Aversion Reactivity
+S: Seeking (Surgency-derived)
+N: Negative Affectivity
                          │
                          ▼
 Experience → Interpretation → Regulation → Response
@@ -29,31 +29,28 @@ Experience → Interpretation → Regulation → Response
 ```
 
 - **Temperament** は基礎的なmotivational-emotional reactivityの初期条件として、SとNの2要素で表します。
-- **S** は理論上の由来である **Surgency / Extraversion** の頭文字を保持し、APRLでは **Approach Reactivity** として再定義します。
-- **N** は理論上の由来である **Negative Affectivity** の頭文字を保持し、APRLでは **Aversion Reactivity** として再定義します。
+- **S = Seeking** — 報酬、新奇性、快、機会などを求め、探索しようとする反応性。Rothbart系の **Surgency / Extraversion** を主要な理論的起点とします。
+- **N = Negative Affectivity** — 脅威、喪失、拒絶、不快などに対して、恐怖・不快・悲しみ・苛立ちなどのネガティブ情動が活性化しやすい反応性です。
 - **Regulation** はTemperamentから分離し、ResponseのAction、Intensity、Latencyを調整する可変的な機能として扱います。
 - **Relationship** は複数Character間に形成される時間依存の状態として扱い、Affiliationは必要に応じてRelationship Modelで検証します。
 
 ### Temperamentを直感的に見る
 
-記号S/NはAPRLで再定義した名称の頭文字ではなく、理論的な由来を追跡できるよう元概念の頭文字を保持しています。
+Sは **Seeking** の頭文字として読めるようにしつつ、その理論的な由来がSurgency / Extraversionにあることを明示します。Nは元理論の **Negative Affectivity** をそのまま用います。
 
 ```text
-S → Surgency / Extraversion → Approach Reactivity
-N → Negative Affectivity     → Aversion Reactivity
+S = Seeking               ← Surgency / Extraversionを理論的起点とする
+N = Negative Affectivity  ← Rothbart系の名称をそのまま使用
 ```
-
-- **S = Approach Reactivity** — 報酬、新奇性、快、機会などに対して「近づく」方向の反応が起こりやすい。
-- **N = Aversion Reactivity** — 脅威、喪失、拒絶、不快などに対して嫌悪・警戒・防御方向の反応が起こりやすい。
 
 たとえば、**「未知の対象を見つけた」**という同じExperienceでも、初期反応の偏りは次のように変わります。
 
 | S | N | 起こりやすい初期傾向 | 直感的な例 |
 |---|---|---|---|
-| High | Low | 接近が強く、警戒が弱い | 興味を持ってすぐ近づき、触ったり調べたりする |
-| High | High | 接近と警戒がともに強い | 強く興味を持つが、危険も感じながら慎重に近づく |
-| Low | High | 接近が弱く、警戒が強い | 距離を取り、観察するか回避する |
-| Low | Low | 接近・警戒ともに弱い | 強く反応せず、必要が生じるまで様子を見る |
+| High | Low | 探索・希求が強く、警戒が弱い | 興味を持ってすぐ近づき、触ったり調べたりする |
+| High | High | 探索・希求とネガティブ情動がともに強い | 強く知りたい・試したいと思う一方、危険も感じながら慎重に近づく |
+| Low | High | 探索・希求が弱く、ネガティブ情動が強い | 距離を取り、観察するか回避する |
+| Low | Low | 探索・希求もネガティブ情動も弱い | 強く反応せず、必要が生じるまで様子を見る |
 
 SとNは行動を直接決めるルールではありません。同じTemperamentでも、それまでのExperience、Interpretation、Relationship、Regulationなどによって最終的なResponseは変わります。
 
