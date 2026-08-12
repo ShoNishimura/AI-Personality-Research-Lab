@@ -10,8 +10,18 @@ from typing import Any
 
 import jsonschema
 
-from .common import ROOT, append_jsonl, completed_ids, load_yaml, read_jsonl, render_evaluator_prompts
-from .pilot import create_openai_client, usage_dict
+from .common import (
+    ROOT,
+    ResponseOutputError,
+    append_jsonl,
+    completed_ids,
+    load_yaml,
+    parse_structured_response,
+    read_jsonl,
+    render_evaluator_prompts,
+    response_metadata,
+)
+from .pilot import create_openai_client
 
 
 def evaluate_one(client: Any, config: dict[str, Any], row: dict[str, Any], schema: dict[str, Any]) -> dict[str, Any]:
@@ -32,23 +42,29 @@ def evaluate_one(client: Any, config: dict[str, Any], row: dict[str, Any], schem
             }
         },
     )
-    raw_text = response.output_text
-    parsed = json.loads(raw_text)
-    jsonschema.validate(parsed, schema)
+    parsed = parse_structured_response(response, schema)
     return {
         "blind_id": row["blind_id"],
+        "experiment_phase": config["phase"],
         "status": "succeeded",
         "started_at": started,
         "completed_at": datetime.now(UTC).isoformat(),
         "model_requested": config["evaluation_model"],
-        "model_returned": getattr(response, "model", None),
-        "response_id": getattr(response, "id", None),
-        "x_request_id": getattr(response, "_request_id", None),
-        "http_status": 200,
+        **response_metadata(response),
         "store": False,
         "scores": parsed,
-        "usage": usage_dict(response),
     }
+
+
+def print_evaluation_summary(rows: list[dict[str, Any]], output_path: Path) -> int:
+    expected = {row["blind_id"] for row in rows}
+    succeeded = completed_ids(output_path, "blind_id") & expected
+    missing = expected - succeeded
+    print("evaluation summary:")
+    print(f"  planned:   {len(expected)}")
+    print(f"  succeeded: {len(succeeded)}")
+    print(f"  missing:   {len(missing)}")
+    return len(missing)
 
 
 def run(config_path: Path, dry_run: bool) -> int:
@@ -67,8 +83,7 @@ def run(config_path: Path, dry_run: bool) -> int:
     output_path = ROOT / config["evaluation_results_path"]
     completed = completed_ids(output_path, "blind_id")
     client = create_openai_client()
-    technical_errors = (OpenAIError, json.JSONDecodeError, jsonschema.ValidationError, ValueError)
-    failures = 0
+    technical_errors = (OpenAIError, ResponseOutputError, json.JSONDecodeError, jsonschema.ValidationError, ValueError)
     halt_new_requests = False
 
     for index, row in enumerate(rows, start=1):
@@ -83,14 +98,18 @@ def run(config_path: Path, dry_run: bool) -> int:
                 print(f"[{index}/{len(rows)}] ok {row['blind_id']}")
                 break
             except technical_errors as exc:
+                error_type = exc.error_type if isinstance(exc, ResponseOutputError) else type(exc).__name__
                 failure_record = {
                     "blind_id": row["blind_id"],
+                    "experiment_phase": config["phase"],
                     "status": "failed",
                     "attempt": attempt + 1,
                     "failed_at": datetime.now(UTC).isoformat(),
-                    "error_type": type(exc).__name__,
+                    "error_type": error_type,
                     "error": str(exc),
                 }
+                if isinstance(exc, ResponseOutputError):
+                    failure_record.update(exc.metadata)
                 if isinstance(exc, APIStatusError):
                     body = exc.body if isinstance(exc.body, dict) else {}
                     detail = body.get("error", body) if isinstance(body, dict) else {}
@@ -106,9 +125,8 @@ def run(config_path: Path, dry_run: bool) -> int:
                     )
                 append_jsonl(output_path, failure_record)
                 if attempt >= int(config["max_retries"]):
-                    failures += 1
                     print(
-                        f"[{index}/{len(rows)}] failed {row['blind_id']}: {type(exc).__name__}",
+                        f"[{index}/{len(rows)}] failed {row['blind_id']}: {error_type}",
                         file=sys.stderr,
                     )
                     if isinstance(exc, OpenAIError):
@@ -117,7 +135,9 @@ def run(config_path: Path, dry_run: bool) -> int:
                     time.sleep(1)
         if halt_new_requests:
             break
-    return 1 if failures else 0
+
+    missing = print_evaluation_summary(rows, output_path)
+    return 0 if missing == 0 else 1
 
 
 def main() -> int:

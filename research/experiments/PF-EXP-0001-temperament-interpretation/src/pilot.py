@@ -14,11 +14,14 @@ import jsonschema
 
 from .common import (
     ROOT,
+    ResponseOutputError,
     append_jsonl,
     canonical_json,
     completed_ids,
     load_yaml,
+    parse_structured_response,
     render_generation_prompts,
+    response_metadata,
     sha256_text,
     write_jsonl,
 )
@@ -68,13 +71,6 @@ def create_openai_client() -> Any:
     return client
 
 
-def usage_dict(response: Any) -> dict[str, Any]:
-    usage = getattr(response, "usage", None)
-    if usage is None:
-        return {}
-    return usage.model_dump(mode="json") if hasattr(usage, "model_dump") else dict(usage)
-
-
 def execute_run(client: Any, config: dict[str, Any], row: dict[str, Any], schema: dict[str, Any]) -> dict[str, Any]:
     conditions = {item["id"]: item for item in load_yaml(ROOT / "conditions.yaml")["conditions"]}
     stimuli = {item["id"]: item for item in load_yaml(ROOT / "stimuli.yaml")["stimuli"]}
@@ -95,24 +91,30 @@ def execute_run(client: Any, config: dict[str, Any], row: dict[str, Any], schema
             }
         },
     )
-    raw_text = response.output_text
-    parsed = json.loads(raw_text)
-    jsonschema.validate(parsed, schema)
+    parsed = parse_structured_response(response, schema)
     return {
         **row,
+        "experiment_phase": config["phase"],
         "status": "succeeded",
         "started_at": started,
         "completed_at": datetime.now(UTC).isoformat(),
         "model_requested": config["model"],
-        "model_returned": getattr(response, "model", None),
-        "response_id": getattr(response, "id", None),
-        "x_request_id": getattr(response, "_request_id", None),
-        "http_status": 200,
+        **response_metadata(response),
         "store": False,
-        "raw_output": raw_text,
+        "raw_output": response.output_text,
         "parsed_output": parsed,
-        "usage": usage_dict(response),
     }
+
+
+def print_generation_summary(manifest: list[dict[str, Any]], results_path: Path) -> int:
+    expected = {row["run_id"] for row in manifest}
+    succeeded = completed_ids(results_path, "run_id") & expected
+    missing = expected - succeeded
+    print("generation summary:")
+    print(f"  planned:   {len(expected)}")
+    print(f"  succeeded: {len(succeeded)}")
+    print(f"  missing:   {len(missing)}")
+    return len(missing)
 
 
 def run(config_path: Path, dry_run: bool) -> int:
@@ -130,9 +132,8 @@ def run(config_path: Path, dry_run: bool) -> int:
 
     schema = json.loads((ROOT / config["output_schema"]).read_text(encoding="utf-8"))
     client = create_openai_client()
-    technical_errors = (OpenAIError, json.JSONDecodeError, jsonschema.ValidationError, ValueError)
+    technical_errors = (OpenAIError, ResponseOutputError, json.JSONDecodeError, jsonschema.ValidationError, ValueError)
     completed = completed_ids(results_path, "run_id")
-    failures = 0
     halt_new_requests = False
 
     for index, row in enumerate(manifest, start=1):
@@ -147,14 +148,18 @@ def run(config_path: Path, dry_run: bool) -> int:
                 print(f"[{index}/{len(manifest)}] ok {row['run_id']}")
                 break
             except technical_errors as exc:
+                error_type = exc.error_type if isinstance(exc, ResponseOutputError) else type(exc).__name__
                 failure_record = {
                     **row,
+                    "experiment_phase": config["phase"],
                     "status": "failed",
                     "attempt": attempt + 1,
                     "failed_at": datetime.now(UTC).isoformat(),
-                    "error_type": type(exc).__name__,
+                    "error_type": error_type,
                     "error": str(exc),
                 }
+                if isinstance(exc, ResponseOutputError):
+                    failure_record.update(exc.metadata)
                 if isinstance(exc, APIStatusError):
                     body = exc.body if isinstance(exc.body, dict) else {}
                     detail = body.get("error", body) if isinstance(body, dict) else {}
@@ -170,9 +175,8 @@ def run(config_path: Path, dry_run: bool) -> int:
                     )
                 append_jsonl(results_path, failure_record)
                 if attempt >= int(config["max_retries"]):
-                    failures += 1
                     print(
-                        f"[{index}/{len(manifest)}] failed {row['run_id']}: {type(exc).__name__}",
+                        f"[{index}/{len(manifest)}] failed {row['run_id']}: {error_type}",
                         file=sys.stderr,
                     )
                     if isinstance(exc, OpenAIError):
@@ -181,7 +185,9 @@ def run(config_path: Path, dry_run: bool) -> int:
                     time.sleep(1)
         if halt_new_requests:
             break
-    return 1 if failures else 0
+
+    missing = print_generation_summary(manifest, results_path)
+    return 0 if missing == 0 else 1
 
 
 def main() -> int:
