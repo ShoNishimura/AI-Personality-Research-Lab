@@ -105,7 +105,7 @@ $$
 
 | 記号 | APRLでの名称 | 理論上の由来 | APRLでの意味 |
 |---|---|---|---|
-| $S$ | **Surgency-derived Seeking Reactivity** | Surgency / Extraversion | 報酬、新奇性、快、機会などに価値を感じ、それを求め、探索しようとする反応性 |
+| $S$ | **Seeking Reactivity** | Surgency / Extraversion | 報酬、新奇性、快、機会などに価値を感じ、それを求め、探索しようとする反応性 |
 | $N$ | **Negative Affectivity** | Negative Affectivity | 脅威、喪失、拒絶、不快などに対して、恐怖、不快、悲しみ、苛立ちなどのネガティブ情動が活性化しやすい反応性 |
 
 SはRothbart系のSurgency / Extraversionを主要な理論的起点とするが、APRLではその全内容をそのまま採用するのではなく、報酬、新奇性、快、機会などを求める基礎的な反応性に焦点を当ててSeeking Reactivityとして操作的に定義する。
@@ -337,7 +337,7 @@ APRLのCore Modelは既存理論の再現ではなく、研究のための最小
 APRLはこれらを踏まえつつ、正本ではモデルの簡潔さを優先して、
 
 - motivational-emotional reactivityを **Temperament = (S,N)**
-- Sを **Surgency-derived Seeking Reactivity**
+- Sを **Seeking Reactivity**（Surgency / Extraversionを理論的起点とする）
 - Nを **Negative Affectivity**
 - responseの調整機能を **Regulation**
 - 親密な他者との結びつきへの動機を **Affiliation / Relationship Model**
