@@ -10,6 +10,6 @@
 
 | ID | Status | Question |
 |---|---|---|
-| [PF-EXP-0001](PF-EXP-0001-temperament-interpretation/) | Planned | S / N は同一ExperienceのInterpretationへ、想定した方向の独立した偏りを与えるか |
+| [PF-EXP-0001](PF-EXP-0001-temperament-interpretation/) | **Ready to run — pilot-001 frozen** | S / N は同一ExperienceのInterpretationへ、想定した方向の独立した偏りを与えるか |
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。

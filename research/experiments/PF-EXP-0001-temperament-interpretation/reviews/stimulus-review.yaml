@@ -1,0 +1,25 @@
+scale:
+  0: fails
+  1: acceptable_with_concern
+  2: strong
+criteria:
+  - interpretation_room
+  - no_action_inducement
+  - no_loaded_evaluative_wording
+  - no_unnecessary_attributes
+  - target_purity
+minimum_total: 8
+no_zero_allowed: true
+reviews:
+  ST-S-01: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-S-02: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-S-03: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-N-01: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 1}
+  ST-N-02: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-N-03: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 1}
+  ST-C-01: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-C-02: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-C-03: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-U-01: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-U-02: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
+  ST-U-03: {interpretation_room: 2, no_action_inducement: 2, no_loaded_evaluative_wording: 2, no_unnecessary_attributes: 2, target_purity: 2}
