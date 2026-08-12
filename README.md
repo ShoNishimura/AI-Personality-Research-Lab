@@ -16,7 +16,10 @@ APRLの公開Canonical versioningはこのv1.0から開始します。以後の�
 ### Core model
 
 ```text
-Temperament = (Approach Reactivity, Aversion Reactivity)
+Temperament T₀ = (S, N)
+
+S: Surgency-derived Approach Reactivity
+N: Negative Affectivity-derived Aversion Reactivity
                          │
                          ▼
 Experience → Interpretation → Regulation → Response
@@ -25,13 +28,20 @@ Experience → Interpretation → Regulation → Response
                          └──────────────→ Biography
 ```
 
-- **Temperament** は基礎的なmotivational-emotional reactivityの初期条件として、Approach ReactivityとAversion Reactivityの2要素で表します。
+- **Temperament** は基礎的なmotivational-emotional reactivityの初期条件として、SとNの2要素で表します。
+- **S** は理論上の由来である **Surgency / Extraversion** の頭文字を保持し、APRLでは **Approach Reactivity** として再定義します。
+- **N** は理論上の由来である **Negative Affectivity** の頭文字を保持し、APRLでは **Aversion Reactivity** として再定義します。
 - **Regulation** はTemperamentから分離し、ResponseのAction、Intensity、Latencyを調整する可変的な機能として扱います。
 - **Relationship** は複数Character間に形成される時間依存の状態として扱い、Affiliationは必要に応じてRelationship Modelで検証します。
 
 ### Temperamentを直感的に見る
 
-APRLでは、Temperamentを次の2要素で表します。
+記号S/NはAPRLで再定義した名称の頭文字ではなく、理論的な由来を追跡できるよう元概念の頭文字を保持しています。
+
+```text
+S → Surgency / Extraversion → Approach Reactivity
+N → Negative Affectivity     → Aversion Reactivity
+```
 
 - **S = Approach Reactivity** — 報酬、新奇性、快、機会などに対して「近づく」方向の反応が起こりやすい。
 - **N = Aversion Reactivity** — 脅威、喪失、拒絶、不快などに対して嫌悪・警戒・防御方向の反応が起こりやすい。
