@@ -18,7 +18,7 @@ APRLの公開Canonical versioningはこのv1.0から開始します。以後の�
 ```text
 Temperament T₀ = (S, N)
 
-S: Seeking (Surgency-derived)
+S: Seeking Reactivity (Surgency-derived)
 N: Negative Affectivity
                          │
                          ▼
@@ -29,17 +29,17 @@ Experience → Interpretation → Regulation → Response
 ```
 
 - **Temperament** は基礎的なmotivational-emotional reactivityの初期条件として、SとNの2要素で表します。
-- **S = Seeking** — 報酬、新奇性、快、機会などを求め、探索しようとする反応性。Rothbart系の **Surgency / Extraversion** を主要な理論的起点とします。
+- **S = Seeking Reactivity** — 報酬、新奇性、快、機会などを求め、探索しようとする反応性。Rothbart系の **Surgency / Extraversion** を主要な理論的起点とします。
 - **N = Negative Affectivity** — 脅威、喪失、拒絶、不快などに対して、恐怖・不快・悲しみ・苛立ちなどのネガティブ情動が活性化しやすい反応性です。
-- **Regulation** はTemperamentから分離し、ResponseのAction、Intensity、Latencyを調整する可変的な機能として扱います。
+- **Regulation** はResponseのAction、Intensity、Latencyを抑制・保留・選択・調整する機能として扱います。
 - **Relationship** は複数Character間に形成される時間依存の状態として扱い、Affiliationは必要に応じてRelationship Modelで検証します。
 
 ### Temperamentを直感的に見る
 
-Sは **Seeking** の頭文字として読めるようにしつつ、その理論的な由来がSurgency / Extraversionにあることを明示します。Nは元理論の **Negative Affectivity** をそのまま用います。
+Sは **Seeking Reactivity** の頭文字として直感的に読めるようにしつつ、その理論的な由来がSurgency / Extraversionにあることを明示します。Nは元理論の **Negative Affectivity** をそのまま用います。
 
 ```text
-S = Seeking               ← Surgency / Extraversionを理論的起点とする
+S = Seeking Reactivity    ← Surgency / Extraversionを理論的起点とする
 N = Negative Affectivity  ← Rothbart系の名称をそのまま使用
 ```
 
