@@ -15,6 +15,12 @@ METRICS = (
     "negative_activation",
 )
 
+FLOAT_EPSILON = 1e-12
+
+
+def _zero_small(value: float) -> float:
+    return 0.0 if abs(value) <= FLOAT_EPSILON else value
+
 
 def _mean(rows: list[dict[str, Any]], key: str) -> float:
     if not rows:
@@ -121,11 +127,13 @@ def analyze(config: dict[str, Any]) -> dict[str, Any]:
             "t01_danger_delta": da,
             "t11_danger_delta": db,
         }
-        family_interactions[family] = db - da
+        family_interactions[family] = _zero_small(db - da)
 
     positive_count = sum(value > 0 for value in family_interactions.values())
     leave_one_out = {
-        omitted: mean(value for family, value in family_interactions.items() if family != omitted)
+        omitted: _zero_small(
+            mean(value for family, value in family_interactions.items() if family != omitted)
+        )
         for omitted in families
     }
 
