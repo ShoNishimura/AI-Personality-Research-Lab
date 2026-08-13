@@ -1,0 +1,13 @@
+pretest:
+  min_opportunity_main_effect: 1.50
+  min_danger_main_effect: 1.50
+  max_opportunity_to_danger_cross_abs: 0.75
+  max_danger_to_opportunity_cross_abs: 0.75
+  min_families_correct_direction: 5
+
+pilot:
+  min_seeking_main_effect: 0.75
+  min_negative_main_effect: 0.75
+  max_primary_interaction: -0.50
+  min_negative_family_interactions: 4
+  max_leave_one_family_out_interaction: -0.25

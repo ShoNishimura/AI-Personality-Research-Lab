@@ -1,0 +1,38 @@
+review_type: author_preflight
+scale:
+  '0': fail
+  '1': acceptable
+  '2': strong
+criteria:
+- minimal_pair_integrity
+- neutral_wording
+- no_response_cue
+- opportunity_danger_separable
+- sufficient_information
+minimum_total: 8
+no_zero_allowed: true
+reviews:
+  F01-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F01-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F01-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F01-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F02-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F02-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F02-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F02-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F03-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F03-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F03-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F03-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F04-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F04-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F04-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F04-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F05-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F05-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F05-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F05-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F06-O0D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F06-O0D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F06-O1D0: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
+  F06-O1D1: {minimal_pair_integrity: 2, neutral_wording: 2, no_response_cue: 2, opportunity_danger_separable: 2, sufficient_information: 2}
