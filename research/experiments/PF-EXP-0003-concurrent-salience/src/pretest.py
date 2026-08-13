@@ -12,9 +12,18 @@ from typing import Any
 import jsonschema
 
 from .common import (
-    ROOT, ResponseOutputError, append_jsonl, canonical_json, completed_ids, load_yaml,
-    parse_structured_response, render_pretest_prompts, response_metadata, sha256_text,
-    write_jsonl, write_runtime_environment,
+    ROOT,
+    ResponseOutputError,
+    append_jsonl,
+    canonical_json,
+    completed_ids,
+    load_yaml,
+    parse_structured_response,
+    render_pretest_prompts,
+    response_metadata,
+    sha256_text,
+    write_jsonl,
+    write_runtime_environment,
 )
 from .pilot import create_openai_client
 
