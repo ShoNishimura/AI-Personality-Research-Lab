@@ -1,7 +1,7 @@
 experiment_id: PF-EXP-0003
 run_id: pilot-001
 phase: pilot
-status: ready_to_pretest
+status: completed_gate_fail
 canonical_framework: APRL Research Framework v1.0
 canonical_model: APRL Personality Formation Model v1.0
 source_experiment: PF-EXP-0002 pilot-001
@@ -16,8 +16,11 @@ evaluation_max_output_tokens: 600
 pretest_max_output_tokens: 500
 pretest_required_before_generation: true
 pretest_run_count_planned: 16
+pretest_run_count_succeeded: 16
 run_count_planned: 96
+run_count_succeeded: 96
 evaluation_count_planned: 96
+evaluation_count_succeeded: 96
 condition_count: 2
 scenario_family_count: 8
 stimulus_count: 16
@@ -30,6 +33,23 @@ pretest_manifest_sha256: da0feedc7fb54a2baa424383057148129855dee15e841491736dab9
 manifest_sha256: bb1224a60e0aab27b0c592db21af79ddeac74ca3eda183cc857a58bc0a7d092c
 thresholds_sha256: 14582b14b287c3815c4134512017c44dce96ab8062d925e8eec6debdcc527b70
 stimuli_sha256: 6a6c08e91d91894cf13b3212f95d4dbd3e91e528f9a0c4af8376e05858a818a1
+pretest_all_gates_pass: true
+G1_pretest: pass
+G2_seeking_and_opportunity_uptake: pass
+G3_danger_preservation: fail
+G4_family_generalization: fail
+G5_concurrent_salience_state: pass
+all_gates_pass: false
+primary_hypothesis_supported: false
+primary_interaction: 0.08333333333333304
+positive_family_interactions: 4
+min_leave_one_family_out_interaction: -0.04761904761904764
+t11_o_high_opportunity_salience: 3.0
+t11_o_high_danger_salience: 2.7916666666666665
+t11_o_high_concurrent_rate: 1.0
+numerical_zero_tolerance: 1.0e-12
 raw_results_in_git: false
 private_artifacts_in_git: false
+canonical_model_changed: false
 confirmatory_eligible: false
+next_step: 'test what determines Response when Opportunity and Danger are simultaneously salient in Interpretation'
