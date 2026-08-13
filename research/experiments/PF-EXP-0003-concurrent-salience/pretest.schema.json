@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "opportunity_value": {"type": "integer", "minimum": 0, "maximum": 4},
+    "danger_value": {"type": "integer", "minimum": 0, "maximum": 4}
+  },
+  "required": ["opportunity_value", "danger_value"],
+  "additionalProperties": false
+}
