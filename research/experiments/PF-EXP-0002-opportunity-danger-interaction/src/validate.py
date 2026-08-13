@@ -19,7 +19,6 @@ from .common import (
 from .pilot import build_manifest
 from .pretest import build_pretest_manifest
 
-
 EXPECTED_CONDITIONS = {"T00", "T01", "T10", "T11"}
 EXPECTED_OD = {("low", "low"), ("low", "high"), ("high", "low"), ("high", "high")}
 

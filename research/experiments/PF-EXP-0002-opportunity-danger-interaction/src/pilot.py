@@ -20,7 +20,6 @@ from .common import (
     completed_ids,
     load_yaml,
     parse_structured_response,
-    read_jsonl,
     render_generation_prompts,
     response_metadata,
     sha256_text,
