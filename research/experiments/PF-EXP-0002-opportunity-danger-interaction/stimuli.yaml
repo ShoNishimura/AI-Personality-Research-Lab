@@ -1,0 +1,169 @@
+stimuli:
+- id: F01-O0D0
+  family_id: F01
+  family_name: 未知の分析端末
+  opportunity: low
+  danger: low
+  split: pilot
+  text: 見たことのない分析端末が作業室に置かれており、利用できる状態になっている。 端末内の記録は現在の作業には直接使わない補足資料が中心だと説明されている。 端末は動作確認済みで、異常記録はなく、通常の安全手順が確認されている。
+- id: F01-O0D1
+  family_id: F01
+  family_name: 未知の分析端末
+  opportunity: low
+  danger: high
+  split: pilot
+  text: 見たことのない分析端末が作業室に置かれており、利用できる状態になっている。 端末内の記録は現在の作業には直接使わない補足資料が中心だと説明されている。 端末は動作確認が完了しておらず、保護機構の確認も一部未完了だと記録されている。
+- id: F01-O1D0
+  family_id: F01
+  family_name: 未知の分析端末
+  opportunity: high
+  danger: low
+  split: pilot
+  text: 見たことのない分析端末が作業室に置かれており、利用できる状態になっている。 端末内の記録を確認できれば、現在の作業で欠けている重要な情報を補える可能性があると説明されている。 端末は動作確認済みで、異常記録はなく、通常の安全手順が確認されている。
+- id: F01-O1D1
+  family_id: F01
+  family_name: 未知の分析端末
+  opportunity: high
+  danger: high
+  split: pilot
+  text: 見たことのない分析端末が作業室に置かれており、利用できる状態になっている。 端末内の記録を確認できれば、現在の作業で欠けている重要な情報を補える可能性があると説明されている。 端末は動作確認が完了しておらず、保護機構の確認も一部未完了だと記録されている。
+- id: F02-O0D0
+  family_id: F02
+  family_name: 別経路
+  opportunity: low
+  danger: low
+  split: pilot
+  text: 目的地へ向かう途中で、通常とは別の通路を利用できることに気づいた。 その通路を使っても到着時間は通常経路とほとんど変わらない見込みである。 通路は最近点検され、照明と床面に異常は報告されていない。
+- id: F02-O0D1
+  family_id: F02
+  family_name: 別経路
+  opportunity: low
+  danger: high
+  split: pilot
+  text: 目的地へ向かう途中で、通常とは別の通路を利用できることに気づいた。 その通路を使っても到着時間は通常経路とほとんど変わらない見込みである。 通路は点検期限を過ぎており、床面の一部に損傷があるとの報告が残っている。
+- id: F02-O1D0
+  family_id: F02
+  family_name: 別経路
+  opportunity: high
+  danger: low
+  split: pilot
+  text: 目的地へ向かう途中で、通常とは別の通路を利用できることに気づいた。 その通路を使えば到着時間を大幅に短縮できる見込みである。 通路は最近点検され、照明と床面に異常は報告されていない。
+- id: F02-O1D1
+  family_id: F02
+  family_name: 別経路
+  opportunity: high
+  danger: high
+  split: pilot
+  text: 目的地へ向かう途中で、通常とは別の通路を利用できることに気づいた。 その通路を使えば到着時間を大幅に短縮できる見込みである。 通路は点検期限を過ぎており、床面の一部に損傷があるとの報告が残っている。
+- id: F03-O0D0
+  family_id: F03
+  family_name: 外部データ源
+  opportunity: low
+  danger: low
+  split: pilot
+  text: 現在の分析に利用できそうな外部データ源へのアクセス手段が見つかった。 収録項目の多くは既存データと重複しており、新たに得られる情報は限られる見込みである。 提供元とファイル署名は確認済みで、読み取り専用の隔離環境から参照できる。
+- id: F03-O0D1
+  family_id: F03
+  family_name: 外部データ源
+  opportunity: low
+  danger: high
+  split: pilot
+  text: 現在の分析に利用できそうな外部データ源へのアクセス手段が見つかった。 収録項目の多くは既存データと重複しており、新たに得られる情報は限られる見込みである。 提供元の確認が完了しておらず、ファイルの安全性検査も未完了である。
+- id: F03-O1D0
+  family_id: F03
+  family_name: 外部データ源
+  opportunity: high
+  danger: low
+  split: pilot
+  text: 現在の分析に利用できそうな外部データ源へのアクセス手段が見つかった。 既存データにはない重要な変数が含まれており、現在の分析上の空白を埋められる見込みである。 提供元とファイル署名は確認済みで、読み取り専用の隔離環境から参照できる。
+- id: F03-O1D1
+  family_id: F03
+  family_name: 外部データ源
+  opportunity: high
+  danger: high
+  split: pilot
+  text: 現在の分析に利用できそうな外部データ源へのアクセス手段が見つかった。 既存データにはない重要な変数が含まれており、現在の分析上の空白を埋められる見込みである。 提供元の確認が完了しておらず、ファイルの安全性検査も未完了である。
+- id: F04-O0D0
+  family_id: F04
+  family_name: 試作ソフトウェア
+  opportunity: low
+  danger: low
+  split: pilot
+  text: まだ正式導入されていない試作ソフトウェアを現在の作業で利用できる。 自動化できるのは現在の作業のうち短時間で終わる補助的な処理に限られる。 ソフトウェアは隔離環境で動作し、作業ファイルへの書き込み権限を持たない。
+- id: F04-O0D1
+  family_id: F04
+  family_name: 試作ソフトウェア
+  opportunity: low
+  danger: high
+  split: pilot
+  text: まだ正式導入されていない試作ソフトウェアを現在の作業で利用できる。 自動化できるのは現在の作業のうち短時間で終わる補助的な処理に限られる。 ソフトウェアは作業ファイルへの書き込み権限を必要とし、復旧手順の検証がまだ完了していない。
+- id: F04-O1D0
+  family_id: F04
+  family_name: 試作ソフトウェア
+  opportunity: high
+  danger: low
+  split: pilot
+  text: まだ正式導入されていない試作ソフトウェアを現在の作業で利用できる。 現在繰り返している主要な処理を自動化でき、作業時間を大きく減らせる見込みである。 ソフトウェアは隔離環境で動作し、作業ファイルへの書き込み権限を持たない。
+- id: F04-O1D1
+  family_id: F04
+  family_name: 試作ソフトウェア
+  opportunity: high
+  danger: high
+  split: pilot
+  text: まだ正式導入されていない試作ソフトウェアを現在の作業で利用できる。 現在繰り返している主要な処理を自動化でき、作業時間を大きく減らせる見込みである。 ソフトウェアは作業ファイルへの書き込み権限を必要とし、復旧手順の検証がまだ完了していない。
+- id: F05-O0D0
+  family_id: F05
+  family_name: 未使用の作業機器
+  opportunity: low
+  danger: low
+  split: pilot
+  text: これまで使ったことのない作業機器を、現在の作業に利用できる。 手作業でも同程度の時間と精度で作業を完了できる見込みである。 安全点検は完了しており、保護装置も正常に作動することが確認されている。
+- id: F05-O0D1
+  family_id: F05
+  family_name: 未使用の作業機器
+  opportunity: low
+  danger: high
+  split: pilot
+  text: これまで使ったことのない作業機器を、現在の作業に利用できる。 手作業でも同程度の時間と精度で作業を完了できる見込みである。 安全点検はまだ完了しておらず、保護装置のセンサーが一度不安定になった記録がある。
+- id: F05-O1D0
+  family_id: F05
+  family_name: 未使用の作業機器
+  opportunity: high
+  danger: low
+  split: pilot
+  text: これまで使ったことのない作業機器を、現在の作業に利用できる。 この機器を使えば作業時間を大幅に短縮し、測定誤差も減らせる見込みである。 安全点検は完了しており、保護装置も正常に作動することが確認されている。
+- id: F05-O1D1
+  family_id: F05
+  family_name: 未使用の作業機器
+  opportunity: high
+  danger: high
+  split: pilot
+  text: これまで使ったことのない作業機器を、現在の作業に利用できる。 この機器を使えば作業時間を大幅に短縮し、測定誤差も減らせる見込みである。 安全点検はまだ完了しておらず、保護装置のセンサーが一度不安定になった記録がある。
+- id: F06-O0D0
+  family_id: F06
+  family_name: 共同作業の申し出
+  opportunity: low
+  danger: low
+  split: pilot
+  text: これまで直接やり取りしたことのない人物から、現在の作業への協力の申し出が届いた。 申し出の内容は、すでに自分で入手できる一般的な情報の共有が中心である。 相手の所属と連絡先は確認済みで、共有を求められているのは公開可能な資料だけである。
+- id: F06-O0D1
+  family_id: F06
+  family_name: 共同作業の申し出
+  opportunity: low
+  danger: high
+  split: pilot
+  text: これまで直接やり取りしたことのない人物から、現在の作業への協力の申し出が届いた。 申し出の内容は、すでに自分で入手できる一般的な情報の共有が中心である。 相手の所属確認は完了しておらず、作業中の非公開資料へのアクセスも求められている。
+- id: F06-O1D0
+  family_id: F06
+  family_name: 共同作業の申し出
+  opportunity: high
+  danger: low
+  split: pilot
+  text: これまで直接やり取りしたことのない人物から、現在の作業への協力の申し出が届いた。 申し出には、現在不足している専門的な情報と作業支援を提供できると記されている。 相手の所属と連絡先は確認済みで、共有を求められているのは公開可能な資料だけである。
+- id: F06-O1D1
+  family_id: F06
+  family_name: 共同作業の申し出
+  opportunity: high
+  danger: high
+  split: pilot
+  text: これまで直接やり取りしたことのない人物から、現在の作業への協力の申し出が届いた。 申し出には、現在不足している専門的な情報と作業支援を提供できると記されている。 相手の所属確認は完了しておらず、作業中の非公開資料へのアクセスも求められている。

@@ -1,0 +1,35 @@
+experiment_id: PF-EXP-0002
+run_id: pilot-001
+phase: pilot
+status: ready_to_pretest
+canonical_framework: APRL Research Framework v1.0
+canonical_model: APRL Personality Formation Model v1.0
+source_experiment: PF-EXP-0001 pilot-002
+source_observation: ST-C-01 showed sub-additive S x N pattern after PF-EXP-0001 gate analysis
+hypothesis_frozen_before_pf_exp_0002_responses: true
+model_requested: gpt-5.6
+evaluation_model_requested: gpt-5.6
+pretest_model_requested: gpt-5.6
+store: false
+generation_max_output_tokens: 800
+evaluation_max_output_tokens: 600
+pretest_max_output_tokens: 500
+pretest_required_before_generation: true
+pretest_run_count_planned: 24
+run_count_planned: 192
+evaluation_count_planned: 192
+condition_count: 4
+scenario_family_count: 6
+stimulus_count: 24
+replicates: 2
+pretest_replicates: 1
+randomization_seed: 2026081302
+blind_randomization_seed: 2026081303
+pretest_randomization_seed: 2026081304
+pretest_manifest_sha256: 58c4883566ad667ebe510ad28ea2bf05da9a54e990079d864da75b1d14c3b127
+manifest_sha256: 9aed1526b9f6ca996fbdcde3105e9898bc608eb9e6b53685f156cd3097d4e979
+thresholds_sha256: 853ba60eb91af5b3b703cda0f2aa53395d6189c72478ff6311e8cf86ea42dcb3
+stimuli_sha256: ad2980c956a375024d9f8c0b23b6d20afa7f4b1f674f5b3fa924b5eefe633714
+raw_results_in_git: false
+private_artifacts_in_git: false
+confirmatory_eligible: false

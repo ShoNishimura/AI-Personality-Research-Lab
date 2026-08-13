@@ -1,0 +1,13 @@
+conditions:
+  - id: T00
+    seeking: low
+    negative_affectivity: low
+  - id: T01
+    seeking: low
+    negative_affectivity: high
+  - id: T10
+    seeking: high
+    negative_affectivity: low
+  - id: T11
+    seeking: high
+    negative_affectivity: high
