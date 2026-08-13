@@ -1,6 +1,6 @@
 # APRL Glossary
 
-この用語集は、現行の [APRL Research Framework v1.0](APRL_Research_Framework.md) と [Personality Formation Model v1.0](models/Personality_Formation_Model.md) における共通言語を定義する。
+この用語集は、現行の [APRL Research Framework v1.0.1](APRL_Research_Framework.md) と [Personality Formation Model v1.1](models/Personality_Formation_Model.md) における共通言語を定義する。
 
 一般理論上の定義ではなく、APRLでの操作的な意味を優先する。
 
@@ -9,8 +9,6 @@
 ## APRL Research Framework
 
 APRL全体のGrand Research Question、主要な研究領域、その位置関係を定義する上位正本。
-
-詳細な心理機構を固定する文書ではない。
 
 ---
 
@@ -26,15 +24,13 @@ Research Frameworkの一部分を、仮説検証可能な形へ具体化する�
 
 時間の中でExperienceとResponseを重ね、Relationshipを形成しながら変化する動的な存在。
 
-固定された性格属性一覧ではなく、Biographyを持つ「その人」として扱う。
-
 ---
 
 ## Biography
 
 Characterがどのように形成されてきたかを表す時間的軌跡。
 
-Experience、Interpretation、Regulation、Response、Relationship等の履歴を含み得る。単なる出来事の年表ではない。
+Experience、Perception、Response、History、Relationship等の反復を含み得る。
 
 ---
 
@@ -42,7 +38,7 @@ Experience、Interpretation、Regulation、Response、Relationship等の履歴�
 
 複数Character間の相互作用履歴から形成される時間依存の状態。
 
-単一Characterの属性とはせず、必要に応じて非対称性を許容する。
+現行Personality Formation Modelでは、同じPerceptionに対するResponseを変え得る入力として扱う。
 
 ---
 
@@ -52,15 +48,11 @@ World、Characterの初期条件、環境制約、出来事、Narrative Pressure
 
 Characterの個々のResponseは直接決定しない。
 
-AI等がこの役割を担う実装をCreator Personaと呼ぶ場合がある。
-
 ---
 
 ## Communicator
 
 BiographyをAudienceへ伝達する役割。
-
-視点、構成、演出、表現、情報選択、媒体等を包含する。
 
 ---
 
@@ -74,15 +66,11 @@ Communicatorを通してCharacter / Biographyに触れ、心理的反応を形�
 
 Audienceが「その人」に触れることで生じる心理的反応を研究するための上位概念。
 
-単一の魅力スコアや単一感情であるとは仮定しない。
-
 ---
 
 ## Biographical Resonance
 
 AudienceがCharacterのBiographyに触れることで生じる理解、共感、愛着、感動、考察等の心理的な共鳴。
-
-Resonance研究の中心的な作業概念の一つとして扱う。
 
 ---
 
@@ -90,7 +78,11 @@ Resonance研究の中心的な作業概念の一つとして扱う。
 
 現在のPrimary Research Trackである人格形成を扱うResearch Model。
 
-`Temperament → Experience → Interpretation → Regulation → Response` の反復を最小形成単位として扱う。
+現行v1.1では次を最小核とする。
+
+`Perception = f(Experience, Temperament)`
+
+`Response = g(Perception, History, Relationship)`
 
 ---
 
@@ -98,7 +90,7 @@ Resonance研究の中心的な作業概念の一つとして扱う。
 
 刺激に対する基礎的な motivational-emotional reactivity の初期条件。
 
-APRL Personality Formation Modelの最小モデルでは `T0=(S,N)` とする。
+最小モデルでは `T0=(S,N)` とする。TemperamentはResponseを直接決定せず、Perceptionへ初期的な偏りを与える。
 
 ---
 
@@ -112,9 +104,7 @@ Rothbart系のSurgency / Extraversionを主要な理論的起点とする。
 
 ## Negative Affectivity (N)
 
-脅威、喪失、拒絶、不快などに対して、恐怖、不快、悲しみ、苛立ち等のネガティブ情動が活性化しやすい反応性。
-
-Rothbart系の名称をそのまま用いる。
+脅威、喪失、拒絶、不快などに対して、ネガティブ情動が活性化しやすい反応性。
 
 ---
 
@@ -122,23 +112,25 @@ Rothbart系の名称をそのまま用いる。
 
 Characterが環境や他者との相互作用を通して受け取る出来事・刺激。
 
-Responseは次のExperienceを変化させ得る。
+---
+
+## Perception
+
+Experienceのうち何がCharacterにとってsalientになり、どのような motivational-emotional significance として感じ取られるかを表す。
+
+単なる感覚器入力や物体認識に限定しない。
+
+現行Minimum Modelでは `Perception = f(Experience, Temperament)` とする。
+
+PF-EXP-0001〜0003の実行時には、この生成対象を `Interpretation` と呼んでいた。v1.1ではそれらをPerceptionの観測として再位置づける。
 
 ---
 
-## Interpretation
+## History
 
-Experienceが、そのCharacterにとってどのような意味を持つ状態として処理されるかを表す抽象概念。
+Characterがそれまでに重ねたExperience、Perception、Response等の時間的履歴。
 
-知覚、注意、評価、感情、記憶、意味づけ、信念、動機等を必要に応じて包含するが、固定された直列工程とはしない。
-
----
-
-## Regulation
-
-Interpretationから生じるResponseを、抑制、保留、選択、切替、調整する可変的な機能。
-
-Temperamentとは分離し、Action、Intensity、Latencyのすべてへ作用し得る。
+現行Minimum Modelでは、同じPerceptionに対するResponseを変え得る入力として扱う。
 
 ---
 
@@ -146,19 +138,35 @@ Temperamentとは分離し、Action、Intensity、Latencyのすべてへ作用�
 
 Characterが生成する反応。
 
-Personality Formation Modelでは次の3要素で記述する。
-
 - **Action**：何をするか
 - **Intensity**：どの程度の強さで反応するか
 - **Latency**：ExperienceからResponseを開始するまでの時間
+
+現行Minimum Modelでは `Response = g(Perception, History, Relationship)` とする。
+
+---
+
+## Interpretation — execution-time term
+
+PF-EXP-0001〜0003の実行時に、現在のPerceptionに相当する生成対象へ使用していた名称。
+
+実行済みprompt、schema、artifactのfield名等では監査性のため `interpretation` を保持するが、現行モデルの中核概念としてはPerceptionを用いる。
+
+---
+
+## Regulation / C — extension candidate
+
+旧検討で扱ったResponse調整機能の候補概念。
+
+現行v1.1 Minimum Modelには独立変数として含めず、Perception、History、RelationshipだけではResponse差を十分説明できない場合に再検討する。
 
 ---
 
 ## Affiliation
 
-他者との暖かさ、親密さ、結びつきを求めるCharacter側の関係的動機候補。
+他者との暖かさ、親密さ、結びつきを求める関係的動機候補。
 
-Seeking Reactivityと同一ではない。Core Temperamentには含めず、Relationship Modelで必要になった時点で導入・検証する。
+Core Temperamentには含めず、Relationship Modelで必要になった時点で検証する。
 
 ---
 
@@ -184,4 +192,4 @@ APRLでは原則としてCharacterの初期生成条件そのものとはしな�
 
 ---
 
-Aligned with: **Research Framework v1.0 / Personality Formation Model v1.0**
+Aligned with: **Research Framework v1.0.1 / Personality Formation Model v1.1**
