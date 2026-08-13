@@ -266,6 +266,8 @@ $$
 
 本モデルは既存理論の再現ではなく、研究のための最小抽象モデルである。
 
+APRL Personality Formation Modelは、Stimulus–Organism–Response（S-O-R）という一般的な枠組みと概念的に整合する。S-O-RにおけるOrganismに相当する部分を、APRLでは人格形成研究のためにTemperament、Perception、History、Relationshipとして最小限に具体化する。ただし、APRLのExperienceは外部Stimulusだけでなく身体・生理状態等の内部状態も含み得るため、StimulusとExperienceを同一概念とはみなさない。APRLはS-O-Rの再現を目的とせず、Character固有のPerceptionと形成履歴・関係性がResponse差を生む過程を検証可能にするResearch Modelとして位置づける。
+
 Temperamentの整理では、Rothbart系のtemperament researchを主要な理論的参照点とする。
 
 - Rothbart & Derryberry (1981): temperamentをreactivityとself-regulationの個人差として整理。
@@ -338,6 +340,7 @@ v1.1では、モデルを単純化し、実験系列との対応を明確化し�
 - 身体・生理状態、環境・物理的条件は独立変数を増やさずExperienceとWorld interactionの境界として整理した。
 - Motivationを独立変数にせず、Perception、History、RelationshipからResponseへ現れる派生的な説明概念として整理した。
 - C / RegulationをMinimum Modelから外し、必要性が実証された場合の拡張候補とした。
+- S-O-R modelとの概念的対応をTheoretical Basisに明記した。
 - PF-EXP-0001〜0003で `Interpretation` と呼んでいた生成対象は、v1.1ではPerceptionの観測として再位置づける。実行済みデータ、Gate、閾値、hash、結論は変更しない。
 
 ---
