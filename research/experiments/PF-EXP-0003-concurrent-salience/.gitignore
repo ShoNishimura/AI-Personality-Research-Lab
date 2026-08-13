@@ -1,0 +1,19 @@
+# Local Python environment
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+
+# Local dependency resolution for this pilot.
+# Exact resolved versions are written to private/environment.json at execution time.
+uv.lock
+
+# Generated/private experiment artifacts
+runs/pilot-001/pretest-manifest.jsonl
+runs/pilot-001/pretest-results.jsonl
+runs/pilot-001/manifest.jsonl
+runs/pilot-001/results.jsonl
+runs/pilot-001/evaluation-results.jsonl
+runs/pilot-001/private/*
+!runs/pilot-001/private/.gitkeep
