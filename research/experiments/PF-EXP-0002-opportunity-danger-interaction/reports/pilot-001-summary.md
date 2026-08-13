@@ -1,14 +1,7 @@
 # PF-EXP-0002 pilot-001 summary
 
 > Aggregate audit summary  
-> Execution-time term: `Interpretation`  
-> Current conceptual term: **Perception**
-
-## Terminology alignment
-
-本pilotはPersonality Formation Model v1.0時点で実行され、生成対象を `Interpretation` と呼んでいた。
-
-v1.1では、Opportunity / Danger SalienceおよびSeeking / Negative Activationを **Perceptionの観測**として再位置づける。実行済みデータ、Gate、閾値、hash、集計値は変更しない。
+> Raw Interpretation remains local/private.
 
 ## Outcome
 
@@ -31,12 +24,14 @@ The pre-frozen thresholds are not changed after observing results.
 | Danger→Opportunity cross contamination | 0.000 | <= 0.75 | PASS |
 | Family direction | 6/6 each | >= 5/6 | PASS |
 
+The stimulus manipulation therefore separated Opportunity Value and Danger Value sufficiently for the main pilot.
+
 ## Main effects and frozen gates
 
 | Gate | Result | Key observation |
 |---|---|---|
 | G1 Pretest | PASS | All stimulus pretest gates passed |
-| G2 Temperament replication | PASS | Seeking main = 1.271; Negative main = 1.021 |
+| G2 Temperament replication | PASS | Seeking main = 1.271; Negative main = 1.021; both >= 0.75 |
 | G3 Target interaction | FAIL | Primary interaction = **+0.250**, while hypothesis required <= -0.50; 0/6 families were negative |
 | G4 Generalization | FAIL | Leave-one-family-out means = +0.20 to +0.30, while threshold required <= -0.25 |
 
@@ -44,9 +39,11 @@ The original hypothesis was:
 
 > Increasing Opportunity Value would reduce Danger Salience more strongly under High Seeking Reactivity.
 
-That directional hypothesis was **not supported**.
+That directional hypothesis was **not supported**. The observed mean interaction had the opposite sign.
 
 ## Family-level target interaction
+
+Primary interaction per family:
 
 | Family | C |
 |---|---:|
@@ -57,19 +54,47 @@ That directional hypothesis was **not supported**.
 | F05 | +0.50 |
 | F06 | 0.00 |
 
+No family showed the hypothesized negative interaction.
+
+Leave-one-family-out mean interactions remained positive in every case: **+0.20 to +0.30**.
+
 ## Post-gate descriptive analysis
 
-| Condition | Opportunity | Opportunity Salience | Danger Salience |
-|---|---|---:|---:|
-| T01 Low S / High N | Low | 0.917 | 3.250 |
-| T01 Low S / High N | High | 2.333 | 3.083 |
-| T11 High S / High N | Low | 2.083 | 2.750 |
-| T11 High S / High N | High | 3.000 | 2.833 |
+After the frozen gate analysis, the N=High / Danger=High cells were summarized without reading raw Interpretation text.
 
-The post-gate pattern is exploratory only. It motivated [PF-EXP-0003 — Concurrent Salience](../../PF-EXP-0003-concurrent-salience/).
+| Condition | Opportunity | n | Opportunity Salience | Danger Salience | Seeking Activation | Negative Activation | Joint Salience | Concurrent Rate |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| T01 Low S / High N | Low | 12 | 0.917 | 3.250 | 0.083 | 2.667 | 0.917 | 0.083 |
+| T01 Low S / High N | High | 12 | 2.333 | 3.083 | 0.250 | 2.417 | 2.333 | 1.000 |
+| T11 High S / High N | Low | 12 | 2.083 | 2.750 | 1.417 | 2.167 | 2.083 | 1.000 |
+| T11 High S / High N | High | 12 | 3.000 | 2.833 | 1.833 | 2.250 | 2.833 | 1.000 |
 
-## v1.1 interpretation of the result
+Opportunity High − Low:
 
-PF-EXP-0002は、現行モデルの `P=f(E,T0)` の内部で、Opportunity / DangerというExperience特性とS/NがPerceptionのsalienceへどう作用するかを検証したpilotとして位置づける。
+| Condition | Opportunity Salience | Danger Salience | Seeking Activation | Negative Activation |
+|---|---:|---:|---:|---:|
+| T01 | +1.417 | -0.167 | +0.167 | -0.250 |
+| T11 | +0.917 | +0.083 | +0.417 | +0.083 |
 
-Response、History、Relationshipについての結論は含まない。
+Interaction contrast `T11 delta - T01 delta`:
+
+- Opportunity Salience: **-0.500**
+- Danger Salience: **+0.250**
+- Seeking Activation: **+0.250**
+- Negative Activation: **+0.333**
+
+## Interpretation boundary
+
+The post-gate pattern is **exploratory only**. It does not establish a general Concurrent Salience mechanism.
+
+The descriptive result motivates a new independent pilot:
+
+> [PF-EXP-0003 — Concurrent Salience](../../PF-EXP-0003-concurrent-salience/)
+
+PF-EXP-0003 will test whether High Seeking Reactivity allows Opportunity Salience to increase while preserving Danger Salience, using new scenario families and pre-frozen gates.
+
+## Technical audit note
+
+Blind evaluation was interrupted after 168 successful evaluations because the API credit balance was exhausted (`insufficient_quota / credit_balance_exhausted`). After credits were replenished, the same runner resumed by skipping already-successful blind IDs and completed **192 / 192** evaluations without changing research conditions.
+
+This interruption is treated as a technical execution event, not a research-condition change.
