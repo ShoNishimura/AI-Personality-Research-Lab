@@ -1,0 +1,40 @@
+pretest:
+  min_outcome_valence_separation: 2.00
+  max_mean_current_response_directiveness: 0.50
+  max_single_current_response_directiveness: 1
+  max_mean_trait_labeling: 0.50
+  max_single_trait_labeling: 1
+  min_families_correct_valence_direction: 7
+
+pilot:
+  min_primary_approach_effect: 0.75
+  min_families_positive_approach_effect: 6
+  min_leave_one_family_out_approach_effect_exclusive: 0.0
+
+scales:
+  history_outcome_valence:
+    min: -2
+    max: 2
+  current_response_directiveness:
+    min: 0
+    max: 4
+  trait_labeling:
+    min: 0
+    max: 4
+  approach_commitment:
+    min: 0
+    max: 4
+  caution_information_seeking:
+    min: 0
+    max: 4
+  response_intensity:
+    min: 0
+    max: 4
+  response_latency:
+    min: 0
+    max: 4
+
+secondary_diagnostics:
+  - caution_information_seeking
+  - response_intensity
+  - response_latency
