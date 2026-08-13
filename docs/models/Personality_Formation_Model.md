@@ -32,15 +32,19 @@ APRL全体のGrand Research Questionは、
 APRLにおける人格形成の最小単位を、次の循環として扱う。
 
 ```text
-                Temperament T0 = (S, N)
-                         │
-                         ▼
-Experience_t ───────► Perception_t ───────► Response_t
-                                             ▲       ▲
-                                             │       │
-                                         History_t  Relationship_t
+External environment / physical conditions ─┐
+Body / physiological state ─────────────────┤
+                                             ▼
+                                        Experience_t
+                                             │
+                          Temperament T0      │
+                               │              │
+                               └──────► Perception_t ───────► Response_t
+                                                              ▲       ▲
+                                                              │       │
+                                                          History_t  Relationship_t
 
-Response_t ──► next Experience / History / Relationship
+Response_t ──► World / interaction outcome ──► next Experience / History / Relationship
 
 Response_t = (Action_t, Intensity_t, Latency_t)
 
@@ -57,16 +61,16 @@ $$
 R_t=g(P_t,H_t,Rel_t)
 $$
 
-- $E_t$：現在のExperience
+- $E_t$：Characterがその時点で置かれているExperience。外部の出来事・刺激・環境条件に加え、身体・生理状態等の内部状態を含み得る
 - $P_t$：Character固有のPerception
 - $T_0$：初期的なTemperament
 - $H_t$：それまでのExperience、Perception、Response等の履歴
 - $Rel_t$：時点 $t$ におけるRelationship
-- $R_t$：Response
+- $R_t$：Characterが選択・開始するResponse
 
 この式は詳細な心理過程を固定するものではない。実験上の必要性が確認されるまでは中間変数や直接経路を増やさない。
 
-特に最小モデルでは、TemperamentからResponseへの直接経路、History / RelationshipからPerceptionへの直接経路、独立したRegulation変数を置かない。
+特に最小モデルでは、TemperamentからResponseへの直接経路、History / RelationshipからPerceptionへの直接経路、独立したMotivation変数、独立したRegulation変数を置かない。
 
 ---
 
@@ -108,7 +112,23 @@ SとNが統計的に完全に独立していることは仮定しない。また
 
 ---
 
-# 4. Perception
+# 4. Experience
+
+Experienceは、Characterがその時点で置かれている**現在の入力・状態**を表す。
+
+外部だけに限定せず、必要に応じて次を含む。
+
+- **外部の出来事・刺激** — 他者の発言、対象物、出来事等
+- **環境・物理的条件** — 場所、距離、利用可能な手段、障害物、温度、時間的制約等
+- **身体・生理状態** — 空腹、疲労、痛み、覚醒状態等
+
+これらをそれぞれ独立した人格変数として最小モデルへ追加しない。現在時点でCharacterが受け取る条件として $E_t$ に含め、TemperamentとともにPerceptionへ入力する。
+
+身体・生理状態や環境条件がResponseの実行可能性そのものを制約する場合は、Responseの選択と、そのResponseがWorld内で実現した結果を区別する。
+
+---
+
+# 5. Perception
 
 Perceptionは、**Experienceのうち何がCharacterにとってsalientになり、どのような motivational-emotional significance として感じ取られるか**を表す。
 
@@ -126,7 +146,7 @@ HistoryやRelationshipが知覚そのものへ影響する可能性を一般理�
 
 ---
 
-# 5. History
+# 6. History
 
 Historyは、それまでのCharacterの形成過程をResponse選択へ持ち込む時間依存の文脈である。
 
@@ -138,7 +158,7 @@ Historyの詳細な内部表現は本版では固定しない。まず、History
 
 ---
 
-# 6. Relationship
+# 7. Relationship
 
 Relationshipは、**複数Character間の相互作用履歴から形成される時間依存の状態**である。
 
@@ -156,9 +176,9 @@ Relationshipの詳細な形成機構、関係資源、Affiliation等は、必要
 
 ---
 
-# 7. Response
+# 8. Response
 
-Responseは次の3要素で記述する。
+Responseは、Characterが**選択し、開始する反応**である。
 
 $$
 Response_t=(Action_t,Intensity_t,Latency_t)
@@ -172,13 +192,35 @@ $$
 
 TemperamentはPerceptionを介してのみResponseへ寄与する。TemperamentからResponseへの直接経路は置かない。
 
+Responseは、World内で必ずそのまま実現する結果を意味しない。例えば「逃げようとする」というResponseを選んでも、出口が塞がれていれば逃走は成功しない。環境・物理的制約や身体能力との相互作用によって生じた結果は、次のExperience、History、Relationshipへ接続する。
+
+## 8.1 Motivation boundary
+
+MotivationはResponse形成に重要であり得るが、v1.1では独立した中核変数として固定しない。
+
+APRLの最小モデルでは、Motivationと呼び得る傾向を、その起源に応じて既存入力からResponseに現れるものとして扱う。
+
+- 現在の報酬・脅威・身体要求等に由来する動機的意味はPerceptionに現れ得る
+- 過去の成功・失敗、学習、長期的な目標等に由来する傾向はHistoryに保持され得る
+- 特定の相手を助けたい、避けたい、信頼したい等の関係的な傾向はRelationshipに反映され得る
+
+したがって、現行の
+
+$$
+R_t=g(P_t,H_t,Rel_t)
+$$
+
+の中でどこまで説明できるかを先に検証する。
+
+同一のPerception、History、Relationshipを与えても、Motivationを独立状態として置かなければ説明できない安定したResponse差が確認された場合にのみ、Motivation変数の追加を再検討する。
+
 ---
 
-# 8. Biography Interface
+# 9. Biography Interface
 
 人格形成は一回のResponseではなく、反復によって生じる。
 
-Responseは次のExperienceを変え、Historyを蓄積し、他者との相互作用ではRelationshipを変化させ得る。
+ResponseはWorldや他者と相互作用し、その結果が次のExperienceを変え、Historyを蓄積し、他者との相互作用ではRelationshipを変化させ得る。
 
 その時間的軌跡が、上位のAPRL Research Frameworkで定義するBiographyへ接続する。
 
@@ -186,7 +228,7 @@ Biographyは本モデルの内部変数として閉じず、**人格形成モデ
 
 ---
 
-# 9. Regulation / C Boundary
+# 10. Regulation / C Boundary
 
 APRLの旧検討では、Effortful ControlやRegulationに相当する調整機能を独立変数として置く案を扱った。
 
@@ -206,19 +248,21 @@ $$
 
 ---
 
-# 10. Formation and Observation
+# 11. Formation and Observation
 
 人格を形成する変数と、形成・表出された傾向を観測する尺度を区別する。
 
 - Temperament、Experience、Perception、History、Relationship、Responseは現行Formation Modelの中核である。
+- 身体・生理状態、環境・物理的条件はExperienceを構成し得る現在条件として扱う。
+- Motivationは現行Minimum Modelでは独立変数にせず、Perception、History、RelationshipからResponseへ現れる派生的な説明概念として扱う。
 - Big Fiveなどの人格尺度は、形成・表出された傾向を観測するために利用できる。
 - Opportunity Salience、Danger Salience、Seeking Activation、Negative Activation等はPerceptionを観測するための実験尺度として利用できる。
 
-観測尺度を、そのままCharacter内部の生成ルールとはみなさない。
+観測尺度や説明上のラベルを、そのままCharacter内部の独立生成変数とはみなさない。
 
 ---
 
-# 11. Theoretical Basis
+# 12. Theoretical Basis
 
 本モデルは既存理論の再現ではなく、研究のための最小抽象モデルである。
 
@@ -241,21 +285,22 @@ Effortful Control / Regulationは理論上の重要性を否定しないが、�
 
 ---
 
-# 12. Scope
+# 13. Scope
 
 ## In scope
 
 - Temperamentの初期条件
-- Experience
+- 外部条件と身体・生理状態を含み得るExperience
 - Perception
 - History
 - Relationshipを条件としたResponse
-- Response
+- ResponseとWorld / 他者との相互作用による次状態
 - 反復による人格形成
 - Biographyへの接続
 
 ## Out of scope for the current minimum model
 
+- Motivationの独立機構
 - C / Regulationの独立機構
 - Relationship形成の詳細機構
 - Creatorによる介入モデル
@@ -268,21 +313,21 @@ Effortful Control / Regulationは理論上の重要性を否定しないが、�
 
 ---
 
-# 13. Canonical Statement
+# 14. Canonical Statement
 
-APRL Personality Formation Modelは、Characterを静的な人格設定ではなく、ExperienceをTemperamentに応じて固有にPerceptionし、そのPerceptionにHistoryとRelationshipが加わってResponseを形成し、その反復によって変化する動的な存在として扱う。
+APRL Personality Formation Modelは、Characterを静的な人格設定ではなく、身体・生理状態や環境条件を含むExperienceをTemperamentに応じて固有にPerceptionし、そのPerceptionにHistoryとRelationshipが加わってResponseを形成し、そのResponseがWorldや他者と相互作用する反復によって変化する動的な存在として扱う。
 
 最小初期条件として、Seeking Reactivity（S）とNegative Affectivity（N）からなるTemperamentを置く。
 
 TemperamentはPerceptionを偏らせるが、Responseを直接決定しない。
 
-ResponseはAction、Intensity、Latencyによって記述し、Perception、History、Relationshipの関数として扱う。
+ResponseはAction、Intensity、Latencyによって記述し、Perception、History、Relationshipの関数として扱う。身体・生理状態や環境・物理的条件はExperienceおよびResponse実現後の相互作用条件として扱い、MotivationとC / Regulationは必要性が実証されるまで独立変数として置かない。
 
 この反復の履歴が人格を形成し、その時間的軌跡がAPRL Research FrameworkにおけるBiographyへ接続する。
 
 ---
 
-# 14. v1.0 → v1.1 migration
+# 15. v1.0 → v1.1 migration
 
 v1.1では、モデルを単純化し、実験系列との対応を明確化した。
 
@@ -290,6 +335,8 @@ v1.1では、モデルを単純化し、実験系列との対応を明確化し�
 - Perceptionの直接入力を `Experience + Temperament` に限定した。
 - TemperamentからResponseへの直接経路を削除した。
 - HistoryとRelationshipをResponseの入力として明示した。
+- 身体・生理状態、環境・物理的条件は独立変数を増やさずExperienceとWorld interactionの境界として整理した。
+- Motivationを独立変数にせず、Perception、History、RelationshipからResponseへ現れる派生的な説明概念として整理した。
 - C / RegulationをMinimum Modelから外し、必要性が実証された場合の拡張候補とした。
 - PF-EXP-0001〜0003で `Interpretation` と呼んでいた生成対象は、v1.1ではPerceptionの観測として再位置づける。実行済みデータ、Gate、閾値、hash、結論は変更しない。
 
