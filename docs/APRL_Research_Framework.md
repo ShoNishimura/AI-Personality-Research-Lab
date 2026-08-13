@@ -1,8 +1,8 @@
-# APRL Research Framework v1.0
+# APRL Research Framework v1.0.1
 
 > Canonical Edition  
 > AI Personality Research Lab  
-> 2026-08-12
+> 2026-08-14
 
 ---
 
@@ -120,7 +120,7 @@ Relationshipは単一Characterの属性ではなく、**複数Character間の相
 
 必要に応じて非対称性を許容する。
 
-RelationshipはCharacterの次のExperienceを変え、Biographyの一部となり得る。
+RelationshipはCharacterの次のExperienceやResponseを変え、Biographyの一部となり得る。
 
 詳細な形成機構、関係資源、Affiliation等は、必要性が確認された時点でRelationship Modelとして研究する。
 
@@ -133,7 +133,7 @@ Biographyは、その人がどのように形成されてきたかを表す時�
 単なる出来事の年表ではない。
 
 - 何をExperienceしたか
-- それをどのように受け取ったか
+- それをどのようにPerceptionしたか
 - どのようなResponseを選んだか
 - そのResponseが次のExperienceをどう変えたか
 - 誰とどのようなRelationshipを形成したか
@@ -222,22 +222,21 @@ Research Trackは概念上の研究領域であり、リポジトリ境界では
 
 現在のPrimary Research Trackは **Personality Formation** である。
 
-現行の詳細モデルは、[APRL Personality Formation Model v1.0](models/Personality_Formation_Model.md) とする。
+現行の詳細モデルは、[APRL Personality Formation Model v1.1](models/Personality_Formation_Model.md) とする。
 
-このモデルは、
+その最小核は、
 
-```text
-Temperament
-→ Experience
-→ Interpretation
-→ Regulation
-→ Response
-→ next Experience
-→ ...
-→ Biography
-```
+$$
+P_t=f(E_t,T_0)
+$$
 
-という形成過程を検証可能な形へ具体化する。
+$$
+R_t=g(P_t,H_t,Rel_t)
+$$
+
+である。
+
+概念的には、TemperamentがExperienceのPerceptionを偏らせ、そのPerceptionにHistoryとRelationshipが加わってResponseが形成される。Responseの反復は次のExperience、History、Relationshipを変化させ、その時間的軌跡がBiographyへ接続する。
 
 Creator、Communicator、Audience等を人格形成モデル内部へ押し込まず、Framework上の別領域として保持する。
 
@@ -248,7 +247,8 @@ Creator、Communicator、Audience等を人格形成モデル内部へ押し込�
 - FrameworkはAPRL全体の研究地図として、可能な限り安定させる。
 - 各Research Modelは独立してversioningする。
 - Research Modelは実験によって反証・変更され得る。
-- 旧版と旧実験は `research/legacy/` へ隔離し、現行仕様と混在させない。
+- 旧版と旧実験は必要に応じて `research/legacy/` へ隔離し、現行仕様と混在させない。
+- 実行済み実験のデータ、Gate、閾値、hash等の監査記録は、後続の用語変更によって書き換えない。
 - 未検証の着想はFrameworkへ直接追加せず、まずNote / Experimentとして扱う。
 
 ---
@@ -267,6 +267,6 @@ APRL Research Frameworkは、Character、Relationship、Biography、Creator、Co
 
 # Version
 
-**v1.0 — Initial Canonical Research Framework**
+**v1.0.1 — Alignment with Personality Formation Model v1.1**
 
-単一のAPRL Concept Modelを、上位Research Frameworkと下位Research Modelへ分離した最初の版。
+v1.0からResearch Frameworkの研究地図は変更せず、Current Research Focusと用語を現行Personality Formation Modelへ整合した。
