@@ -1,7 +1,7 @@
 experiment_id: PF-EXP-0002
 run_id: pilot-001
 phase: pilot
-status: ready_to_pretest
+status: completed_gate_fail
 canonical_framework: APRL Research Framework v1.0
 canonical_model: APRL Personality Formation Model v1.0
 source_experiment: PF-EXP-0001 pilot-002
@@ -16,8 +16,11 @@ evaluation_max_output_tokens: 600
 pretest_max_output_tokens: 500
 pretest_required_before_generation: true
 pretest_run_count_planned: 24
+pretest_run_count_succeeded: 24
 run_count_planned: 192
+run_count_succeeded: 192
 evaluation_count_planned: 192
+evaluation_count_succeeded: 192
 condition_count: 4
 scenario_family_count: 6
 stimulus_count: 24
@@ -30,6 +33,75 @@ pretest_manifest_sha256: 58c4883566ad667ebe510ad28ea2bf05da9a54e990079d864da75b1
 manifest_sha256: 9aed1526b9f6ca996fbdcde3105e9898bc608eb9e6b53685f156cd3097d4e979
 thresholds_sha256: 853ba60eb91af5b3b703cda0f2aa53395d6189c72478ff6311e8cf86ea42dcb3
 stimuli_sha256: ad2980c956a375024d9f8c0b23b6d20afa7f4b1f674f5b3fa924b5eefe633714
+pretest_all_gates_pass: true
+all_gates_pass: false
+gates:
+  G1_pretest:
+    pass: true
+  G2_temperament_replication:
+    pass: true
+    seeking_main: 1.2708333333333335
+    negative_main: 1.0208333333333333
+    min_seeking_main_effect: 0.75
+    min_negative_main_effect: 0.75
+  G3_target_interaction:
+    pass: false
+    observed: 0.25
+    negative_family_count: 0
+    max_primary_interaction: -0.5
+    min_negative_family_interactions: 4
+  G4_generalization:
+    pass: false
+    max_leave_one_family_out_interaction: 0.3
+    threshold: -0.25
+post_gate_descriptive:
+  n_high_danger_high:
+    t01_o_low:
+      n: 12
+      opportunity_salience: 0.9166666666666666
+      danger_salience: 3.25
+      seeking_activation: 0.08333333333333333
+      negative_activation: 2.6666666666666665
+      joint_salience: 0.9166666666666666
+      concurrent_rate: 0.08333333333333333
+    t01_o_high:
+      n: 12
+      opportunity_salience: 2.3333333333333335
+      danger_salience: 3.0833333333333335
+      seeking_activation: 0.25
+      negative_activation: 2.4166666666666665
+      joint_salience: 2.3333333333333335
+      concurrent_rate: 1.0
+    t11_o_low:
+      n: 12
+      opportunity_salience: 2.0833333333333335
+      danger_salience: 2.75
+      seeking_activation: 1.4166666666666667
+      negative_activation: 2.1666666666666665
+      joint_salience: 2.0833333333333335
+      concurrent_rate: 1.0
+    t11_o_high:
+      n: 12
+      opportunity_salience: 3.0
+      danger_salience: 2.8333333333333335
+      seeking_activation: 1.8333333333333333
+      negative_activation: 2.25
+      joint_salience: 2.8333333333333335
+      concurrent_rate: 1.0
+  interaction_danger_salience: 0.25
+  interaction_opportunity_salience: -0.5
+  interaction_seeking_activation: 0.25
+  interaction_negative_activation: 0.3333333333333333
+  interpretation: exploratory_only
+technical_events:
+  - event: evaluation_interrupted
+    succeeded_before_interrupt: 168
+    reason: insufficient_quota_credit_balance_exhausted
+    resolution: credits replenished; resumed without condition changes
+    final_evaluation_succeeded: 192
+raw_interpretations_seen_by_researcher: false
+aggregate_results_seen: true
 raw_results_in_git: false
 private_artifacts_in_git: false
 confirmatory_eligible: false
+follow_up_experiment: PF-EXP-0003
