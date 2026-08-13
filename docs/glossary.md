@@ -110,7 +110,11 @@ Rothbart系のSurgency / Extraversionを主要な理論的起点とする。
 
 ## Experience
 
-Characterが環境や他者との相互作用を通して受け取る出来事・刺激。
+Characterがその時点で置かれている現在の入力・状態。
+
+外部の出来事・刺激だけでなく、環境・物理的条件や、空腹、疲労、痛み、覚醒状態等の身体・生理状態を必要に応じて含む。
+
+現行Minimum Modelでは、これらを独立変数として増やさず `Experience` に含める。
 
 ---
 
@@ -136,13 +140,33 @@ Characterがそれまでに重ねたExperience、Perception、Response等の時�
 
 ## Response
 
-Characterが生成する反応。
+Characterが選択し、開始する反応。
 
 - **Action**：何をするか
 - **Intensity**：どの程度の強さで反応するか
 - **Latency**：ExperienceからResponseを開始するまでの時間
 
 現行Minimum Modelでは `Response = g(Perception, History, Relationship)` とする。
+
+ResponseがWorld内で実際に実現した結果とは区別する。環境・物理的制約や身体能力との相互作用による結果は、次のExperience、History、Relationshipへ接続する。
+
+---
+
+## Motivation — derived explanatory concept
+
+Response形成に重要であり得る動機的な傾向を表す説明概念。
+
+現行v1.1では独立した中核変数にせず、現在の動機的意味はPerception、過去や長期目標に由来する傾向はHistory、特定の相手に向けた傾向はRelationshipからResponseへ現れ得るものとして扱う。
+
+これらだけではResponse差を説明できない必要性が実証された場合に、独立変数としての導入を再検討する。
+
+---
+
+## World / physical constraints
+
+Characterの外部にある環境条件、物理法則、利用可能な手段、障害等。
+
+現在条件としてはExperienceに含まれ得る。Response実行後は、選択されたResponseとWorldとの相互作用によって実現結果を決め、その結果が次のExperienceへ接続する。
 
 ---
 
