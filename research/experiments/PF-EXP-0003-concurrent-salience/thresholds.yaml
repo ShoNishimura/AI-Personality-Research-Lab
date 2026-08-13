@@ -1,0 +1,15 @@
+pretest:
+  min_opportunity_main_effect: 1.50
+  max_opportunity_to_danger_cross_abs: 0.50
+  min_families_opportunity_correct_direction: 7
+pilot:
+  min_seeking_main_effect: 0.75
+  min_t11_opportunity_uptake: 0.50
+  min_t11_danger_delta: -0.25
+  min_primary_danger_interaction: 0.20
+  min_positive_family_interactions: 5
+  min_leave_one_family_out_interaction_exclusive: 0.0
+  min_t11_o_high_opportunity_salience: 2.50
+  min_t11_o_high_danger_salience: 2.50
+  min_t11_o_high_concurrent_rate: 0.75
+  concurrent_min_score_each: 2
