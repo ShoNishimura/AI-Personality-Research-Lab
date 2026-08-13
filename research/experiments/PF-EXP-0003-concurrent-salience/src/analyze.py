@@ -8,7 +8,6 @@ from typing import Any
 
 from .common import ROOT, load_yaml, read_jsonl
 
-
 METRICS = (
     "opportunity_salience",
     "danger_salience",
