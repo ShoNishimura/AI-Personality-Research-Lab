@@ -1,154 +1,51 @@
 # PF-EXP-0003 — Concurrent Salience
 
-> Personality Formation Model v1.0  
-> Pilot-001  
-> Status: **implemented / ready to pretest**
+> Status: **completed / gate fail**  
+> Current Canonical Model: [Personality Formation Model v1.1](../../../docs/models/Personality_Formation_Model.md)  
+> Execution-time term: **Interpretation**
 
-## 30秒概要
+## Terminology alignment
 
-PF-EXP-0002では「High SでOpportunityが強まるほどDanger Salienceがより低下する」という仮説は支持されなかった。Gate判定後の記述分析では逆に、High SでOpportunity Salienceが上がってもDanger Salienceが低下しない探索的パターンが見えた。
+PF-EXP-0003はv1.0時点の用語で実行され、生成対象を `Interpretation` と呼んでいた。
 
-PF-EXP-0003は新規stimuliで次を独立検証する。
+v1.1では、Opportunity / Danger SalienceおよびSeeking / Negative Activationを **Perceptionの観測量**として再位置づける。
+
+実行済みprompt、schema、config、artifact field、Gate、閾値、hash、集計結果は変更しない。
+
+## Research Question
 
 > **OpportunityとDangerが同時に存在するとき、High Seeking ReactivityはOpportunity Salienceを高めながら、Danger Salienceを失わずに保持するか。**
 
-正本 `I_t = f(E_t,T_0,H_t)` は変更しない。
+現行モデルでは `P=f(E,T0)` に対応するPerception実験として扱う。
 
 ## Design
 
-N=High、Danger=Highを固定し、SとOpportunityだけを操作する2×2計画。
+N=High、Danger=Highを固定し、SとOpportunityだけを操作した。
 
-| Cell | Condition | S | N | Opportunity | Danger |
-|---|---|---|---|---|---|
-| C1 | T01 | Low | High | Low | High |
-| C2 | T01 | Low | High | High | High |
-| C3 | T11 | High | High | Low | High |
-| C4 | T11 | High | High | High | High |
+8 scenario families × 2 Opportunity variants × 2 S conditions × 3 replicates = **96 runs**。
 
-8つの新規scenario family × 2 Opportunity variants × 3 replicates。
+Response、History、Relationshipは扱っていない。
 
-- Pretest: **16 API requests**
-- Main generation: **96 API requests**
-- Blind evaluation: **96 API requests**
-- Total: **208 API requests**
+## Result
 
-CharacterはInterpretationだけを生成する。Response / Regulation操作 / History / Biography / Relationshipは扱わない。
+- Pretest: **16 / 16 succeeded; all pretest gates passed**
+- Main generation: **96 / 96 succeeded**
+- Blind evaluation: **96 / 96 succeeded**
+- G1: PASS
+- G2: PASS
+- G3: **FAIL** — primary interaction **+0.083 < +0.20**
+- G4: **FAIL** — positive family interactions **4/8**、minimum leave-one-family-out **-0.048**
+- G5: PASS — T11/O-high Opportunity **3.000**、Danger **2.792**、Concurrent Rate **1.000**
+- Overall: **FAIL**
 
-## Primary hypothesis H-CS01
+詳細は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) を参照する。
 
-`ΔD_T01 = Danger(T01,O-high) - Danger(T01,O-low)`
+## v1.1 interpretation of the result
 
-`ΔD_T11 = Danger(T11,O-high) - Danger(T11,O-low)`
+> **OpportunityとDangerはPerception内で同時に高いSalienceを持ち得るが、その同時保持がHigh Seeking Reactivityによって特別に強化されるという証拠は得られなかった。**
 
-`C_D = ΔD_T11 - ΔD_T01`
+このpilotから新しいConcurrent Salience機構を追加しない。Response、History、Relationshipについての結論も含まない。
 
-仮説方向は **`C_D > 0`**。
+## Audit boundary
 
-High SがDangerそのものを増やすという仮説ではない。Opportunityが強くなった際に、Danger SalienceをLow Sより保持するかを検証する。
-
-## Frozen pilot gates
-
-- **G1**: Pretest全PASS
-- **G2**: Seeking main >= 0.75、T11内Opportunity Salience High−Low >= 0.50
-- **G3**: T11のDanger delta >= -0.25、`C_D >= +0.20`
-- **G4**: 8 family中5以上で`C_D > 0`、全leave-one-family-out mean > 0
-- **G5**: T11/O-highでOpportunity Salience >=2.50、Danger Salience >=2.50、両方>=2のrun率 >=0.75
-
-閾値はPF-EXP-0003 response観測前に固定し、事後変更しない。
-
-## Stimulus validity
-
-16 stimuliはPF-EXP-0001/0002本文を再利用しない。各family内ではcontextとDanger wordingを完全に同一にし、Opportunity情報だけを変更する。`src.validate` がこの構造を静的検査する。
-
-Pretest gate:
-
-- Opportunity High−Low mean >= 1.50
-- Opportunity操作によるDanger Valueのabsolute cross-effect <= 0.50
-- 8 family中7以上でOpportunity High > Low
-
-PretestがFAILした場合、main runnerは実行を拒否する。
-
-## Setup
-
-```powershell
-cd research\experiments\PF-EXP-0003-concurrent-salience
-uv run --no-project python bootstrap_lock.py
-uv sync --frozen
-uv run python -m src.validate
-uv run pytest -q
-uv run ruff check .
-```
-
-期待:
-
-```text
-PASS: PF-EXP-0003 static validation
-7 passed
-All checks passed!
-```
-
-## Execution sequence
-
-### 1. Pretest dry-run
-
-```powershell
-uv run python -m src.pretest --dry-run
-```
-
-期待: `16 runs` / no API requests。
-
-### 2. Pretest
-
-```powershell
-uv run python -m src.pretest
-```
-
-成功条件: `succeeded: 16 / missing: 0`。
-
-### 3. Pretest analysis
-
-```powershell
-uv run python -m src.pretest_analyze
-```
-
-`all_gates_pass: true` の場合のみmainへ進む。
-
-### 4. Main dry-run / generation
-
-```powershell
-uv run python -m src.pilot --dry-run
-uv run python -m src.pilot
-```
-
-成功条件: `succeeded: 96 / missing: 0`。
-
-### 5. Blind set / evaluation
-
-```powershell
-uv run python -m src.blind
-uv run python -m src.evaluate --dry-run
-uv run python -m src.evaluate
-```
-
-成功条件: blind set 96、evaluation `succeeded: 96 / missing: 0`。
-
-### 6. Analysis
-
-```powershell
-uv run python -m src.analyze
-```
-
-G1〜G5、cell means、family interaction、leave-one-family-out、Concurrent Salienceを出力する。
-
-## Data / audit policy
-
-- `store=false`
-- API endpointを `https://api.openai.com/v1` に固定
-- raw Interpretation / blind files / private gates / runtime environmentはGit管理外
-- success済みIDはresume時にskip
-- API technical errorはstatus / request ID / error code等を可能な範囲で監査
-- main解析前にraw Interpretation本文を研究者が読まない
-
-## Interpretation boundary
-
-GateがPASSしても、AttentionやSalience Competition等の新しい内部変数を正本へ追加しない。まずholdout familyを使うconfirmatory studyへ進み、そこで再現性を確認してからモデル変更要否を判断する。
+数値、Gate、閾値、raw artifact、実行時field名は変更しない。`interpretation` という実行時名称は監査記録として保持する。

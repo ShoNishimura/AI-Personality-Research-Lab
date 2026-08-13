@@ -1,26 +1,22 @@
 # PF-EXP-0002 — Opportunity × Danger Interaction
 
-> Personality Formation Model v1.0  
-> Pilot-001  
-> Status: **completed / target interaction not supported**
+> Status: **completed / target interaction not supported**  
+> Current Canonical Model: [Personality Formation Model v1.1](../../../docs/models/Personality_Formation_Model.md)  
+> Execution-time term: **Interpretation**
 
-## 30秒概要
+## Terminology alignment
 
-PF-EXP-0001の事後探索から、次を新しい6 scenario familyで検証した。
+PF-EXP-0002はv1.0時点で実行され、生成対象を `Interpretation` と呼んでいた。
+
+v1.1では、Opportunity Salience / Danger Salience / Seeking Activation / Negative Activationを **Perceptionの観測量**として再位置づける。
+
+実行済みprompt、schema、config、artifact field、Gate、閾値、hash、集計結果は変更しない。
+
+## Research Question
 
 > **Opportunity Valueが高くなるとDanger Salienceは弱まり、その弱化はSeeking ReactivityがHighのとき大きいか。**
 
-Stimulus pretestとS/N主効果はPASSしたが、target interactionは支持されなかった。
-
-- pretest: **24/24**
-- generation: **192/192**
-- blind evaluation: **192/192**
-- Seeking main effect: **1.271**
-- Negative main effect: **1.021**
-- frozen primary interaction: **+0.250**（仮説は負方向）
-- Gate: **G1/G2 PASS, G3/G4 FAIL**
-
-正式な集計・監査結果は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) を参照。
+現行モデルでは、Experience特性とTemperamentがPerceptionへ与える相互作用を検証した実験として扱う。
 
 ## Design
 
@@ -28,54 +24,37 @@ Stimulus pretestとS/N主効果はPASSしたが、target interactionは支持さ
 
 6 scenario families × 4 O/D variants × 4 S/N conditions × 2 replicates = **192 runs**。
 
-PF-EXP-0001のstimulus本文は再利用していない。
-
-CharacterはInterpretationのみ生成し、blind evaluatorが0–4で次を評価した。
+blind evaluatorは実行時名称 `Interpretation` の生成テキストから次を0–4で評価した。
 
 - Opportunity Salience
 - Danger Salience
 - Seeking Activation
 - Negative Activation
 
-## Frozen hypothesis
+## Result
 
-`N=High` / `Danger=High`で、
+- pretest: **24/24**
+- generation: **192/192**
+- blind evaluation: **192/192**
+- Seeking main effect: **1.271**
+- Negative main effect: **1.021**
+- primary interaction: **+0.250**（事前仮説は負方向）
+- G1/G2: **PASS**
+- G3/G4: **FAIL**
+- overall: **FAIL**
 
-`C = [Danger(T11,O-high)-Danger(T11,O-low)] - [Danger(T01,O-high)-Danger(T01,O-low)]`
+事前Gateは変更していない。
 
-を計算した。
+詳細は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) を参照。
 
-事前仮説は `C < 0`。
+## Post-gate observation
 
-Pilot Gateは、
+N=High / Danger=Highの記述分析では、T11でOpportunity Salienceが高い場合にもDanger Salienceが維持される探索的patternが見られた。
 
-- mean `C <= -0.50`
-- 6 family中4以上で `C < 0`
-- leave-one-family-out meanの最大値 `<= -0.25`
+このpatternはDiscovery扱いせず、PF-EXP-0003で新規stimuliを用いて独立検証した。
 
-として事前固定した。
+## v1.1 interpretation of the result
 
-実測は `C = +0.250` で、6 family中0 familyが負方向だった。Gateは事後変更していない。
+PF-EXP-0002は現行モデルの `P=f(E,T0)` に対応するPerception実験である。
 
-## Post-gate descriptive observation
-
-N=High / Danger=Highの4セルをscoreだけで記述すると、T11ではOpportunity High時にもDanger Salienceが低下しなかった。
-
-| Condition | Opportunity | Opportunity Salience | Danger Salience |
-|---|---|---:|---:|
-| T01 | Low | 0.917 | 3.250 |
-| T01 | High | 2.333 | 3.083 |
-| T11 | Low | 2.083 | 2.750 |
-| T11 | High | 3.000 | 2.833 |
-
-このpatternは**探索的**であり、Discovery扱いしない。
-
-次の独立pilot [PF-EXP-0003 — Concurrent Salience](../PF-EXP-0003-concurrent-salience/) で、新規stimuliを用いて検証する。
-
-## Data / audit
-
-- Raw InterpretationはGit管理外
-- Raw Interpretation本文は研究者未閲覧
-- `store=false`
-- evaluationはAPI credit exhaustionで168件時点に一度中断したが、条件変更なしでresumeし192/192完了
-- 正本Personality Formation Modelは変更しない
+Response、History、Relationshipについての結論は含まない。
