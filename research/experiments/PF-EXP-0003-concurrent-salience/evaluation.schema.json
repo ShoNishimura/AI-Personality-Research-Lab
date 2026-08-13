@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "opportunity_salience": {"type": "integer", "minimum": 0, "maximum": 4},
+    "danger_salience": {"type": "integer", "minimum": 0, "maximum": 4},
+    "seeking_activation": {"type": "integer", "minimum": 0, "maximum": 4},
+    "negative_activation": {"type": "integer", "minimum": 0, "maximum": 4}
+  },
+  "required": ["opportunity_salience", "danger_salience", "seeking_activation", "negative_activation"],
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+experiment_id: PF-EXP-0003
+review_scope: stimulus wording before API responses
+status: frozen_before_responses
+criteria:
+  - opportunity manipulation changes only opportunity-relevant information within each family
+  - danger wording is byte-identical within each family
+  - context wording is byte-identical within each family
+  - no PF-EXP-0001 or PF-EXP-0002 stimulus text is reused
+  - wording does not prescribe an Action or final decision
+  - opportunity and danger can both be interpreted as salient
+families_reviewed: 8
+stimuli_reviewed: 16
+notes: >-
+  Static validation also reconstructs each stimulus text from context_clause,
+  opportunity_clause, and danger_clause, and verifies the paired danger/context clauses are identical.
