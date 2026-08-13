@@ -17,7 +17,6 @@ from .common import (
 from .pilot import build_manifest
 from .pretest import build_pretest_manifest
 
-
 EXPECTED_CONDITIONS = {"T01", "T11"}
 
 
