@@ -1,0 +1,35 @@
+experiment_id: PF-EXP-0003
+run_id: pilot-001
+phase: pilot
+status: ready_to_pretest
+canonical_framework: APRL Research Framework v1.0
+canonical_model: APRL Personality Formation Model v1.0
+source_experiment: PF-EXP-0002 pilot-001
+source_observation: 'post-gate descriptive pattern: High S preserved Danger Salience while Opportunity Salience increased'
+hypothesis_frozen_before_pf_exp_0003_responses: true
+model_requested: gpt-5.6
+evaluation_model_requested: gpt-5.6
+pretest_model_requested: gpt-5.6
+store: false
+generation_max_output_tokens: 800
+evaluation_max_output_tokens: 600
+pretest_max_output_tokens: 500
+pretest_required_before_generation: true
+pretest_run_count_planned: 16
+run_count_planned: 96
+evaluation_count_planned: 96
+condition_count: 2
+scenario_family_count: 8
+stimulus_count: 16
+replicates: 3
+pretest_replicates: 1
+randomization_seed: 2026081305
+blind_randomization_seed: 2026081306
+pretest_randomization_seed: 2026081307
+pretest_manifest_sha256: da0feedc7fb54a2baa424383057148129855dee15e841491736dab99c406f13d
+manifest_sha256: bb1224a60e0aab27b0c592db21af79ddeac74ca3eda183cc857a58bc0a7d092c
+thresholds_sha256: 64905bcc11a0d8c025543a4d190bb2bc41610420ed1d3848a7f5a02060472a2e
+stimuli_sha256: 6a6c08e91d91894cf13b3212f95d4dbd3e91e528f9a0c4af8376e05858a818a1
+raw_results_in_git: false
+private_artifacts_in_git: false
+confirmatory_eligible: false
