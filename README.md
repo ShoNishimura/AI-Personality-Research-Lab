@@ -134,7 +134,7 @@ Resonance
 
 実行済み実験の用語・データ・Gate・閾値・hash・結論は、後続のモデル改訂によって書き換えません。
 
-PF-EXP-0001〜0003は実行時には生成対象を `Interpretation` と呼び、v1.1でPerceptionの観測として再位置づけました。v1.2でも監査記録はそのまま保持します。
+PF-EXP-0001〜0003の入力として用いた `Experience` は、v1.2では外部 `Situation` として概念的に対応づけられます。一方、実行時の生成対象 `Interpretation` は、v1.2でPerceptionとExperienceを分離する以前の概念であり、**両者の境界そのものを直接検証したものではありません**。Opportunity / Danger Salience、Seeking / Negative Activation等の評価は、SituationとTemperamentによるPerception側の偏りを観測する指標として引き続き参照できます。実行済み記録はそのまま保持します。
 
 PF-EXP-0004 pilot-001は旧 `History → Response` を検証する計画でしたが、history pretestでP2 No directivenessをFAILしたためmain generationへ進まず、confirmatory hypothesis自体は未検証です。この結果もv1.2への移行によって変更しません。
 
