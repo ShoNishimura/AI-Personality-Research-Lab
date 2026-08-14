@@ -1,6 +1,6 @@
 # PF-EXP-0004 — History-Conditioned Response
 
-> Status: **planned / protocol and gates frozen before responses**  
+> Status: **implementation ready / pretest not run**  
 > Canonical Model: [APRL Personality Formation Model v1.1](../../../docs/models/Personality_Formation_Model.md)  
 > Target relation: `R_t = g(P_t, H_t, Rel_t)`
 
@@ -170,8 +170,16 @@ FAILした場合も直ちに `History → Response` を否定しない。History
 - Gate判定後の探索分析はconfirmatory resultと分離して記録する
 - Gate未達後に閾値を変更しない
 
-## Next step after this PR
+## Implementation status
 
-このPRは**実験計画のみ**を追加する。
+stimuli、prompt、schema、runner、blind evaluator、analyzer、static validation、testsを実装済みである。
 
-マージ後、別PRでstimuli、prompt、schema、runner、analyzerを実装し、history pretestを通過した場合だけpilot-001へ進む。
+実装時の静的検証では、pretest 16件、main generation 48件、blind evaluation 48件の決定的manifest構成を確認する。
+
+main generationは、history pretestが全GateをPASSし、かつpretest時に記録したdesign hashとmain実行時のdesign hashが完全一致する場合にのみ開始できる。
+
+## Next step
+
+マージ後、まずstatic validationとtestsを確認し、**history pretest 16件**を実行する。
+
+pretestが全GateをPASSした場合にのみpilot-001のmain generationへ進む。API pretestおよびpilotは、この実装PRではまだ実行しない。
