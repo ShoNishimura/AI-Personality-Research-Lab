@@ -1,6 +1,6 @@
 # PF-EXP-0005 — Values & Beliefs → Experience
 
-> Status: **pilot-001 pretest FAIL / main not run; pilot-002 implementation ready / pretest not run**  
+> Status: **pilot-001 pretest FAIL / main not run; pilot-002 completed / overall PASS**  
 > Canonical Model: [APRL Personality Formation Model v1.2](../../../docs/models/Personality_Formation_Model.md)  
 > Target relation: `E_t = h(P_t, VB_t, Rel_t)`  
 > Isolated contribution: `VB_t → E_t`
@@ -96,7 +96,7 @@ pilot-002 pretestは、測定対象を交絡させないため2種類に分離�
 - **VB quality pretest**: `8 families × 2 VB conditions = 16`
 - **Perception boundary pretest**: `8 families = 8`
 
-合計pretestは **24**。pilot-002の予定最小API評価単位は、24 + 48 + 48 = **120**。
+合計pretestは **24**。pilot-002の最小API評価単位は、24 + 48 + 48 = **120**。
 
 ## Experience representation
 
@@ -123,7 +123,7 @@ blind evaluatorにはVB conditionを見せず、current Situation、fixed Percep
 
 ## Frozen gates
 
-Gateの数値は [`thresholds.yaml`](thresholds.yaml) を正とする。**pilot-001 FAIL後も閾値は変更しない。**
+Gateの数値は [`thresholds.yaml`](thresholds.yaml) を正とする。**pilot-001 FAIL後も閾値は変更していない。**
 
 ### Pretest
 
@@ -133,9 +133,7 @@ Gateの数値は [`thresholds.yaml`](thresholds.yaml) を正とする。**pilot-
 - **P4 Perception boundary**
 - **P5 Relationship neutrality**
 
-pilot-002では、P1〜P3をVB quality pretestで、P4〜P5をPerception boundary pretestで評価する。P4評価時にはValues & Beliefsを提示しない。
-
-PretestがFAILした場合、main Experience generationへ進まない。
+pilot-002では、P1〜P3をVB quality pretestで、P4〜P5をPerception boundary pretestで評価した。P4評価時にはValues & Beliefsを提示していない。
 
 ### Main confirmatory gates
 
@@ -145,80 +143,71 @@ PretestがFAILした場合、main Experience generationへ進まない。
 - **G4 Leave-one-family-out robustness**：全LOOで `ΔL > 0` かつ `ΔE > 0`
 - **G5 Experience boundary quality**：Response leakageが事前閾値以下
 
-**Overall PASSはG1〜G5をすべて満たすこと**とする。
+**Overall PASSはG1〜G5をすべて満たすこと**とした。
 
 ## Pilot history
 
 ### pilot-001 — pretest FAIL / main not run
 
-pretestは16 / 16 succeeded。結果は次のとおり。
+pretestは16 / 16 succeeded。
 
 - P1 VB separation: **PASS**
-  - Learning separation: 3.125
-  - Evaluation-protection separation: 4.0
-  - family direction: 8/8
 - P2 No current-response directiveness: **FAIL**
-  - mean 0.5625 / threshold <= 0.50
-  - max 1.0 / threshold <= 1
 - P3 No current-situation leakage: **PASS**
-  - mean 0.0 / max 0.0
 - P4 Perception boundary: **FAIL**
-  - mean 0.625 / threshold <= 0.50
-  - max 2.0 / threshold <= 1
 - P5 Relationship neutrality: **PASS**
-  - mean 0.0 / max 0.0
 
-事前プロトコルどおり、main generationは実行していない。したがってH-VB01はpilot-001では未検証であり、支持・棄却の対象になっていない。
+事前プロトコルどおりmain generationは実行しておらず、H-VB01はpilot-001では未検証である。
 
 詳細は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) に記録する。
 
-### pilot-002 — boundary-isolated pretest
+### pilot-002 — completed / overall PASS
 
-pilot-001の監査結果を受け、次を変更する。
+pilot-001の監査結果を受け、P1〜P3とP4〜P5のpretestを別API評価へ分離し、P4評価時にValues & Beliefsを提示しない設計へ変更した。Gateとthresholdは変更していない。
 
-- P1〜P3とP4〜P5のpretestを別API評価へ分離
-- P4評価時にValues & Beliefsを提示しない
-- VB packetから現在Responseを想起させやすい行動表現を弱める
-- F03 / F06のPerceptionを、Experience-level meaningを先取りしにくい表現へ修正
-- Gateとthresholdは変更しない
-- phase / run path / randomization seedをpilot-002として分離
+Pretestは24 / 24 succeeded、P1〜P5をすべてPASSした。
+
+Main generation 48 / 48、blind evaluation 48 / 48を完了し、G1〜G5をすべてPASSした。
+
+主要結果：
+
+- `Δ Learning meaning = 3.5417`（threshold >= 0.75）
+- `Δ Evaluation threat = 2.5833`（threshold >= 0.75）
+- family generalization: **8 / 8 dual-positive**（threshold >= 6 / 8）
+- min leave-one-family-out: `ΔL = 3.4762`, `ΔE = 2.4286`（both > 0）
+- response leakage: mean `0.0417`, max `1.0`（threshold mean <= 0.50, max <= 1）
+
+したがって、今回の実験条件ではH-VB01を支持する。
+
+詳細は [`reports/pilot-002-summary.md`](reports/pilot-002-summary.md) に記録する。
 
 ## Interpretation boundary
 
-PASSした場合に支持するのは、
+pilot-002が直接支持するのは、
 
 > **固定されたSituation・Perception・neutral Relationshipのもとで、Values & Beliefsの違いがExperienceの意味を再現可能かつ方向整合的に変え得る。**
 
 という限定された主張である。
 
-同じPerceptionから異なるExperienceが得られるため、PerceptionとExperienceを機能的に分けるv1.2の境界への支持にもなる。
+同じPerceptionを固定したままValues & Beliefsのみを変えてExperience差が生じたため、PerceptionとExperienceを機能的に分けるv1.2の境界にも限定的な経験的支持を与える。
 
-ただし、Relationship効果、`Experience → Response`、VBの自然な形成・更新、他のVB次元、人間への一般化は本実験だけでは主張しない。
-
-FAILした場合も、直ちに `VB → Experience` またはPerception / Experience分離を否定しない。操作強度、境界、評価方法、scenario依存性を切り分ける。
+ただし、Relationship効果、`Experience → Response`、VBの自然な形成・更新、他のVB次元、人間への一般化は本実験だけでは主張しない。またgenerationとblind evaluationの双方に`gpt-5.6`を用いているため、独立Evaluatorまたは人手評価による堅牢性確認は未実施である。
 
 ## Audit policy
 
-- Gate、threshold、stimulus、prompt、schemaはmain generation前に固定する
-- Pretest FAIL時はmain generationへ進まない
-- Raw responsesは公開しない
-- Blind keyは評価完了までanalysisから分離する
-- Gate判定後の探索分析はconfirmatory resultと分離する
-- Gate未達後に同pilotの閾値を緩和しない
-- 実行済みPF-EXP-0001〜0004の監査記録は変更しない
+- Gate、threshold、stimulus、prompt、schemaはmain generation前に固定した
 - pilot-001の結果はpilot-002の事後的再判定に使用しない
+- Raw responsesは公開しない
+- Gate判定後の探索分析はconfirmatory resultと分離する
+- 実行済みPF-EXP-0001〜0004の監査記録は変更しない
 
 ## Implementation status
 
-pilot-002の実行系を準備する。
+pilot-002は完了した。
 
-- 8 scenario families
-- VB-L / VB-E
-- split pretest 24件
-- main generation 48件
-- blind evaluation 48件
-- design hash固定
-- pretest PASS後のhash一致チェック
-- static validation / tests
-
-pilot-002 pretestは未実行である。
+- pretest 24 / 24 succeeded
+- main generation 48 / 48 succeeded
+- blind evaluation 48 / 48 succeeded
+- P1〜P5: all PASS
+- G1〜G5: all PASS
+- **overall PASS**
