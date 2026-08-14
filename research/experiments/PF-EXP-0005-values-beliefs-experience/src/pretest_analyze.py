@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .common import ROOT, design_hashes, load_yaml, read_jsonl
+from .pretest import BOUNDARY_PRETEST, VB_PRETEST
 
 
 def _latest_success(rows: list[dict[str, Any]], id_key: str) -> dict[str, dict[str, Any]]:
@@ -35,9 +36,14 @@ def analyze(config_path: Path) -> dict[str, Any]:
         raise RuntimeError(f"pretest incomplete: {len(missing)} missing succeeded rows")
 
     rows = [successes[str(row["pretest_id"])] for row in manifest]
+    vb_rows = [row for row in rows if row["pretest_kind"] == VB_PRETEST]
+    boundary_rows = [row for row in rows if row["pretest_kind"] == BOUNDARY_PRETEST]
+    if len(vb_rows) != 16 or len(boundary_rows) != 8:
+        raise RuntimeError(f"unexpected split pretest counts: vb={len(vb_rows)} boundary={len(boundary_rows)}")
+
     by_condition: dict[str, list[dict[str, Any]]] = {"VB-L": [], "VB-E": []}
     by_family: dict[str, dict[str, dict[str, Any]]] = {}
-    for row in rows:
+    for row in vb_rows:
         vb_id = str(row["vb_id"])
         by_condition[vb_id].append(row)
         by_family.setdefault(str(row["family_id"]), {})[vb_id] = row
@@ -58,15 +64,24 @@ def analyze(config_path: Path) -> dict[str, Any]:
         de = float(pair["VB-E"]["scores"]["evaluation_protection_orientation"]) - float(pair["VB-L"]["scores"]["evaluation_protection_orientation"])
         ok = dl > 0 and de > 0
         correct_families += int(ok)
-        family_effects[family_id] = {"delta_learning_orientation": dl, "delta_evaluation_protection": de, "dual_positive": ok}
+        family_effects[family_id] = {
+            "delta_learning_orientation": dl,
+            "delta_evaluation_protection": de,
+            "dual_positive": ok,
+        }
 
-    def score_values(name: str) -> list[float]:
-        return [float(r["scores"][name]) for r in rows]
+    directiveness = [float(r["scores"]["current_response_directiveness"]) for r in vb_rows]
+    situation_leakage = [float(r["scores"]["current_situation_leakage"]) for r in vb_rows]
+    meaning_preload = [float(r["scores"]["experience_meaning_preload"]) for r in boundary_rows]
+    relationship = [float(r["scores"]["relationship_salience"]) for r in boundary_rows]
 
-    directiveness = score_values("current_response_directiveness")
-    situation_leakage = score_values("current_situation_leakage")
-    meaning_preload = score_values("experience_meaning_preload")
-    relationship = score_values("relationship_salience")
+    boundary_by_family = {
+        str(row["family_id"]): {
+            "experience_meaning_preload": float(row["scores"]["experience_meaning_preload"]),
+            "relationship_salience": float(row["scores"]["relationship_salience"]),
+        }
+        for row in sorted(boundary_rows, key=lambda item: str(item["family_id"]))
+    }
 
     gates = {
         "P1_vb_separation": (
@@ -96,6 +111,8 @@ def analyze(config_path: Path) -> dict[str, Any]:
         "experiment_id": config["experiment_id"],
         "phase": config["phase"],
         "pretest_rows": len(rows),
+        "vb_quality_rows": len(vb_rows),
+        "perception_boundary_rows": len(boundary_rows),
         "observed": {
             "learning_orientation_mean_VB-L": learning_l,
             "learning_orientation_mean_VB-E": learning_e,
@@ -114,6 +131,7 @@ def analyze(config_path: Path) -> dict[str, Any]:
             "relationship_salience_max": max(relationship),
         },
         "family_effects": family_effects,
+        "boundary_scores": boundary_by_family,
         "thresholds": thresholds,
         "gates": gates,
         "all_gates_pass": all(gates.values()),
@@ -122,7 +140,7 @@ def analyze(config_path: Path) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Analyze PF-EXP-0005 pretest gates.")
+    parser = argparse.ArgumentParser(description="Analyze PF-EXP-0005 split pretest gates.")
     parser.add_argument("--config", type=Path, default=ROOT / "experiment.yaml")
     args = parser.parse_args()
     config_path = args.config.resolve()
