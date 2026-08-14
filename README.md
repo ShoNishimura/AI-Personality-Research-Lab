@@ -138,6 +138,8 @@ PF-EXP-0001〜0003の入力として用いた `Experience` は、v1.2では外�
 
 PF-EXP-0004 pilot-001は旧 `History → Response` を検証する計画でしたが、history pretestでP2 No directivenessをFAILしたためmain generationへ進まず、confirmatory hypothesis自体は未検証です。この結果もv1.2への移行によって変更しません。
 
+PF-EXP-0005 pilot-002では、Situation・Perception・Relationshipを固定してValues & Beliefsだけを操作したところ、pretest P1〜P5とmain G1〜G5をすべてPASSしました。Learning meaning effect `ΔL=3.5417`、Evaluation-threat meaning effect `ΔE=2.5833`、8/8 familyで両方向の効果を確認し、今回の実験条件では **`Values & Beliefs → Experience` を支持**しました。この結果はPerception / Experienceの機能的分離にも限定的な支持を与えます。詳細は [PF-DISC-0001](research/discoveries/PF-DISC-0001-values-beliefs-shape-experience.md) に記録しています。
+
 ## Repository guide
 
 | Path | Role |
