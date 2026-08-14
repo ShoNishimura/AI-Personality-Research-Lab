@@ -14,7 +14,7 @@
 | [PF-EXP-0002](PF-EXP-0002-opportunity-danger-interaction/) | **pilot-001 completed / overall FAIL** | Opportunityが強まるとDanger Salienceは弱まり、その弱化はHigh Sで大きくなるか |
 | [PF-EXP-0003](PF-EXP-0003-concurrent-salience/) | **pilot-001 completed / overall FAIL** | High SはOpportunity Salienceを高めながらDanger Salienceを保持できるか |
 | [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **pilot-001 pretest FAIL / main not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
-| [PF-EXP-0005](PF-EXP-0005-values-beliefs-experience/) | **implementation ready / pretest not run** | 同一Situation / Perception / Relationshipのもとで、Values & Beliefsの違いはExperienceの意味を再現可能に変えるか |
+| [PF-EXP-0005](PF-EXP-0005-values-beliefs-experience/) | **pilot-001 pretest FAIL / main not run; pilot-002 ready** | 同一Situation / Perception / Relationshipのもとで、Values & Beliefsの違いはExperienceの意味を再現可能に変えるか |
 
 ## Experiment continuity
 
@@ -26,10 +26,10 @@ PF-EXP-0002では、High SがOpportunityによるDanger attenuationを強める�
 
 PF-EXP-0003では、OpportunityとDangerが同時に高いSalienceを持ち得ることは観測されたが、その同時保持がHigh Sによって特別に強化されるという仮説は支持されなかった。
 
-PF-EXP-0004はv1.1の `History → Response` を単独で検証する計画だった。pilot-001のhistory pretestは16/16件の評価を完了し、P1 Outcome separation、P3 No trait labeling、P4 Family directionはPASSしたが、P2 No directivenessをFAILしたため、事前プロトコルどおりmain generationへ進まなかった。したがって `History → Response` のconfirmatory hypothesis自体は未検証である。詳細は [`PF-EXP-0004/reports/pilot-001-summary.md`](PF-EXP-0004-history-conditioned-response/reports/pilot-001-summary.md) に記録する。
+PF-EXP-0004はv1.1の `History → Response` を単独で検証する計画だった。pilot-001はpretest P2をFAILしたためmainへ進まず、confirmatory hypothesisは未検証である。
 
 Personality Formation Model v1.2では、一次入力をSituationへ分離し、Experienceを主観的経験として再定義し、HistoryをMinimum Modelから外してValues & Beliefsを導入した。これは後続モデルの変更であり、上記実験結果の事後的な再判定には使用しない。
 
-PF-EXP-0005はv1.2の `E_t=h(P_t,VB_t,Rel_t)` のうち `VB → Experience` を最初に単独検証する。SituationとPerceptionを固定し、Relationshipを `none / neutral` に固定したうえでValues & Beliefsだけを操作する。実装は完了しているが、pretestとpilotはまだ実行していない。
+PF-EXP-0005はv1.2の `E_t=h(P_t,VB_t,Rel_t)` のうち `VB → Experience` を単独検証する。pilot-001はpretest 16/16を完了したが、P2 No current-response directivenessとP4 Perception boundaryをFAILしたためmainを実行していない。H-VB01は未検証である。pilot-002ではGateとthresholdを変えず、P1〜P3のVB quality評価とP4〜P5のPerception boundary評価を分離し、P4評価時にVBを提示しない。
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。

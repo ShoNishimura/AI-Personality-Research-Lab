@@ -1,5 +1,5 @@
 experiment_id: PF-EXP-0005
-phase: pilot-001
+phase: pilot-002
 canonical_framework: APRL Research Framework v1.0.2
 canonical_model: APRL Personality Formation Model v1.2
 target_relation: E_t = h(P_t, VB_t, Rel_t)
@@ -15,21 +15,21 @@ replicates: 3
 pretest_replicates: 1
 max_retries: 1
 stimulus_split: pilot
-randomization_seed: 2026081405
-blind_randomization_seed: 2026081406
-pretest_randomization_seed: 2026081407
+randomization_seed: 2026081501
+blind_randomization_seed: 2026081502
+pretest_randomization_seed: 2026081503
 require_pretest_pass: true
 output_schema: output.schema.json
 evaluation_schema: evaluation.schema.json
 pretest_schema: pretest.schema.json
 thresholds: thresholds.yaml
-pretest_manifest_path: runs/pilot-001/pretest-manifest.jsonl
-pretest_results_path: runs/pilot-001/pretest-results.jsonl
-pretest_analysis_path: runs/pilot-001/private/pretest-gates.json
-manifest_path: runs/pilot-001/manifest.jsonl
-results_path: runs/pilot-001/results.jsonl
-blind_set_path: runs/pilot-001/private/blind-evaluation.jsonl
-blind_key_path: runs/pilot-001/private/blind-key.jsonl
-evaluation_results_path: runs/pilot-001/evaluation-results.jsonl
-analysis_path: runs/pilot-001/private/gates.json
-environment_path: runs/pilot-001/private/environment.json
+pretest_manifest_path: runs/pilot-002/pretest-manifest.jsonl
+pretest_results_path: runs/pilot-002/pretest-results.jsonl
+pretest_analysis_path: runs/pilot-002/private/pretest-gates.json
+manifest_path: runs/pilot-002/manifest.jsonl
+results_path: runs/pilot-002/results.jsonl
+blind_set_path: runs/pilot-002/private/blind-evaluation.jsonl
+blind_key_path: runs/pilot-002/private/blind-key.jsonl
+evaluation_results_path: runs/pilot-002/evaluation-results.jsonl
+analysis_path: runs/pilot-002/private/gates.json
+environment_path: runs/pilot-002/private/environment.json
