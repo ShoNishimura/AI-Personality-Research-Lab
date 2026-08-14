@@ -1,4 +1,4 @@
-# APRL Research Framework v1.0.1
+# APRL Research Framework v1.0.2
 
 > Canonical Edition  
 > AI Personality Research Lab  
@@ -106,7 +106,7 @@ APRL全体を、概念的には次の研究系として捉える。
 
 Characterは固定された属性一覧ではない。
 
-ExperienceとResponseを重ね、他者とのRelationshipを形成しながら、時間の中で変化する動的な存在として扱う。
+外部のSituationを固有にPerceptionし、それが自分にとってどのようなExperienceとなるかを形成し、Responseを重ね、他者とのRelationshipや内的状態を変化させながら、時間の中で変化する動的な存在として扱う。
 
 APRLが人工人格を用いる理由は、Characterが「その人」になっていく過程を操作・観察可能な実験系として扱うためである。
 
@@ -120,7 +120,7 @@ Relationshipは単一Characterの属性ではなく、**複数Character間の相
 
 必要に応じて非対称性を許容する。
 
-RelationshipはCharacterの次のExperienceやResponseを変え、Biographyの一部となり得る。
+Relationshipは、同じPerceptionがそのCharacterにとってどのようなExperienceとなるかを変え、後続のResponseやBiographyに影響し得る。
 
 詳細な形成機構、関係資源、Affiliation等は、必要性が確認された時点でRelationship Modelとして研究する。
 
@@ -132,12 +132,13 @@ Biographyは、その人がどのように形成されてきたかを表す時�
 
 単なる出来事の年表ではない。
 
-- 何をExperienceしたか
-- それをどのようにPerceptionしたか
+- どのようなSituationに置かれたか
+- そのSituationをどのようにPerceptionしたか
+- それがその人にとってどのようなExperienceとなったか
 - どのようなResponseを選んだか
-- そのResponseが次のExperienceをどう変えたか
+- ResponseがどのようなOutcomeを生み、次のSituationをどう変えたか
 - 誰とどのようなRelationshipを形成したか
-- その反復によって何が変化したか
+- その反復を通じてValues & Beliefs等がどのように変化したか
 
 を含む。
 
@@ -189,7 +190,7 @@ Biographical Resonanceは、その中でもBiographyへの理解、共感、愛�
 
 StoryはAPRLの直接設計対象ではない。
 
-複数Characterが生き、互いのExperienceを変え、RelationshipとBiographyを形成する結果として、出来事の連鎖が生じる。
+複数Characterが生き、互いにSituationを生み、Experienceを変え、RelationshipとBiographyを形成する結果として、出来事の連鎖が生じる。
 
 **Creatorは環境を設計する。  
 Characterは人生を生きる。  
@@ -222,21 +223,27 @@ Research Trackは概念上の研究領域であり、リポジトリ境界では
 
 現在のPrimary Research Trackは **Personality Formation** である。
 
-現行の詳細モデルは、[APRL Personality Formation Model v1.1](models/Personality_Formation_Model.md) とする。
+現行の詳細モデルは、[APRL Personality Formation Model v1.2](models/Personality_Formation_Model.md) とする。
 
 その最小核は、
 
 $$
-P_t=f(E_t,T_0)
+P_t=f(Sit_t,T_0)
 $$
 
 $$
-R_t=g(P_t,H_t,Rel_t)
+E_t=h(P_t,VB_t,Rel_t)
+$$
+
+$$
+R_t=g(E_t,Sit_t)
 $$
 
 である。
 
-概念的には、TemperamentがExperienceのPerceptionを偏らせ、そのPerceptionにHistoryとRelationshipが加わってResponseが形成される。Responseの反復は次のExperience、History、Relationshipを変化させ、その時間的軌跡がBiographyへ接続する。
+概念的には、外部SituationをTemperamentに応じてPerceptionし、そのPerceptionがValues & BeliefsとRelationshipを通じてCharacter固有のExperienceとなる。CharacterはそのExperienceと外部Situationの条件・制約のもとでResponseを選択する。
+
+ResponseとWorld / 他者との相互作用によるOutcomeは次のSituationを変え、学習を通じてValues & BeliefsやRelationshipを更新し得る。その反復された時間的軌跡がBiographyへ接続する。
 
 Creator、Communicator、Audience等を人格形成モデル内部へ押し込まず、Framework上の別領域として保持する。
 
@@ -267,6 +274,6 @@ APRL Research Frameworkは、Character、Relationship、Biography、Creator、Co
 
 # Version
 
-**v1.0.1 — Alignment with Personality Formation Model v1.1**
+**v1.0.2 — Alignment with Personality Formation Model v1.2**
 
-v1.0からResearch Frameworkの研究地図は変更せず、Current Research Focusと用語を現行Personality Formation Modelへ整合した。
+v1.0.1からResearch Frameworkの研究地図は変更せず、Character / Relationship / BiographyおよびCurrent Research Focusの用語を現行Personality Formation Modelへ整合した。
