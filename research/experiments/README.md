@@ -13,7 +13,7 @@
 | [PF-EXP-0001](PF-EXP-0001-temperament-interpretation/) | **pilot-002 completed / overall FAIL (G4 only)** | S / N は同一ExperienceのPerceptionへ、想定した方向の独立した偏りを与えるか |
 | [PF-EXP-0002](PF-EXP-0002-opportunity-danger-interaction/) | **pilot-001 completed / overall FAIL** | Opportunityが強まるとDanger Salienceは弱まり、その弱化はHigh Sで大きくなるか |
 | [PF-EXP-0003](PF-EXP-0003-concurrent-salience/) | **pilot-001 completed / overall FAIL** | High SはOpportunity Salienceを高めながらDanger Salienceを保持できるか |
-| [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **implementation ready / pretest not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
+| [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **pilot-001 pretest FAIL / main not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
 
 ## Current interpretation
 
@@ -25,6 +25,6 @@ PF-EXP-0002では、High SがOpportunityによるDanger attenuationを強める�
 
 PF-EXP-0003では、OpportunityとDangerが同時に高いSalienceを持ち得ることは観測されたが、その同時保持がHigh Sによって特別に強化されるという仮説は支持されなかった。
 
-PF-EXP-0004はResponse側へ進む最初の実験として、`R_t=g(P_t,H_t,Rel_t)` のうち **History → Response** を単独で検証する。Perceptionを固定し、Relationshipをneutral / noneに固定して、類似状況における過去Responseの結果履歴だけを操作する。実装は完了しているが、history pretestおよびpilot-001はまだ実行していない。
+PF-EXP-0004はResponse側へ進む最初の実験として、`R_t=g(P_t,H_t,Rel_t)` のうち **History → Response** を単独で検証する計画だった。pilot-001のhistory pretestは16/16件の評価を完了し、P1 Outcome separation、P3 No trait labeling、P4 Family directionはPASSしたが、P2 No directivenessをFAILしたため、事前プロトコルどおりmain generationへ進まなかった。したがってpilot-001では `History → Response` のconfirmatory hypothesis自体は未検証である。詳細は [`PF-EXP-0004/reports/pilot-001-summary.md`](PF-EXP-0004-history-conditioned-response/reports/pilot-001-summary.md) に記録する。
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。
