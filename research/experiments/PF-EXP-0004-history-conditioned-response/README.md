@@ -191,10 +191,8 @@ history pretestは **16 / 16 succeeded** で完了したが、pre-frozen Gateの
 
 詳細な集計・監査記録は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) を参照する。
 
-pretest後の設計レビューでは、pilot-001がHistoryを主に具体的なPast Response + Outcome episodeとして操作していたことと、APRLで意図するHistoryの抽象度との間に概念上の検討余地が見つかった。この点はpretest結果を変更する根拠には用いず、次版の操作的定義を検討するためのprospective design issueとして扱う。
-
 ## Next step
 
 pilot-001はpretest gate-failとして固定し、現行設計のままmain generationへは進まない。
 
-次の実験版を設計する前に、Historyの操作的定義と正本上の概念境界を再確認する。閾値をpilot-001の観測後に緩和してPASSへ変更しない。
+この結果記録では正本モデル、Historyの操作的定義、stimuli、prompt、schema、thresholdsを変更しない。後続の設計変更は別変更として扱う。
