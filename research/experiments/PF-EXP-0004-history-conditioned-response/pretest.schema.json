@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "outcome_valence": {"type": "integer", "minimum": -2, "maximum": 2},
+    "current_response_directiveness": {"type": "integer", "minimum": 0, "maximum": 4},
+    "trait_labeling": {"type": "integer", "minimum": 0, "maximum": 4}
+  },
+  "required": ["outcome_valence", "current_response_directiveness", "trait_labeling"],
+  "additionalProperties": false
+}

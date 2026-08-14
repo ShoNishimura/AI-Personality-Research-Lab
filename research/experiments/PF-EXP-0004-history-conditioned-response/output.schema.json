@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "action": {"type": "string", "minLength": 1, "maxLength": 240},
+    "intensity": {"type": "integer", "minimum": 0, "maximum": 4},
+    "latency": {"type": "integer", "minimum": 0, "maximum": 4}
+  },
+  "required": ["action", "intensity", "latency"],
+  "additionalProperties": false
+}

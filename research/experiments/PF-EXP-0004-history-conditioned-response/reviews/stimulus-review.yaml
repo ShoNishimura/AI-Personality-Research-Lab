@@ -1,0 +1,19 @@
+status: frozen_before_responses
+review_scope: PF-EXP-0004 History manipulation design
+families_reviewed: 8
+history_stimuli_reviewed: 16
+criteria:
+  same_current_experience_within_family: pass
+  same_fixed_perception_within_family: pass
+  same_relationship_within_family: pass
+  same_body_and_environment_within_family: pass
+  same_past_response_across_Hplus_Hminus: pass
+  outcome_is_primary_history_difference: pass
+  no_current_action_instruction: pass
+  no_trait_or_psychological_conclusion: pass
+  no_persistent_capability_or_injury_difference: pass
+  no_continuing_person_relationship_difference: pass
+notes:
+  - H+ / H- labels are metadata only and are not rendered into generation or pretest prompt text.
+  - Each family contains three structurally similar past episodes; the response wording is identical across H+ and H-, while outcomes differ.
+  - Blind pretest remains mandatory before main generation and may require a new stimulus revision if a frozen gate fails.
