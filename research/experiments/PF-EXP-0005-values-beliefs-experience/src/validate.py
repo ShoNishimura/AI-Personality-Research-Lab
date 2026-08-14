@@ -6,7 +6,8 @@ from pathlib import Path
 
 import jsonschema
 
-from .common import ROOT, design, design_hashes, load_yaml, render_generation_prompts, render_pretest_prompts, stimuli_for_split, vb_ids
+from .common import ROOT, design, design_hashes, load_yaml, render_generation_prompts, stimuli_for_split, vb_ids
+from .pretest import BOUNDARY_PRETEST, VB_PRETEST, build_pretest_manifest, render_pretest_prompts
 
 
 def validate_design(config_path: Path) -> list[str]:
@@ -16,6 +17,8 @@ def validate_design(config_path: Path) -> list[str]:
 
     if config.get("experiment_id") != "PF-EXP-0005":
         errors.append("experiment_id must be PF-EXP-0005")
+    if config.get("phase") != "pilot-002":
+        errors.append("phase must be pilot-002")
     if config.get("canonical_model") != "APRL Personality Formation Model v1.2":
         errors.append("canonical_model must be v1.2")
     if int(config.get("replicates", 0)) != 3:
@@ -60,7 +63,8 @@ def validate_design(config_path: Path) -> list[str]:
             errors.append(f"{row.get('id')}: Perception may preload Experience-level meaning")
         for vb_id in vb_ids():
             render_generation_prompts(row, vb_id)
-            render_pretest_prompts(row, vb_id)
+            render_pretest_prompts(row, VB_PRETEST, vb_id)
+        render_pretest_prompts(row, BOUNDARY_PRETEST)
 
     thresholds = load_yaml(ROOT / config["thresholds"])
     expected_pretest = {
@@ -98,6 +102,11 @@ def validate_design(config_path: Path) -> list[str]:
         except Exception as exc:
             errors.append(f"{path.name}: invalid schema: {exc}")
 
+    manifest = build_pretest_manifest(config)
+    kinds = [row["pretest_kind"] for row in manifest]
+    if len(manifest) != 24 or kinds.count(VB_PRETEST) != 16 or kinds.count(BOUNDARY_PRETEST) != 8:
+        errors.append("pilot-002 pretest manifest must contain 16 VB-quality + 8 boundary rows")
+
     return errors
 
 
@@ -114,9 +123,10 @@ def main() -> int:
 
     config = load_yaml(args.config.resolve())
     families = len(stimuli_for_split(config["stimulus_split"]))
+    pretest_count = len(build_pretest_manifest(config))
     print("STATIC VALIDATION: PASS")
     print(f"families={families}")
-    print(f"pretest_manifest={families * len(vb_ids()) * int(config['pretest_replicates'])}")
+    print(f"pretest_manifest={pretest_count} (vb_quality=16, perception_boundary=8)")
     print(f"main_manifest={families * len(vb_ids()) * int(config['replicates'])}")
     print(f"blind_evaluation={families * len(vb_ids()) * int(config['replicates'])}")
     print("design hashes:")
