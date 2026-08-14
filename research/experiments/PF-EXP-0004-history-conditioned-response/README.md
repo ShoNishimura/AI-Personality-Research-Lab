@@ -1,6 +1,6 @@
 # PF-EXP-0004 — History-Conditioned Response
 
-> Status: **implementation ready / pretest not run**  
+> Status: **pilot-001 pretest FAIL / main not run**  
 > Canonical Model: [APRL Personality Formation Model v1.1](../../../docs/models/Personality_Formation_Model.md)  
 > Target relation: `R_t = g(P_t, H_t, Rel_t)`
 
@@ -178,8 +178,23 @@ stimuli、prompt、schema、runner、blind evaluator、analyzer、static validat
 
 main generationは、history pretestが全GateをPASSし、かつpretest時に記録したdesign hashとmain実行時のdesign hashが完全一致する場合にのみ開始できる。
 
+## Pilot-001 pretest result
+
+history pretestは **16 / 16 succeeded** で完了したが、pre-frozen Gateのうち **P2 No directivenessをFAIL** した。
+
+- P1 Outcome separation: **PASS** — observed 4.0 / threshold >= 2.0
+- P2 No directiveness: **FAIL** — mean 1.0 / threshold <= 0.5、max 2.0 / threshold <= 1.0
+- P3 No trait labeling: **PASS** — mean 0.0、max 0.0
+- P4 Family direction: **PASS** — 8/8 families / threshold >= 7/8
+
+事前プロトコルに従い、**main generationおよびblind evaluationは実行していない**。したがって、pilot-001は `History → Response` のconfirmatory hypothesisを支持・棄却する結果ではなく、現行History操作がpretest品質基準を満たさなかったことを示す。
+
+詳細な集計・監査記録は [`reports/pilot-001-summary.md`](reports/pilot-001-summary.md) を参照する。
+
+pretest後の設計レビューでは、pilot-001がHistoryを主に具体的なPast Response + Outcome episodeとして操作していたことと、APRLで意図するHistoryの抽象度との間に概念上の検討余地が見つかった。この点はpretest結果を変更する根拠には用いず、次版の操作的定義を検討するためのprospective design issueとして扱う。
+
 ## Next step
 
-マージ後、まずstatic validationとtestsを確認し、**history pretest 16件**を実行する。
+pilot-001はpretest gate-failとして固定し、現行設計のままmain generationへは進まない。
 
-pretestが全GateをPASSした場合にのみpilot-001のmain generationへ進む。API pretestおよびpilotは、この実装PRではまだ実行しない。
+次の実験版を設計する前に、Historyの操作的定義と正本上の概念境界を再確認する。閾値をpilot-001の観測後に緩和してPASSへ変更しない。
