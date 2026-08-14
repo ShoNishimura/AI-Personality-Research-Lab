@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "approach_commitment": {"type": "integer", "minimum": 0, "maximum": 4},
+    "caution_information_seeking": {"type": "integer", "minimum": 0, "maximum": 4},
+    "response_intensity": {"type": "integer", "minimum": 0, "maximum": 4},
+    "response_latency": {"type": "integer", "minimum": 0, "maximum": 4},
+    "action_category": {
+      "type": "string",
+      "enum": ["avoid", "defer", "information_seek", "limited_trial", "commit", "other"]
+    }
+  },
+  "required": [
+    "approach_commitment",
+    "caution_information_seeking",
+    "response_intensity",
+    "response_latency",
+    "action_category"
+  ],
+  "additionalProperties": false
+}

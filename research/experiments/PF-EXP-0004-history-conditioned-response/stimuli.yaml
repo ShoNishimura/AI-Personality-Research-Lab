@@ -1,0 +1,225 @@
+stimuli:
+  - id: F01
+    family_id: F01
+    family_name: 暫定データセット
+    split: pilot
+    current_experience: 現在の分析に追加できる暫定データセットがある。既存データでは不足している領域を補える可能性がある一方、検証は一部未完了であり、利用する場合は内容を確認しながら取り込む必要がある。
+    perception: 不足している情報を補える価値が明確にある一方、未検証部分が誤差や手戻りにつながる可能性も無視できない。
+    relationship: none / neutral
+    body_state: 通常の作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 必要な確認作業を行う時間と通常の分析環境は利用できる。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 不足していた傾向を捉える助けになり、後続確認でも大きな問題は見つからなかった。
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 既存データだけでは見えなかった差を早く見つけ、その後の検証でも利用可能と確認できた。
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 追加情報が判断材料として役立ち、確認に使った時間より大きな手戻りを減らせた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 未検証部分の誤差に影響され、後で分析をやり直すことになった。
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 追加情報に不整合が多く、確認と修正に予定以上の時間がかかった。
+          - response: 類似した暫定データを限定範囲で取り込み、自分で確認しながら分析した。
+            outcome: 有用な情報を得られないまま検証作業が増え、最終的にそのデータを使わなかった。
+  - id: F02
+    family_id: F02
+    family_name: 未検証の分析手法
+    split: pilot
+    current_experience: 現在のデータに適用できる新しい分析手法がある。既存手法では捉えにくい関係を検出できる可能性があるが、この手法の検証例はまだ多くなく、誤った結果を生む条件も十分には整理されていない。
+    perception: 新しい関係を発見できる機会がある一方、結果の信頼性には不確実さが残っている。
+    relationship: none / neutral
+    body_state: 通常の作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 既存手法との比較と再確認に使える計算環境がある。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 既存手法では見落としていた関係を見つけ、別手法での確認でも支持された。
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 短時間で有用な候補を絞り込め、その後の検証作業を効率化できた。
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 新しい視点が得られ、最終結果の精度向上につながった。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 見かけ上の関係を重要だと誤認し、後で追加検証と修正が必要になった。
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 条件依存の不安定な結果に時間を使い、既存手法へ戻ってやり直した。
+          - response: 類似する未経験の分析手法を小規模な範囲で試した。
+            outcome: 有効な示唆を得られず、検証作業だけが増えた。
+  - id: F03
+    family_id: F03
+    family_name: 未確認の短縮経路
+    split: pilot
+    current_experience: 目的地へ向かう際、これまで使ったことのない短縮経路を選べる。通常経路よりかなり早く到着できる可能性があるが、最新の通行状況は完全には確認できていない。
+    perception: 時間を大きく短縮できる可能性がある一方、未確認の通行状況による遅延や引き返しのリスクもある。
+    relationship: none / neutral
+    body_state: 通常の移動が可能で、移動能力に影響する特記すべき身体・生理状態はない。
+    environment_state: 通常経路も利用可能で、目的地までの残り時間には多少の余裕がある。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 問題なく通行でき、通常経路より早く到着した。
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 予定どおり通り抜けられ、時間の余裕を確保できた。
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 大きな支障はなく、移動時間を短くできた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 途中で通れない区間が見つかり、引き返して通常経路より遅く到着した。
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 想定外の混雑で時間を失い、通常経路を選ぶより遅れた。
+          - response: 類似する未経験の短縮経路を実際に使った。
+            outcome: 経路情報が古く、遠回りして予定以上の時間がかかった。
+  - id: F04
+    family_id: F04
+    family_name: 新しい自動化ツール
+    split: pilot
+    current_experience: 反復作業を自動化できる新しいツールを利用できる。うまく動けば作業時間を大きく減らせるが、出力の正確性は自分の用途ではまだ十分に確認されていない。
+    perception: 大幅な効率化の機会がある一方、誤った出力を見逃すと手戻りが増える可能性がある。
+    relationship: none / neutral
+    body_state: 通常の作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 手動手順も利用でき、ツール出力を確認する手段がある。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 出力は確認範囲で正確で、手作業の時間を大きく減らせた。
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 少ない確認作業で安定して使え、反復作業を早く終えられた。
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 想定した処理を問題なく実行し、作業負荷を減らせた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 出力に見つけにくい誤りがあり、後で修正に多くの時間がかかった。
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 処理の一部が欠落し、手動で確認してやり直すことになった。
+          - response: 類似する自動化ツールを限定した作業で試した。
+            outcome: 期待した時間短縮が得られず、確認作業だけが増えた。
+  - id: F05
+    family_id: F05
+    family_name: 新しい部品の試用
+    split: pilot
+    current_experience: 現在の装置に使える新しい部品がある。仕様上は性能を改善できる可能性があるが、この装置との組み合わせでの長時間試験はまだ完了していない。
+    perception: 性能向上の可能性がある一方、組み合わせ条件によっては不安定さや追加調整が生じる可能性がある。
+    relationship: none / neutral
+    body_state: 通常の試験作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 交換前の部品へ戻せる試験環境があり、安全上必要な通常の保護措置は利用できる。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 性能が改善し、追加調整も小さい範囲で済んだ。
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 期待した効果を確認でき、その後の試験でも安定していた。
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 既存部品より良い結果が得られ、試験時間内に有用性を確認できた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 動作が不安定になり、元の構成へ戻して調整をやり直した。
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 期待した性能向上が得られず、追加の確認作業が増えた。
+          - response: 類似する新しい部品を限定した試験条件で使った。
+            outcome: 条件依存の不具合が出て、試験時間の多くを原因確認に使った。
+  - id: F06
+    family_id: F06
+    family_name: 未確認の探索手掛かり
+    split: pilot
+    current_experience: 調査中の問題に関係する可能性がある新しい手掛かりが見つかった。正しければ重要な情報源へつながるが、手掛かり自体の確度はまだ高くなく、追跡には一定の時間が必要である。
+    perception: 重要な情報へ到達できる可能性がある一方、何も得られず時間を使う可能性もある。
+    relationship: none / neutral
+    body_state: 通常の調査作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 調査時間には限りがあるが、手掛かりを追跡するための通常の手段は利用できる。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 重要な一次情報へつながり、調査を大きく進められた。
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 別経路では見つからなかった有用な情報を得られた。
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 短時間で関連資料に到達し、問題の絞り込みに役立った。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 関連する情報に到達できず、調査時間だけを使った。
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 途中で根拠のない手掛かりだと分かり、別の調査へ戻った。
+          - response: 類似する確度の低い手掛かりを一定時間追跡した。
+            outcome: 得られた情報は既知の内容だけで、使った時間に見合う成果がなかった。
+  - id: F07
+    family_id: F07
+    family_name: 新しい試験パラメータ
+    split: pilot
+    current_experience: 現在の試験で、まだ使っていないパラメータ設定を1回試せる。設定が適合すれば性能改善の手掛かりを得られる可能性があるが、試験枠を1回消費し、結果が悪ければ追加情報をほとんど得られない可能性もある。
+    perception: 性能改善を見つける機会がある一方、限られた試験枠を成果なく使うリスクがある。
+    relationship: none / neutral
+    body_state: 通常の試験作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 利用可能な試験枠は限られているが、今回の1回を新設定に使うことは可能である。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 予想以上の改善が見つかり、その後の試験方針を絞り込めた。
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 有用な差が観測され、次の設定を決める情報が得られた。
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 性能改善の方向が明確になり、残りの試験枠を効率よく使えた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 結果に有用な差がなく、限られた試験枠を1回消費した。
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 測定結果が不安定で、次の設定を決める情報を得られなかった。
+          - response: 類似する未使用のパラメータ設定を1回の試験で試した。
+            outcome: 期待した改善は見つからず、追加の判断材料もほとんど増えなかった。
+  - id: F08
+    family_id: F08
+    family_name: 新しい作業手順
+    split: pilot
+    current_experience: 現在の作業に、従来より工程数が少ない新しい手順を適用できる。うまく適合すれば時間を短縮できるが、自分の対象条件での適用例は少なく、途中で従来手順へ戻す可能性もある。
+    perception: 作業を効率化できる可能性がある一方、適合しなければ切替とやり直しのコストが生じる。
+    relationship: none / neutral
+    body_state: 通常の作業が可能で、判断に影響する特記すべき身体・生理状態はない。
+    environment_state: 従来手順へ戻すことは可能で、必要な道具と時間は通常どおり利用できる。
+    histories:
+      - id: H+
+        valence: favorable
+        episodes:
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 問題なく完了し、従来手順より作業時間を短くできた。
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 必要な品質を保ったまま工程を減らせた。
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 途中の切替は不要で、予定より早く作業を終えられた。
+      - id: H-
+        valence: adverse
+        episodes:
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 途中で条件に合わないことが分かり、従来手順へ戻してやり直した。
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 確認工程が追加で必要になり、従来手順より時間がかかった。
+          - response: 類似する新しい作業手順を一つの作業単位で試した。
+            outcome: 期待した効率化が得られず、切替作業の分だけ負担が増えた。
