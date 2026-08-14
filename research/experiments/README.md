@@ -17,7 +17,7 @@
 
 ## Experiment continuity
 
-PF-EXP-0001〜0003は、実行時には生成対象を `Interpretation` と呼んでいた。Personality Formation Model v1.1で、それらのOpportunity / Danger SalienceおよびSeeking / Negative Activationを **Perceptionの観測**として再位置づけた。v1.2でも実行済みデータ、Gate、閾値、hash、集計結果は変更しない。
+PF-EXP-0001〜0003の入力として用いた `Experience` は、v1.2では外部 `Situation` として概念的に対応づけられる。一方、実行時の生成対象 `Interpretation` は、v1.2でPerceptionとExperienceを分離する以前の概念であり、両者の境界そのものを直接検証したものではない。Opportunity / Danger SalienceおよびSeeking / Negative Activation等の評価は、SituationとTemperamentによるPerception側の偏りを観測する指標として引き続き参照できる。実行済みデータ、Gate、閾値、hash、集計結果は変更しない。
 
 PF-EXP-0001 pilot-002ではS / Nの主効果と弁別性は確認されたが、Conflict coactivationの事前Gate G4を未達とした。
 
