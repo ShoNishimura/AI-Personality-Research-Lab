@@ -1,6 +1,6 @@
 # PF-EXP-0005 — Values & Beliefs → Experience
 
-> Status: **planning / implementation not started**  
+> Status: **implementation ready / pretest not run**  
 > Canonical Model: [APRL Personality Formation Model v1.2](../../../docs/models/Personality_Formation_Model.md)  
 > Target relation: `E_t = h(P_t, VB_t, Rel_t)`  
 > Isolated contribution: `VB_t → E_t`
@@ -228,6 +228,18 @@ FAILした場合も直ちにPerception / Experienceの分離や `VB → Experien
 
 ## Implementation status
 
-このPRでは**実験計画のみ**を追加する。
+pilot-001の実行系を実装済みである。
 
-stimuli、prompt、schema、runner、blind evaluator、analyzer、manifest、tests等の実装は別PRで行う。
+- 8 scenario families
+- VB-L / VB-Eを共通の一般化されたValues & Beliefs packetとして操作
+- pretest 16件、main generation 48件、blind evaluation 48件の決定的manifest
+- Experience-only generator
+- manipulation / boundary pretest
+- blind evaluator
+- confirmatory analyzer（G1〜G5）
+- design hash固定とpretest PASS後のhash一致チェック
+- static validationとtests
+
+main generationは、pretestがP1〜P5をすべてPASSし、pretest時のdesign hashとmain実行時のdesign hashが一致した場合にのみ開始できる。
+
+現時点では**pretest未実行**であり、main generationも実行していない。
