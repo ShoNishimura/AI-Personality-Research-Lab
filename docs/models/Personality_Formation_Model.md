@@ -443,6 +443,8 @@ v1.2では、内外の境界と、Perception / Experience / 学習された内�
 - Biographyを内部入力ではなく、形成過程の時間的軌跡として明確化した
 - PF-EXP-0001〜0004の実行済み用語、データ、Gate、閾値、hash、結果は監査記録として変更しない
 
+PF-EXP-0001〜0003の入力として用いた `Experience` は、v1.2では外部 `Situation` として概念的に対応づけられる。一方、実行時の生成対象 `Interpretation` は、v1.2でPerceptionとExperienceを分離する以前の概念であり、**両者の境界そのものを直接検証したものではない**。Opportunity / Danger Salience、Seeking / Negative Activation等の評価は、SituationとTemperamentによるPerception側の偏りを観測する指標として引き続き参照できる。
+
 ---
 
 # Version
