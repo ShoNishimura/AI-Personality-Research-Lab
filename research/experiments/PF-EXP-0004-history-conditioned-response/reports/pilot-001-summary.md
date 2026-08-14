@@ -69,12 +69,6 @@ Therefore:
 - Retain pilot-001 as a pretest gate-fail record.
 - Do **not** loosen the frozen thresholds retroactively to convert this run into a PASS.
 
-## Design issue discovered after the pretest
-
-Post-pretest review identified a conceptual question about the operational meaning of `History`. The pilot-001 stimuli represented History primarily as concrete episodic records of past Response and Outcome. The intended APRL concept may instead require a more abstract representation of what the Character learned or generalized from prior experience.
-
-This is recorded as a **design issue discovered after the pretest**, not as a post-hoc reinterpretation of the observed gate result. Any revised operational definition or canonical model change must be made prospectively and evaluated in a new pretest version.
-
 ## Design hashes at pilot-001 pretest
 
 The successful pretest analysis recorded the following frozen design hashes:
