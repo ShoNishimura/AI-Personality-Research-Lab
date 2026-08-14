@@ -130,7 +130,7 @@ Situationの何がCharacterにとってsalientになり、どのような motiva
 
 現行Minimum Modelでは `Perception = f(Situation, Temperament)` とする。
 
-PF-EXP-0001〜0003の実行時には、この生成対象を `Interpretation` と呼んでいた。実行済み記録では監査性のため旧名称を保持する。
+PF-EXP-0001〜0003の実行時の生成対象 `Interpretation` は、v1.2でPerceptionとExperienceを分離する以前の概念であり、**両者の境界そのものを直接検証したものではない**。一方、Opportunity / Danger Salience、Seeking / Negative Activation等の評価は、SituationとTemperamentによるPerception側の偏りを観測する指標として引き続き参照できる。実行済み記録では監査性のため旧名称を保持する。
 
 ---
 
@@ -219,9 +219,9 @@ Characterの外部にある環境条件、制度、規則、物理法則、利�
 
 ## Interpretation — execution-time term
 
-PF-EXP-0001〜0003の実行時に、現在のPerceptionに相当する生成対象へ使用していた名称。
+PF-EXP-0001〜0003で、v1.2のPerception / Experience分離以前に生成対象へ使用していた名称。
 
-実行済みprompt、schema、artifactのfield名等では監査性のため `interpretation` を保持するが、現行モデルの中核概念としてはPerceptionを用いる。
+実行済みprompt、schema、artifactのfield名等では監査性のため `interpretation` を保持する。Opportunity / Danger Salience、Seeking / Negative Activation等はPerception側の観測として参照できるが、`Interpretation` 全体をv1.2のPerceptionと同一視しない。
 
 ---
 
