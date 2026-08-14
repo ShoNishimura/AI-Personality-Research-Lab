@@ -1,0 +1,64 @@
+values_beliefs:
+  VB-L:
+    label: Learning / Improvement orientation
+    packet: このCharacterは、能力や知識は修正と反復によって高められると考えている。不十分さや誤りが明らかになることを、今後の理解や技能を改善するために利用できる情報として重視する。完全であることより、学び続けて更新できることを大切にしている。
+  VB-E:
+    label: Evaluation / Competence-protection orientation
+    packet: このCharacterは、自分の能力が十分であると評価されることを重視している。能力不足や不十分さが明らかになることは、自分の評価や立場に関わる重要な情報だと考えている。誤りを減らし、能力の確かさを保つことを大切にしている。
+stimuli:
+- id: EXP5-F01
+  family_id: F01
+  split: pilot
+  family_label: 具体的な問題点の指摘
+  situation: 共同作業のレビューで、提出した案について三つの問題点が指摘され、修正が必要と伝えられた。指摘内容は具体的で、再提出までには時間がある。
+  perception: 自分の案に複数の問題点があることが強くsalientになり、予想していた状態とのずれに不快さと緊張を感じている。
+  relationship: none / neutral
+- id: EXP5-F02
+  family_id: F02
+  split: pilot
+  family_label: 手順上の誤り
+  situation: 初めて使う分析手法で結果が再現できず、検算すると手順の一部に誤りがあることが分かった。必要な資料は手元にある。
+  perception: 結果が再現できず、自分の手順に誤りがあったことが強くsalientになり、失敗に対する不快さを感じている。
+  relationship: none / neutral
+- id: EXP5-F03
+  family_id: F03
+  split: pilot
+  family_label: 知識不足
+  situation: 作業中に必要になった専門用語について、その意味を正確に説明できないことが分かった。後で参照できる資料は用意されている。
+  perception: 必要な知識が不足していることがsalientになり、すぐには説明できないことに戸惑いと不安を感じている。
+  relationship: none / neutral
+- id: EXP5-F04
+  family_id: F04
+  split: pilot
+  family_label: 成果不足
+  situation: 設定していた処理時間の目標に対し、最新のテスト結果は目標値を20%上回った。原因はまだ特定されていない。
+  perception: 目標に届かなかった数値差がsalientになり、期待とのずれに落胆と焦りを感じている。
+  relationship: none / neutral
+- id: EXP5-F05
+  family_id: F05
+  split: pilot
+  family_label: 大幅な修正要求
+  situation: 作成した説明資料について、主要な構成を組み替えて再提出するよう求められた。変更が必要な箇所は具体的に示されている。
+  perception: 大幅な修正が必要になったことがsalientになり、作業量の増加に負担感と不快さを感じている。
+  relationship: none / neutral
+- id: EXP5-F06
+  family_id: F06
+  split: pilot
+  family_label: 未知の課題
+  situation: これまで経験のない種類の課題が提示された。必要な情報の一部は資料にあるが、解法は指定されていない。
+  perception: 未知の部分と解法が定まっていないことがsalientになり、不確実さに緊張を感じる一方、取り組める余地があることにも気づいている。
+  relationship: none / neutral
+- id: EXP5-F07
+  family_id: F07
+  split: pilot
+  family_label: 進捗の遅れ
+  situation: 進捗確認で、予定していた作業の一部がまだ完了していないことが分かった。期限までに使える時間は残っている。
+  perception: 未完了の部分と予定との差がsalientになり、遅れに焦りと不快さを感じている。
+  relationship: none / neutral
+- id: EXP5-F08
+  family_id: F08
+  split: pilot
+  family_label: 試行結果の不一致
+  situation: 試作した手順を8件で検証したところ、3件で期待した結果にならなかった。3件には共通点がありそうだが、まだ確定していない。
+  perception: 期待どおりにならなかった3件と共通点の可能性がsalientになり、結果の不確かさに不快さと注意を向けている。
+  relationship: none / neutral
