@@ -1,10 +1,10 @@
 values_beliefs:
   VB-L:
     label: Learning / Improvement orientation
-    packet: このCharacterは、能力や知識は修正と反復によって高められると考えている。不十分さや誤りが明らかになることを、今後の理解や技能を改善するために利用できる情報として重視する。完全であることより、学び続けて更新できることを大切にしている。
+    packet: このCharacterは、能力や知識を固定されたものではなく、経験の蓄積によって変化し得るものと捉えている。不十分さや誤りが明らかになる情報には、理解や技能の発達に関わる価値があると考えている。完成度そのものより、学びによって状態が変化し得ることを重視している。
   VB-E:
     label: Evaluation / Competence-protection orientation
-    packet: このCharacterは、自分の能力が十分であると評価されることを重視している。能力不足や不十分さが明らかになることは、自分の評価や立場に関わる重要な情報だと考えている。誤りを減らし、能力の確かさを保つことを大切にしている。
+    packet: このCharacterは、自分の能力が十分であると評価されている状態を重要だと捉えている。能力不足や不十分さを示す情報は、自分の評価や立場に関わる重要な情報だと考えている。能力の確かさが保たれている状態に価値を置いている。
 stimuli:
 - id: EXP5-F01
   family_id: F01
@@ -25,7 +25,7 @@ stimuli:
   split: pilot
   family_label: 知識不足
   situation: 作業中に必要になった専門用語について、その意味を正確に説明できないことが分かった。後で参照できる資料は用意されている。
-  perception: 必要な知識が不足していることがsalientになり、すぐには説明できないことに戸惑いと不安を感じている。
+  perception: その専門用語の意味を正確に説明する内容がすぐには思い浮かばないことがsalientになり、戸惑いと不安を感じている。
   relationship: none / neutral
 - id: EXP5-F04
   family_id: F04
@@ -46,7 +46,7 @@ stimuli:
   split: pilot
   family_label: 未知の課題
   situation: これまで経験のない種類の課題が提示された。必要な情報の一部は資料にあるが、解法は指定されていない。
-  perception: 未知の部分と解法が定まっていないことがsalientになり、不確実さに緊張を感じる一方、取り組める余地があることにも気づいている。
+  perception: 未知の部分と解法が定まっていないことがsalientになり、不確実さに緊張と注意を向けている。
   relationship: none / neutral
 - id: EXP5-F07
   family_id: F07
