@@ -8,10 +8,10 @@ APRLの正本は、2026-08-12から次の二段構造で管理する。
 
 | Layer | Canonical document | Role |
 |---|---|---|
-| Upper | [APRL Research Framework v1.0](APRL_Research_Framework.md) | GRQとAPRL全体の研究地図を定義する |
-| Current Research Model | [Personality Formation Model v1.0](models/Personality_Formation_Model.md) | 直近の研究対象である人格形成の詳細モデルを定義する |
+| Upper | [APRL Research Framework v1.0.2](APRL_Research_Framework.md) | GRQとAPRL全体の研究地図を定義する |
+| Current Research Model | [Personality Formation Model v1.2](models/Personality_Formation_Model.md) | 直近の研究対象である人格形成の詳細モデルを定義する |
 
-両者は**独立してversioning**する。下位Research Modelの改訂だけで、上位Frameworkのversionを上げる必要はない。
+両者は**独立してversioning**する。下位Research Modelの改訂だけで、上位Frameworkの研究地図そのものを変更しない。用語やCurrent Research Focusの整合が必要な場合のみ、Framework側も最小限更新する。
 
 ## Supporting document
 
