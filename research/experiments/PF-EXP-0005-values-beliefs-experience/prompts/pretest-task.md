@@ -1,3 +1,6 @@
+Pretest mode:
+{pretest_mode}
+
 Situation:
 {situation}
 
@@ -10,4 +13,4 @@ Values & Beliefs:
 Relationship:
 {relationship}
 
-このcondition packetを指定された尺度で評価する。
+指定されたPretest modeの尺度だけを、表示された情報に基づいて評価する。
