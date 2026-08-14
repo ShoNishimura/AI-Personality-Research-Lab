@@ -3,7 +3,7 @@
 > Canonical Research Model  
 > AI Personality Research Lab  
 > Current Research Focus  
-> 2026-08-14
+> 2026-08-15
 
 ---
 
@@ -238,6 +238,16 @@ Response
 ```
 
 同じSituation・Perceptionでも、Values & BeliefsやRelationshipが異なればExperienceは異なり得る。
+
+## 8.2 Evidence status
+
+[PF-EXP-0005 pilot-002](../../research/experiments/PF-EXP-0005-values-beliefs-experience/reports/pilot-002-summary.md)では、Situation・Perception・Relationshipを固定し、Values & BeliefsのみをLearning / Improvement orientationとEvaluation / Competence-protection orientationの間で操作した。
+
+事前pretest P1〜P5とmain confirmatory gate G1〜G5をすべてPASSし、`Δ Learning meaning = 3.5417`、`Δ Evaluation threat = 2.5833`、8 / 8 scenario familiesで両方向の効果を確認した。
+
+この結果は、今回の実験条件における **`VB_t → E_t` の条件付き寄与**を支持する。また、同一Perceptionを固定したままValues & Beliefsのみを変えてExperience差が生じたため、PerceptionとExperienceの機能的分離にも限定的な経験的支持を与える。
+
+ただし、これはPerceptionとExperienceが人間心理において完全に離散した二段階であることを示すものではない。`Relationship → Experience`、他のValues & Beliefs次元、人間への一般化は未検証であり、generationとblind evaluationの双方に同じ`gpt-5.6`を用いたため、独立Evaluatorまたは人手評価による再現も今後の検証対象である。
 
 ---
 
