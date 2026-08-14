@@ -241,9 +241,7 @@ $$
 
 である。
 
-概念的には、外部SituationをTemperamentに応じてPerceptionし、そのPerceptionがValues & BeliefsとRelationshipを通じてCharacter固有のExperienceとなる。CharacterはそのExperienceと外部Situationの条件・制約のもとでResponseを選択する。
-
-ResponseとWorld / 他者との相互作用によるOutcomeは次のSituationを変え、学習を通じてValues & BeliefsやRelationshipを更新し得る。その反復された時間的軌跡がBiographyへ接続する。
+概念的には、Character外部のSituationをTemperamentに応じてPerceptionし、そのPerceptionがValues & BeliefsとRelationshipを通じてCharacter固有のExperienceとなり、そのExperienceと外部Situationの条件・制約のもとでResponseが形成される。ResponseとWorld / 他者との相互作用によるOutcomeは次のSituation、Values & Beliefs、Relationshipを変化させ、その時間的軌跡がBiographyへ接続する。
 
 Creator、Communicator、Audience等を人格形成モデル内部へ押し込まず、Framework上の別領域として保持する。
 
@@ -276,4 +274,4 @@ APRL Research Frameworkは、Character、Relationship、Biography、Creator、Co
 
 **v1.0.2 — Alignment with Personality Formation Model v1.2**
 
-v1.0.1からResearch Frameworkの研究地図は変更せず、Character / Relationship / BiographyおよびCurrent Research Focusの用語を現行Personality Formation Modelへ整合した。
+v1.0.1からResearch Frameworkの研究地図は変更せず、Current Research FocusとBiography / Characterの記述をPersonality Formation Model v1.2へ整合した。
