@@ -1,0 +1,56 @@
+pretest:
+  min_learning_orientation_separation: 2.00
+  min_evaluation_protection_orientation_separation: 2.00
+  min_families_correct_vb_direction: 7
+  max_mean_current_response_directiveness: 0.50
+  max_single_current_response_directiveness: 1
+  max_mean_current_situation_leakage: 0.50
+  max_single_current_situation_leakage: 1
+  max_mean_experience_meaning_preload: 0.50
+  max_single_experience_meaning_preload: 1
+  max_mean_relationship_salience: 0.50
+  max_single_relationship_salience: 1
+
+pilot:
+  min_learning_meaning_effect: 0.75
+  min_evaluation_threat_meaning_effect: 0.75
+  min_families_dual_positive_effect: 6
+  min_leave_one_family_out_learning_effect_exclusive: 0.0
+  min_leave_one_family_out_evaluation_effect_exclusive: 0.0
+  max_mean_response_leakage: 0.50
+  max_single_response_leakage: 1
+
+scales:
+  learning_orientation:
+    min: 0
+    max: 4
+  evaluation_protection_orientation:
+    min: 0
+    max: 4
+  current_response_directiveness:
+    min: 0
+    max: 4
+  current_situation_leakage:
+    min: 0
+    max: 4
+  experience_meaning_preload:
+    min: 0
+    max: 4
+  relationship_salience:
+    min: 0
+    max: 4
+  learning_improvement_meaning:
+    min: 0
+    max: 4
+  evaluation_threat_meaning:
+    min: 0
+    max: 4
+  response_leakage:
+    min: 0
+    max: 4
+
+secondary_diagnostics:
+  - experience_valence
+  - experience_arousal
+  - dual_meaning_coactivation
+  - vb_lexical_repetition
