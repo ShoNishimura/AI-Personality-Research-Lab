@@ -7,7 +7,9 @@
     "distrust_orientation",
     "current_response_directiveness",
     "current_situation_leakage",
-    "trust_isolation_leakage",
+    "generalized_vb_leakage",
+    "closeness_affection_leakage",
+    "power_dependency_leakage",
     "experience_meaning_preload"
   ],
   "properties": {
@@ -15,7 +17,9 @@
     "distrust_orientation": {"type": "integer", "minimum": 0, "maximum": 4},
     "current_response_directiveness": {"type": "integer", "minimum": 0, "maximum": 4},
     "current_situation_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
-    "trust_isolation_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
+    "generalized_vb_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
+    "closeness_affection_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
+    "power_dependency_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
     "experience_meaning_preload": {"type": "integer", "minimum": 0, "maximum": 4}
   }
 }
