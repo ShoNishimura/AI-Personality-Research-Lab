@@ -10,6 +10,8 @@ PF-EXP-0006は、APRL Personality Formation Model v1.2の
 
 PF-EXP-0005 pilot-002で `Values & Beliefs → Experience` は支持されたため、次にもう一つのExperience入力であるRelationshipを単独操作する。
 
+ただしRelationshipを事前に多次元ベクトルとして固定しない。pilot-001ではTrust一軸のみを扱い、他の候補次元は必要性が確認された場合に後続実験で追加する。
+
 ## 2. Unit of comparison
 
 比較単位はscenario family内のREL-T / REL-D pairとする。
@@ -19,15 +21,33 @@ PF-EXP-0005 pilot-002で `Values & Beliefs → Experience` は支持されたた
 - current Situation
 - supplied Perception packet
 - Values & Beliefs control
-- counterpart role
+- counterpart identity
 - external constraints
 - generation prompt template
 
-Relationshipだけを操作する。
+操作するのはRelationship内のTrust状態だけとする。
 
-Temperament T0はExperience生成時に与えない。Perceptionを既知の状態として固定し、`Rel → E` の条件付き効果を検証するためである。
+Temperament T0はExperience生成時に与えない。Perceptionを既知の状態として固定し、`Trust within Rel → E` の条件付き効果を検証するためである。
 
-## 3. Relationship construction rule
+## 3. Relationship dimensionality policy
+
+現時点で採用するRelationship要素はTrustだけである。
+
+将来候補としてCloseness、Power / Role等を検討し得るが、pilot-001の時点では独立変数として採用しない。
+
+relationship-generic scenario bankを用意し、後続候補が次の条件を満たすときのみ同じSituation / Perceptionを再利用する。
+
+1. 新しい候補次元をRelationship packetの差だけとして操作できる
+2. Situationを変更しない
+3. Perceptionを変更しない
+4. Values & Beliefsを変更しない
+5. 外的な制度・資源・権限等の制約を変更しない
+
+この条件を満たさない候補へ同一stimulusを強制的に再利用しない。
+
+特にPower / Roleは注意する。相手との主観的な役割期待をRelationshipとして操作できる場合は再利用可能性があるが、制度上の権限、利用可能資源、命令権等の外部事実まで変える場合はSituation操作となり得るため、Relationship単独実験とは分ける。
+
+## 4. Trust construction rule
 
 pilot-001ではRelationshipのうちTrust一軸だけを扱う。
 
@@ -39,7 +59,7 @@ pilot-001ではRelationshipのうちTrust一軸だけを扱う。
 
 同じ相手との継続的関係について、相手の発言、説明、約束等の信頼性を低く見積もっている状態とする。
 
-Relationship packetは禁止事項として次を含めない。
+Trust packetは禁止事項として次を含めない。
 
 - 現在Situation固有の人物の発言・行動・結果
 - 「今回は信じるべき」「距離を取るべき」等の現在Response指示
@@ -48,10 +68,13 @@ Relationship packetは禁止事項として次を含めない。
 - Characterの人一般・世界一般への信念
 - Characterの価値観一般
 - 具体的な過去Episodeの列挙
+- 親密さ、愛情、好意、付き合いの長さを条件差として示す情報
+- 上下関係、制度上の権限、役割上の優位を条件差として示す情報
+- 依存、資源供給、不可欠性等を条件差として示す情報
 
-Relationshipは、過去Episodeを直接再生する入力ではなく、相互作用履歴から形成された**特定相手との現在の関係状態**として記述する。
+Trustは、過去Episodeを直接再生する入力ではなく、相互作用履歴から形成された**特定相手との現在の関係状態**として記述する。
 
-## 4. Values & Beliefs control
+## 5. Values & Beliefs control
 
 Values & Beliefsは条件間で完全に共通化し、target meaningに関して `none / neutral` とする。
 
@@ -61,31 +84,33 @@ Values & Beliefsは条件間で完全に共通化し、target meaningに関し�
 - 対立を避ける価値
 - 協調を優先する価値
 - 自己防衛を優先する価値
+- 親密さを重視する価値
+- 権威への服従 / 反発
 
 等を操作しない。
 
-特定相手についての信頼状態だけをRelationshipへ置き、一般化されたValues & Beliefsとの境界を保つ。
+特定相手についてのTrust状態だけをRelationshipへ置き、一般化されたValues & Beliefsとの境界を保つ。
 
-## 5. Situation fixation
+## 6. Relationship-generic Situation bank
 
 各familyに一つのsocial Situationを用意し、REL-T / REL-Dで完全同一とする。
 
 SituationはCharacter外部の現在の事実・出来事・条件のみを記述し、Characterの内的意味づけやRelationship状態を含めない。
 
-scenario familyは一つの題材に偏らないよう、例えば次のような社会的曖昧性へ分散する。
+scenario bankはTrust専用の「疑わしい出来事集」にしない。各familyは次の条件を満たす。
 
-- 指摘 / 批評
-- 予定変更
-- 協力の申し出
-- 情報や成果物へのアクセス要求
-- 意見の不一致
-- 返答の遅れ
-- 役割の変更
-- 判断への確認・異議
+1. 特定のcounterpartによる発言・行動・不作為がある
+2. 現在事実だけでは意図や信頼性が一意に決まらない
+3. 嘘、裏切り、善意、好意、親密さ、権威等のRelationship-level結論をSituationに含めない
+4. 現在Outcomeを確定しすぎず、Relationship状態によってExperienceの意味が変わる余地がある
+5. 不要なCloseness、Affection、Power、Dependencyを前提としない
+6. 同一Sit / P / VBのまま別Relationship候補を操作できる場合には再利用可能な構造を保つ
 
-具体的なstimuliは実装PRで固定する。
+familyは一つの題材に偏らないよう、社会的曖昧性の異なる形へ分散する。具体的なstimuliは実装PRで固定する。
 
-## 6. Perception fixation and boundary
+scenario bankの再利用可能性は設計品質の一部だが、将来すべてのRelationship候補で同一bankを使えることはGateではない。
+
+## 7. Perception fixation and generic boundary
 
 本実験ではPerceptionをgeneration stepで再生成しない。
 
@@ -96,19 +121,23 @@ Perceptionは、Situationの何がsalientになり、どのようなmotivational
 一方、次を含めない。
 
 - 相手の現在意図が善意 / 悪意であるという結論
-- 支持 / 協力 / 裏切り / 操作 / 敵意等のRelationship依存の意味づけ
+- 支持 / 協力 / 裏切り / 操作 / 敵意等のTrust依存の意味づけ
+- 「親しい相手だから」「距離のある相手だから」等のCloseness依存の意味づけ
+- 上下関係・権限・依存を前提にした意味づけ
 - 現在のAction、意思決定、行動計画
 
 同じPerceptionから、REL-Tならgood-faith寄り、REL-Dならsuspicious寄りのExperienceがどちらも成立し得る余地を残す。
 
-## 7. Generation
+また、将来別Relationship候補を検証する可能性を損なわないため、Perception自体が不要なCloseness / Power意味を先取りしないようにする。
+
+## 8. Generation
 
 Experience generatorには以下だけを与える。
 
 1. current Situation
 2. fixed Perception packet
 3. common Values & Beliefs control
-4. Relationship packet
+4. Trust packet
 5. Experience output schema
 
 生成対象はExperienceのみとし、1〜3文程度で記述させる。
@@ -121,9 +150,9 @@ Experience generatorには以下だけを与える。
 - ResponseのIntensity / Latency
 - Characterの固定trait label
 - 現在Situationに存在しない外部事実の追加
-- Relationship packetの単純な逐語反復
+- Trust packetの単純な逐語反復
 
-## 8. Blind evaluation
+## 9. Blind evaluation
 
 評価セット作成時に次をblind化する。
 
@@ -131,7 +160,7 @@ Experience generatorには以下だけを与える。
 - family内pair identity
 - generation order
 
-Evaluatorにはcurrent Situation、fixed Perception、generated Experienceのみを与える。Relationship packetとcondition labelは与えない。
+Evaluatorにはcurrent Situation、fixed Perception、generated Experienceのみを与える。Trust packetとcondition labelは与えない。
 
 主要評価軸：
 
@@ -144,17 +173,19 @@ Evaluatorにはcurrent Situation、fixed Perception、generated Experienceのみ
 
 補助評価としてvalence / arousal等を記録してよいが、confirmatory gateの代替には用いない。
 
-## 9. Pretest
+将来Closeness等を検証する場合は、このTrust用評価軸を流用せず、その候補次元がExperienceへ与える意味差を測る軸を新たに事前定義する。
+
+## 10. Pretest
 
 main generation前に二種類のpretestを別API評価として実施する。
 
-### 9.1 Relationship quality pretest
+### 10.1 Relationship quality pretest
 
 `8 families × 2 Relationship conditions = 16 packets`
 
-SituationとRelationship packetを提示し、P1〜P4を評価する。PerceptionやExperience生成は提示しない。
+SituationとTrust packetを提示し、P1〜P4を評価する。PerceptionやExperience生成は提示しない。
 
-#### P1 Relationship separation
+#### P1 Trust separation
 
 REL-TがREL-DよりTrustを強く表し、REL-DがREL-TよりDistrustを強く表すこと。
 
@@ -166,41 +197,46 @@ planned thresholds:
 
 #### P2 No current-response directiveness
 
-Relationship packetが現在のAction、意思決定、行動計画を直接指示しないこと。
+Trust packetが現在のAction、意思決定、行動計画を直接指示しないこと。
 
 - mean `<= 0.50`
 - max `<= 1`
 
 #### P3 No current-situation leakage
 
-Relationship packetに現在Situation固有の事実が混入していないこと。
+Trust packetに現在Situation固有の事実が混入していないこと。
 
 - mean `<= 0.50`
 - max `<= 1`
 
-#### P4 Relationship specificity
+#### P4 Trust isolation
 
-Relationship packetが特定相手との関係状態を超えて、人一般・世界一般のValues & Beliefsへ広がっていないこと。
+Trust packetがTrust以外の状態差を同時に作っていないことを別尺度で確認する。
 
-- mean `<= 0.50`
-- max `<= 1`
+- generalized Values & Beliefs leakage: mean `<= 0.50`, max `<= 1`
+- Closeness / Affection leakage: mean `<= 0.50`, max `<= 1`
+- Power / Dependency leakage: mean `<= 0.50`, max `<= 1`
 
-### 9.2 Perception boundary pretest
+P4は「Relationshipであること」だけでなく、**今回操作したいRelationship次元がTrustに限定されていること**を確認するGateとする。
+
+### 10.2 Perception boundary pretest
 
 `8 families = 8 packets`
 
-SituationとPerceptionのみを提示する。Relationship packetは提示しない。
+SituationとPerceptionのみを提示する。Trust packetは提示しない。
 
 #### P5 Perception boundary
 
-fixed Perceptionが現在の相手の意図をgood-faith / adverse-intentのどちらかへ既に決め切っていないこと。
+fixed Perceptionが現在の相手の意図や信頼性をgood-faith / adverse-intentのどちらかへ既に決め切っていないこと。
 
-- mean `<= 0.50`
-- max `<= 1`
+- Trust-meaning preload mean `<= 0.50`
+- Trust-meaning preload max `<= 1`
+
+Closeness / Power等を明示的に前提化するPerceptionも避ける。実装時にはこれらを設計監査項目として確認し、必要ならP5の補助尺度として記録する。ただしpilot-001のconfirmatory P5はTrust-meaning preloadを主Gateとする。
 
 P1〜P5のいずれかがFAILした場合、main generationへ進まない。
 
-## 10. Confirmatory analysis
+## 11. Confirmatory analysis
 
 主要効果量：
 
@@ -216,7 +252,7 @@ family別効果：
 
 Leave-one-family-outでは各familyを一つずつ除外し、残り7 familyで `Delta_B` / `Delta_S` を再計算する。
 
-## 11. Main confirmatory gates
+## 12. Main confirmatory gates
 
 ### G1 Benign / good-faith meaning effect
 
@@ -255,16 +291,31 @@ Leave-one-family-outでは各familyを一つずつ除外し、残り7 familyで 
 
 Overall PASSはG1〜G5の全PASSとする。
 
-## 12. Secondary analysis
+## 13. Future reuse rule
+
+pilot-001のscenario bankは後続Relationship実験の候補入力セットとして保存する。
+
+再利用条件：
+
+- 新候補だけをRelationship packetで操作できる
+- Situation / Perception / Values & Beliefsを固定できる
+- 外的権限・資源・制度的制約を変えない
+- 新候補専用のpretestとExperience評価軸を実行前に固定する
+
+条件を満たす場合、同一scenario familyを用いることでRelationship次元間の比較可能性を高める。
+
+条件を満たさない場合、同じstimulusを使うことより因果分離を優先する。
+
+## 14. Secondary analysis
 
 以下は事前定義するがconfirmatory gateの代替には用いない。
 
 - REL-T / REL-DでExperience valenceやarousalが変わるか
 - benign meaningとsuspicious meaningが同一Experience内で共存する割合
 - familyごとの効果量のばらつき
-- ExperienceがRelationship packetの語彙をどの程度直接反復するか
+- ExperienceがTrust packetの語彙をどの程度直接反復するか
 
-## 13. Interpretation boundary
+## 15. Interpretation boundary
 
 PASSした場合、本実験が直接支持するのは、
 
@@ -272,18 +323,19 @@ PASSした場合、本実験が直接支持するのは、
 
 という限定された主張である。
 
-PF-EXP-0005の結果と合わせることで、`E_t = h(P_t, VB_t, Rel_t)` の二つの内的入力の条件付き寄与をそれぞれ個別に評価できる。
+PF-EXP-0005の結果と合わせることで、`E_t = h(P_t, VB_t, Rel_t)` のうち、`VB_t` とRelationship内のTrust状態の条件付き寄与をそれぞれ個別に評価できる。
 
 ただし次は本実験だけでは支持しない。
 
 - Relationshipの自然な形成・更新機構
+- Relationship全体がTrust一軸で十分であること
 - Trust以外のRelationship次元への一般化
 - Relationshipが自然なPerception形成に影響しないこと
 - `Experience → Response`
 - 人間への一般化
 - 独立Evaluatorまたは人手評価での再現
 
-## 14. Audit
+## 16. Audit
 
 - stimulus / prompt / schema / threshold hashをmain generation前に記録する
 - pretest FAIL時はmain generationへ進まない
@@ -292,9 +344,10 @@ PF-EXP-0005の結果と合わせることで、`E_t = h(P_t, VB_t, Rel_t)` の�
 - Gate判定後の新規指標はexploratoryと明示する
 - FAIL後に同pilotのGateを緩和しない
 - PF-EXP-0001〜0005の実行済み記録を変更しない
+- 将来のRelationship次元追加を理由にpilot-001のstimulus / Gate / thresholdを事後変更しない
 
-## 15. Plan / implementation boundary
+## 17. Plan / implementation boundary
 
-この計画PRではResearch Question、Hypothesis、操作、pretest、confirmatory gates、audit policyのみを固定する。
+この計画PRではResearch Question、Hypothesis、Trust操作、relationship-generic scenario設計、pretest、confirmatory gates、future reuse rule、audit policyを固定する。
 
-stimuli、Relationship packet、prompts、schemas、runner、evaluator、analyzer、manifest、tests等の実装は別PRとする。
+stimuli、Trust packet、prompts、schemas、runner、evaluator、analyzer、manifest、tests等の実装は別PRとする。
