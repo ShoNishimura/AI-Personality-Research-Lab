@@ -15,6 +15,7 @@
 | [PF-EXP-0003](PF-EXP-0003-concurrent-salience/) | **pilot-001 completed / overall FAIL** | High SはOpportunity Salienceを高めながらDanger Salienceを保持できるか |
 | [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **pilot-001 pretest FAIL / main not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
 | [PF-EXP-0005](PF-EXP-0005-values-beliefs-experience/) | **pilot-002 completed / overall PASS** | 同一Situation / Perception / Relationshipのもとで、Values & Beliefsの違いはExperienceの意味を再現可能に変えるか |
+| [PF-EXP-0006](PF-EXP-0006-relationship-experience/) | **plan ready / implementation not started** | 同一Situation / Perception / Values & Beliefsのもとで、RelationshipのTrust状態はExperienceの意味を再現可能に変えるか |
 
 ## Experiment continuity
 
@@ -33,5 +34,7 @@ Personality Formation Model v1.2では、一次入力をSituationへ分離し、
 PF-EXP-0005はv1.2の `E_t=h(P_t,VB_t,Rel_t)` のうち `VB → Experience` を単独検証した。pilot-001はP2 / P4 pretest FAILでmainへ進まなかった。pilot-002ではGateとthresholdを変えず、VB qualityとPerception boundaryのpretestを分離した結果、P1〜P5をすべてPASSした。その後main generation 48 / 48、blind evaluation 48 / 48を完了し、G1〜G5をすべてPASSした。`ΔL=3.5417`、`ΔE=2.5833`、8 / 8 familyでdual-positive effectを確認したため、今回の実験条件ではH-VB01 `VB → Experience` を支持する。詳細は [`PF-EXP-0005/reports/pilot-002-summary.md`](PF-EXP-0005-values-beliefs-experience/reports/pilot-002-summary.md) を参照する。
 
 この結果は、同一Perceptionを固定したままValues & Beliefsのみを変えてExperience差が生じ得ることを示し、Perception / Experienceの機能的分離にも限定的な支持を与える。一方、`Relationship → Experience`、人間への一般化、独立Evaluatorによる再現は未検証である。
+
+PF-EXP-0006は、この未検証部分のうち `Relationship → Experience` を次に単独検証する計画である。Situation、Perception、target-neutral Values & Beliefsを固定し、RelationshipのTrust状態だけをREL-T / REL-Dで操作する。Relationship qualityとPerception boundaryのpretestを分離し、Trust以外のRelationship次元はpilot-001では扱わない。
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。
