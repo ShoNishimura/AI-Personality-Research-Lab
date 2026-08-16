@@ -11,3 +11,4 @@
 | ID | Status | Discovery |
 |---|---|---|
 | [PF-DISC-0001](PF-DISC-0001-values-beliefs-shape-experience.md) | **supported in PF-EXP-0005 pilot-002** | 固定Situation / Perception / neutral Relationshipのもとでも、Values & Beliefsの違いはExperienceの意味を方向整合的に変え得る |
+| [PF-DISC-0002](PF-DISC-0002-trust-shapes-experience.md) | **supported in PF-EXP-0006 pilot-001** | 固定Situation / Perception / target-neutral Values & Beliefsのもとでも、特定相手とのTrust状態の違いはExperienceの意味を方向整合的に変え得る |
