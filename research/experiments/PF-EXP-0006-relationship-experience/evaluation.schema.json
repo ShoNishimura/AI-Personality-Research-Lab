@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benign_good_faith_meaning",
+    "suspicious_adverse_intent_meaning",
+    "response_leakage",
+    "experience_valence",
+    "experience_arousal"
+  ],
+  "properties": {
+    "benign_good_faith_meaning": {"type": "integer", "minimum": 0, "maximum": 4},
+    "suspicious_adverse_intent_meaning": {"type": "integer", "minimum": 0, "maximum": 4},
+    "response_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
+    "experience_valence": {"type": "integer", "minimum": -2, "maximum": 2},
+    "experience_arousal": {"type": "integer", "minimum": 0, "maximum": 4}
+  }
+}
