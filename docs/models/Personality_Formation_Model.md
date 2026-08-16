@@ -243,11 +243,15 @@ Response
 
 [PF-EXP-0005 pilot-002](../../research/experiments/PF-EXP-0005-values-beliefs-experience/reports/pilot-002-summary.md)では、Situation・Perception・Relationshipを固定し、Values & BeliefsのみをLearning / Improvement orientationとEvaluation / Competence-protection orientationの間で操作した。
 
-事前pretest P1〜P5とmain confirmatory gate G1〜G5をすべてPASSし、`Δ Learning meaning = 3.5417`、`Δ Evaluation threat = 2.5833`、8 / 8 scenario familiesで両方向の効果を確認した。
+事前pretest P1〜P5とmain confirmatory gate G1〜G5をすべてPASSし、`Δ Learning meaning = 3.5417`、`Δ Evaluation threat = 2.5833`、8 / 8 scenario familiesで両方向の効果を確認した。この結果は、今回の実験条件における **`VB_t → E_t` の条件付き寄与**を支持する。
 
-この結果は、今回の実験条件における **`VB_t → E_t` の条件付き寄与**を支持する。また、同一Perceptionを固定したままValues & Beliefsのみを変えてExperience差が生じたため、PerceptionとExperienceの機能的分離にも限定的な経験的支持を与える。
+[PF-EXP-0006 pilot-001](../../research/experiments/PF-EXP-0006-relationship-experience/reports/pilot-001-summary.md)では、Situation・Perception・target-neutral Values & Beliefsを固定し、Relationship内のTrust状態のみをTrusting / Distrustfulの間で操作した。
 
-ただし、これはPerceptionとExperienceが人間心理において完全に離散した二段階であることを示すものではない。`Relationship → Experience`、他のValues & Beliefs次元、人間への一般化は未検証であり、generationとblind evaluationの双方に同じ`gpt-5.6`を用いたため、独立Evaluatorまたは人手評価による再現も今後の検証対象である。
+事前pretest P1〜P5とmain confirmatory gate G1〜G5をすべてPASSし、`Δ benign / good-faith = 2.5833`、`Δ suspicious / adverse-intent = 2.0417`、8 / 8 scenario familiesで両方向の効果を確認した。この結果は、今回の実験条件における **Relationship内のTrust状態による `Rel_t → E_t` の条件付き寄与**を支持する。
+
+PF-EXP-0005とPF-EXP-0006を合わせると、同一Perceptionを固定した状態でValues & BeliefsとRelationshipのTrust状態をそれぞれ独立に操作してExperience差が生じたため、`VB_t` と `Rel_t` をExperienceの独立入力として保持する現行構造に経験的支持を与える。また、PerceptionとExperienceの機能的分離にも限定的な支持を与える。
+
+ただし、これはPerceptionとExperienceが人間心理において完全に離散した二段階であることを示すものではない。また、Relationship全体がTrust一軸で十分であること、Trust以外のRelationship次元、他のValues & Beliefs次元、人間への一般化は未検証である。両実験ともgenerationとblind evaluationに同じ`gpt-5.6`を用いたため、独立Evaluatorまたは人手評価による再現も今後の検証対象である。
 
 ---
 
