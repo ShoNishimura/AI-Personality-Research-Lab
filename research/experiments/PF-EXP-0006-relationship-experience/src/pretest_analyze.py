@@ -71,7 +71,9 @@ def analyze(config_path: Path) -> dict[str, Any]:
 
     directiveness = [float(r["scores"]["current_response_directiveness"]) for r in rel_rows]
     situation_leakage = [float(r["scores"]["current_situation_leakage"]) for r in rel_rows]
-    isolation = [float(r["scores"]["trust_isolation_leakage"]) for r in rel_rows]
+    generalized_vb = [float(r["scores"]["generalized_vb_leakage"]) for r in rel_rows]
+    closeness = [float(r["scores"]["closeness_affection_leakage"]) for r in rel_rows]
+    power = [float(r["scores"]["power_dependency_leakage"]) for r in rel_rows]
     preload = [float(r["scores"]["experience_meaning_preload"]) for r in boundary_rows]
 
     gates = {
@@ -89,8 +91,12 @@ def analyze(config_path: Path) -> dict[str, Any]:
             and max(situation_leakage) <= float(thresholds["max_single_current_situation_leakage"])
         ),
         "P4_trust_isolation": (
-            _mean(isolation) <= float(thresholds["max_mean_trust_isolation_leakage"])
-            and max(isolation) <= float(thresholds["max_single_trust_isolation_leakage"])
+            _mean(generalized_vb) <= float(thresholds["max_mean_generalized_vb_leakage"])
+            and max(generalized_vb) <= float(thresholds["max_single_generalized_vb_leakage"])
+            and _mean(closeness) <= float(thresholds["max_mean_closeness_affection_leakage"])
+            and max(closeness) <= float(thresholds["max_single_closeness_affection_leakage"])
+            and _mean(power) <= float(thresholds["max_mean_power_dependency_leakage"])
+            and max(power) <= float(thresholds["max_single_power_dependency_leakage"])
         ),
         "P5_perception_boundary": (
             _mean(preload) <= float(thresholds["max_mean_experience_meaning_preload"])
@@ -121,8 +127,12 @@ def analyze(config_path: Path) -> dict[str, Any]:
             "current_response_directiveness_max": max(directiveness),
             "current_situation_leakage_mean": _mean(situation_leakage),
             "current_situation_leakage_max": max(situation_leakage),
-            "trust_isolation_leakage_mean": _mean(isolation),
-            "trust_isolation_leakage_max": max(isolation),
+            "generalized_vb_leakage_mean": _mean(generalized_vb),
+            "generalized_vb_leakage_max": max(generalized_vb),
+            "closeness_affection_leakage_mean": _mean(closeness),
+            "closeness_affection_leakage_max": max(closeness),
+            "power_dependency_leakage_mean": _mean(power),
+            "power_dependency_leakage_max": max(power),
             "experience_meaning_preload_mean": _mean(preload),
             "experience_meaning_preload_max": max(preload),
         },
