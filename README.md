@@ -140,6 +140,10 @@ PF-EXP-0004 pilot-001は旧 `History → Response` を検証する計画でし�
 
 PF-EXP-0005 pilot-002では、Situation・Perception・Relationshipを固定してValues & Beliefsだけを操作したところ、pretest P1〜P5とmain G1〜G5をすべてPASSしました。Learning meaning effect `ΔL=3.5417`、Evaluation-threat meaning effect `ΔE=2.5833`、8/8 familyで両方向の効果を確認し、今回の実験条件では **`Values & Beliefs → Experience` を支持**しました。この結果はPerception / Experienceの機能的分離にも限定的な支持を与えます。詳細は [PF-DISC-0001](research/discoveries/PF-DISC-0001-values-beliefs-shape-experience.md) に記録しています。
 
+PF-EXP-0006 pilot-001では、Situation・Perception・target-neutral Values & Beliefsを固定し、Relationship内のTrust状態だけを操作したところ、pretest P1〜P5とmain G1〜G5をすべてPASSしました。Benign / good-faith meaning effect `Delta_B=2.5833`、Suspicious / adverse-intent meaning effect `Delta_S=2.0417`、8/8 familyで両方向の効果を確認し、今回の実験条件では **`Trust within Relationship → Experience` を支持**しました。詳細は [PF-DISC-0002](research/discoveries/PF-DISC-0002-trust-shapes-experience.md) に記録しています。
+
+PF-EXP-0005とPF-EXP-0006を合わせると、同一Perceptionを固定した状態でValues & BeliefsとRelationshipのTrust状態をそれぞれ独立に操作してExperience差を確認しており、`E_t=h(P_t,VB_t,Rel_t)` の現行構造と整合します。ただし、Relationship全体がTrust一軸で十分であること、人間への一般化、独立Evaluatorでの再現は未検証です。
+
 ## Repository guide
 
 | Path | Role |
