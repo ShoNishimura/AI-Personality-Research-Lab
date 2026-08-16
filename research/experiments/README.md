@@ -15,7 +15,7 @@
 | [PF-EXP-0003](PF-EXP-0003-concurrent-salience/) | **pilot-001 completed / overall FAIL** | High SはOpportunity Salienceを高めながらDanger Salienceを保持できるか |
 | [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **pilot-001 pretest FAIL / main not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
 | [PF-EXP-0005](PF-EXP-0005-values-beliefs-experience/) | **pilot-002 completed / overall PASS** | 同一Situation / Perception / Relationshipのもとで、Values & Beliefsの違いはExperienceの意味を再現可能に変えるか |
-| [PF-EXP-0006](PF-EXP-0006-relationship-experience/) | **plan ready / implementation not started** | 同一Situation / Perception / Values & Beliefsのもとで、RelationshipのTrust状態はExperienceの意味を再現可能に変えるか |
+| [PF-EXP-0006](PF-EXP-0006-relationship-experience/) | **pilot-001 implementation ready / pretest not run** | 同一Situation / Perception / Values & Beliefsのもとで、RelationshipのTrust状態はExperienceの意味を再現可能に変えるか |
 
 ## Experiment continuity
 
@@ -35,6 +35,6 @@ PF-EXP-0005はv1.2の `E_t=h(P_t,VB_t,Rel_t)` のうち `VB → Experience` を�
 
 この結果は、同一Perceptionを固定したままValues & Beliefsのみを変えてExperience差が生じ得ることを示し、Perception / Experienceの機能的分離にも限定的な支持を与える。一方、`Relationship → Experience`、人間への一般化、独立Evaluatorによる再現は未検証である。
 
-PF-EXP-0006は、この未検証部分のうち `Relationship → Experience` を次に単独検証する計画である。Situation、Perception、target-neutral Values & Beliefsを固定し、RelationshipのTrust状態だけをREL-T / REL-Dで操作する。Relationship qualityとPerception boundaryのpretestを分離し、Trust以外のRelationship次元はpilot-001では扱わない。
+PF-EXP-0006は、この未検証部分のうち `Relationship → Experience` を次に単独検証する。pilot-001ではSituation、Perception、target-neutral Values & Beliefsを固定し、RelationshipのTrust状態だけをREL-T / REL-Dで操作する。8つのrelationship-generic scenario family、split pretest 24件、main generation 48件、blind evaluation 48件の実行系を実装済みで、pretestは未実行である。Relationship qualityとPerception boundaryのpretestを分離し、P4ではgeneralized VB / Closeness-Affection / Power-Dependencyへのcross-dimension leakageを別々に監査する。Trust以外のRelationship次元はpilot-001では扱わない。
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。

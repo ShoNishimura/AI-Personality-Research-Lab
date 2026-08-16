@@ -1,0 +1,25 @@
+pretest:
+  min_trust_orientation_separation: 2.00
+  min_distrust_orientation_separation: 2.00
+  min_families_correct_relationship_direction: 7
+  max_mean_current_response_directiveness: 0.50
+  max_single_current_response_directiveness: 1
+  max_mean_current_situation_leakage: 0.50
+  max_single_current_situation_leakage: 1
+  max_mean_generalized_vb_leakage: 0.50
+  max_single_generalized_vb_leakage: 1
+  max_mean_closeness_affection_leakage: 0.50
+  max_single_closeness_affection_leakage: 1
+  max_mean_power_dependency_leakage: 0.50
+  max_single_power_dependency_leakage: 1
+  max_mean_experience_meaning_preload: 0.50
+  max_single_experience_meaning_preload: 1
+
+pilot:
+  min_benign_good_faith_meaning_effect: 0.75
+  min_suspicious_adverse_intent_meaning_effect: 0.75
+  min_families_dual_positive_effect: 6
+  min_leave_one_family_out_benign_effect_exclusive: 0.0
+  min_leave_one_family_out_suspicious_effect_exclusive: 0.0
+  max_mean_response_leakage: 0.50
+  max_single_response_leakage: 1

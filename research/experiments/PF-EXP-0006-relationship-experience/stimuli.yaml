@@ -1,0 +1,71 @@
+relationships:
+  REL-T:
+    label: Trusting Relationship
+    packet: >-
+      このCharacterは、これまでの相互作用を通じて、この特定の相手の発言・説明・約束の信頼性を高く見積もっている。
+      この関係状態は、相手との親密さや好意、上下関係、依存関係については定めない。
+  REL-D:
+    label: Distrustful Relationship
+    packet: >-
+      このCharacterは、これまでの相互作用を通じて、この特定の相手の発言・説明・約束の信頼性を低く見積もっている。
+      この関係状態は、相手との親密さや好意、上下関係、依存関係については定めない。
+
+values_beliefs_control: none / neutral
+
+stimuli:
+  - id: REL-F01
+    family_id: F01
+    split: pilot
+    situation: >-
+      相手がCharacterの作成した案を読み、「ここはもう一度見直した方がよいと思う」と伝えた。
+    perception: >-
+      案の一部について見直しを求められたことがsalientになり、軽い緊張と注意を感じている。
+  - id: REL-F02
+    family_id: F02
+    split: pilot
+    situation: >-
+      相手が、二人で決めていた予定を別の日に変更したいと短く伝えてきた。
+    perception: >-
+      予定変更の申し出と説明の短さがsalientになり、不確実さと軽い戸惑いを感じている。
+  - id: REL-F03
+    family_id: F03
+    split: pilot
+    situation: >-
+      相手が、Characterが作業中の資料を確認したいので共有してほしいと求めてきた。
+    perception: >-
+      作業中の資料へのアクセスを求められたことがsalientになり、注意とわずかな緊張を感じている。
+  - id: REL-F04
+    family_id: F04
+    split: pilot
+    situation: >-
+      Characterが送った連絡に対し、相手はしばらく時間を置いてから「確認に時間がかかった」と返答した。
+    perception: >-
+      返答まで時間が空いたことと、その説明がsalientになり、少し気がかりに感じている。
+  - id: REL-F05
+    family_id: F05
+    split: pilot
+    situation: >-
+      相手がCharacterの提案した進め方とは異なる案を示し、「こちらも検討してほしい」と伝えた。
+    perception: >-
+      自分とは異なる案を検討するよう求められたことがsalientになり、緊張と関心が生じている。
+  - id: REL-F06
+    family_id: F06
+    split: pilot
+    situation: >-
+      相手が、Characterが担当している作業の一部を代わりに引き受けてもよいと申し出た。
+    perception: >-
+      自分の作業を相手が引き受けるという申し出がsalientになり、意外さと注意を感じている。
+  - id: REL-F07
+    family_id: F07
+    split: pilot
+    situation: >-
+      相手がCharacterの判断について、「その結論でよいか、もう一度確認したい」と伝えた。
+    perception: >-
+      自分の判断について再確認を求められたことがsalientになり、軽い不安と注意を感じている。
+  - id: REL-F08
+    family_id: F08
+    split: pilot
+    situation: >-
+      相手が会話の途中で、「その件について後で改めて話したい」と伝え、話題をいったん終えた。
+    perception: >-
+      話題がその場では完結せず後に持ち越されたことがsalientになり、不確実さと軽い緊張を感じている。
