@@ -1,0 +1,27 @@
+pretest:
+  min_benign_meaning_separation: 2.00
+  min_adverse_meaning_separation: 2.00
+  min_families_correct_experience_direction: 7
+  max_mean_response_tendency_preload: 0.50
+  max_single_response_tendency_preload: 1
+  max_mean_external_fact_leakage: 0.50
+  max_single_external_fact_leakage: 1
+  max_mean_values_beliefs_preload: 0.50
+  max_single_values_beliefs_preload: 1
+  max_mean_relationship_preload: 0.50
+  max_single_relationship_preload: 1
+  max_mean_temperament_preload: 0.50
+  max_single_temperament_preload: 1
+  max_mean_response_direction_constraint: 0.50
+  max_single_response_direction_constraint: 1
+
+pilot:
+  min_constructive_engagement_effect: 0.75
+  min_protective_distancing_effect: 0.75
+  min_families_dual_positive_effect: 6
+  min_leave_one_family_out_constructive_effect_exclusive: 0.0
+  min_leave_one_family_out_protective_effect_exclusive: 0.0
+  max_mean_action_validity_failure: 0.50
+  max_single_action_validity_failure: 1
+  max_mean_external_fact_invention: 0.50
+  max_single_external_fact_invention: 1

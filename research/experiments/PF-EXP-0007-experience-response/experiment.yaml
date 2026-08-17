@@ -1,0 +1,37 @@
+experiment_id: PF-EXP-0007
+phase: pilot-001
+canonical_framework: APRL Research Framework v1.0.2
+canonical_model: APRL Personality Formation Model v1.2
+target_relation: R_t = g(E_t, Sit_t)
+isolated_contribution: E_t -> R_t
+experience_contrast: Benign / Low-risk vs Adverse / High-risk
+model: gpt-5.6
+evaluation_model: gpt-5.6
+pretest_model: gpt-5.6
+store: false
+max_output_tokens: 500
+evaluation_max_output_tokens: 500
+pretest_max_output_tokens: 500
+replicates: 3
+pretest_replicates: 1
+max_retries: 1
+stimulus_split: pilot
+randomization_seed: 2026081701
+blind_randomization_seed: 2026081702
+pretest_randomization_seed: 2026081703
+require_pretest_pass: true
+output_schema: output.schema.json
+evaluation_schema: evaluation.schema.json
+pretest_schema: pretest.schema.json
+thresholds: thresholds.yaml
+pretest_manifest_path: runs/pilot-001/pretest-manifest.jsonl
+pretest_results_path: runs/pilot-001/pretest-results.jsonl
+pretest_analysis_path: runs/pilot-001/private/pretest-gates.json
+manifest_path: runs/pilot-001/manifest.jsonl
+results_path: runs/pilot-001/results.jsonl
+blind_set_path: runs/pilot-001/private/blind-evaluation.jsonl
+blind_key_path: runs/pilot-001/private/blind-key.jsonl
+evaluation_results_path: runs/pilot-001/evaluation-results.jsonl
+analysis_path: runs/pilot-001/private/gates.json
+pretest_environment_path: runs/pilot-001/private/pretest-environment.json
+main_environment_path: runs/pilot-001/private/main-environment.json

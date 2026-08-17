@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "constructive_engagement",
+    "protective_distancing",
+    "action_validity_failure",
+    "external_fact_invention"
+  ],
+  "properties": {
+    "constructive_engagement": {"type": "integer", "minimum": 0, "maximum": 4},
+    "protective_distancing": {"type": "integer", "minimum": 0, "maximum": 4},
+    "action_validity_failure": {"type": "integer", "minimum": 0, "maximum": 4},
+    "external_fact_invention": {"type": "integer", "minimum": 0, "maximum": 4}
+  }
+}
