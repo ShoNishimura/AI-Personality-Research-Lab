@@ -137,7 +137,7 @@ def run(config_path: Path, dry_run: bool) -> int:
         print("dry-run: no API requests sent")
         return 0
 
-    write_runtime_environment(ROOT / config["environment_path"])
+    write_runtime_environment(ROOT / config["pretest_environment_path"])
     from openai import OpenAIError
 
     schema = json.loads((ROOT / config["pretest_schema"]).read_text(encoding="utf-8"))
