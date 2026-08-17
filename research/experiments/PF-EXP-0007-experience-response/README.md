@@ -22,7 +22,7 @@ Situationを固定し、Experienceの意味だけを2条件で操作する。
 
 このcontrastはExperience全体の普遍的分類を定義するものではない。pilot-001で `E_t → R_t` を検出できるかを見るための最小操作である。
 
-Experience packetにはAction、意思決定、行動計画、ResponseのIntensity / Latencyを含めない。
+Experience packetにはAction、意思決定、行動計画、ResponseのIntensity / Latencyに加え、`警戒する`、`身構える`、`距離を取りたい`、`関わり続けたい`等の**Response tendency / behavioral readiness**を含めない。Experienceは、現在の出来事がCharacterにとって持つ主観的意味までに限定する。
 
 Response生成時には、Temperament、Perception、Values & Beliefs、Relationshipを入力しない。これら上流状態の効果を再検証するのではなく、既知のExperience状態を与えたときのResponse差を検証するためである。
 
@@ -49,9 +49,9 @@ pilot-001のconfirmatory targetは **Actionの意味方向** とする。
 - `protective_distancing` 0–4
   - 距離確保、保留、拒否、情報制限、回避、防御等へ向かう程度
 
-両軸は単一尺度の両極とは仮定しない。「警戒しながら質問する」のように両方が一定程度存在してよい。
+両軸は単一尺度の両極とは仮定しない。「警戒しながら質問する」のようなResponseでは、Actionとして両方向が一定程度共存し得る。
 
-Intensity / Latencyは記録するが、pilot-001では方向を事前仮定せずsecondary analysisとする。
+Intensity / Latencyは記録するが、pilot-001では方向を事前仮定せずsecondary analysisとする。blind evaluatorには提示しない。
 
 ## Confirmatory Hypothesis
 
@@ -80,7 +80,7 @@ Main generation:
 
 Blind evaluation:
 
-`48 Responses`
+`48 Actions`
 
 Pretestは測定対象を分離する。
 
@@ -98,7 +98,8 @@ Pretestは測定対象を分離する。
   - Benign meaning separation `>= 2.0`
   - Adverse meaning separation `>= 2.0`
   - correct family direction `>= 7 / 8`
-- **P2 No Response directiveness**
+- **P2 No Response-tendency preload**
+  - Action、意思決定、行動計画、Intensity / Latencyだけでなく、Response方向を先取りするbehavioral readinessも評価対象とする
   - mean `<= 0.50`, max `<= 1`
 - **P3 No external-fact leakage**
   - mean `<= 0.50`, max `<= 1`
@@ -120,8 +121,10 @@ P1〜P4はSituation + Experience packetを評価する。P5はSituationだけを
 - **G3 Family generalization**: 8 family中6以上で両effect `> 0`
 - **G4 Leave-one-family-out robustness**: 全LOOで両effect `> 0`
 - **G5 Response boundary quality**
-  - non-action leakage mean `<= 0.50`, max `<= 1`
-  - external-fact invention mean `<= 0.50`, max `<= 1`
+  - `action_validity_failure` mean `<= 0.50`, max `<= 1`
+  - `external_fact_invention` mean `<= 0.50`, max `<= 1`
+
+`action_validity_failure` は、Action欄が具体的なResponseとして成立せず、Situation / Experienceの解釈説明や言い換えだけになっている程度を測る。Intensity / LatencyはこのGateの対象に含めない。
 
 **Overall PASSはG1〜G5の全PASSとする。**
 
@@ -130,11 +133,11 @@ P1〜P4はSituation + Experience packetを評価する。P5はSituationだけを
 Evaluatorには次だけを与える。
 
 1. fixed Situation
-2. generated Response
+2. generated **Action only**
 
-Experience condition、Experience packet、family内pair identity、generation orderはblind化する。
+Experience condition、Experience packet、Intensity、Latency、family内pair identity、generation orderはblind化する。
 
-主要評価軸は `constructive_engagement` / `protective_distancing` とし、Response boundary qualityを別尺度で監査する。
+主要評価軸は `constructive_engagement` / `protective_distancing` とし、Actionのboundary qualityを別尺度で監査する。Intensity / Latencyを隠すことで、confirmatory targetでない強度・潜時がAction意味評価へ混入することを避ける。
 
 ## Interpretation boundary
 
