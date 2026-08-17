@@ -15,10 +15,10 @@ from .common import (
     ROOT,
     ResponseOutputError,
     append_jsonl,
+    assert_frozen_design,
     canonical_json,
     completed_ids,
     create_openai_client,
-    design_hashes,
     experience_by_id,
     experience_ids,
     load_yaml,
@@ -54,19 +54,6 @@ def build_manifest(config: dict[str, Any]) -> list[dict[str, Any]]:
                 })
     random.Random(int(config["randomization_seed"])).shuffle(rows)
     return rows
-
-
-def ensure_pretest(config: dict[str, Any]) -> None:
-    if not config.get("require_pretest_pass", False):
-        return
-    path = ROOT / config["pretest_analysis_path"]
-    if not path.exists():
-        raise RuntimeError("pretest analysis not found; run python -m src.pretest and python -m src.pretest_analyze first")
-    result = json.loads(path.read_text(encoding="utf-8"))
-    if not result.get("all_gates_pass"):
-        raise RuntimeError("pretest did not pass; main generation is prohibited")
-    if result.get("design_hashes") != design_hashes():
-        raise RuntimeError("design hashes changed after pretest; refusing main generation")
 
 
 def generate(client: Any, config: dict[str, Any], row: dict[str, Any], schema: dict[str, Any]) -> dict[str, Any]:
@@ -106,8 +93,8 @@ def run(config_path: Path, dry_run: bool) -> int:
         print("dry-run: no API requests sent")
         return 0
 
-    ensure_pretest(config)
-    write_runtime_environment(ROOT / config["environment_path"])
+    assert_frozen_design(config)
+    write_runtime_environment(ROOT / config["main_environment_path"])
     from openai import OpenAIError
 
     schema = json.loads((ROOT / config["output_schema"]).read_text(encoding="utf-8"))
