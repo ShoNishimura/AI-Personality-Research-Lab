@@ -6,7 +6,7 @@ import statistics
 from pathlib import Path
 from typing import Any
 
-from .common import ROOT, design_hashes, load_yaml, read_jsonl
+from .common import ROOT, assert_pretest_execution_design, design_hashes, load_yaml, read_jsonl
 from .pretest import EXPERIENCE_PRETEST, SITUATION_PRETEST
 
 
@@ -26,6 +26,7 @@ def _mean(values: list[float]) -> float:
 
 def analyze(config_path: Path) -> dict[str, Any]:
     config = load_yaml(config_path)
+    assert_pretest_execution_design(config)
     thresholds = load_yaml(ROOT / config["thresholds"])["pretest"]
     manifest = read_jsonl(ROOT / config["pretest_manifest_path"])
     successes = _latest(read_jsonl(ROOT / config["pretest_results_path"]), "pretest_id")
