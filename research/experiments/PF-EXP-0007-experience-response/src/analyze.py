@@ -6,7 +6,7 @@ import statistics
 from pathlib import Path
 from typing import Any
 
-from .common import ROOT, experience_by_id, load_yaml, read_jsonl
+from .common import ROOT, assert_frozen_design, experience_by_id, load_yaml, read_jsonl
 
 
 def _latest(rows: list[dict[str, Any]], key: str) -> dict[str, dict[str, Any]]:
@@ -35,10 +35,41 @@ def _overlap(a: str, b: str) -> float:
     return len(aa & bb) / len(aa | bb)
 
 
+def _validate_layout(rows: list[dict[str, Any]]) -> None:
+    if len(rows) != 48:
+        raise RuntimeError(f"expected 48 analyzed rows, got {len(rows)}")
+
+    condition_counts = {
+        "E-B": sum(r["exp_id"] == "E-B" for r in rows),
+        "E-A": sum(r["exp_id"] == "E-A" for r in rows),
+    }
+    if condition_counts != {"E-B": 24, "E-A": 24}:
+        raise RuntimeError(f"unexpected Experience condition counts: {condition_counts}")
+
+    family_ids = sorted({str(r["family_id"]) for r in rows})
+    if len(family_ids) != 8:
+        raise RuntimeError(f"expected 8 families, got {len(family_ids)}")
+
+    for family_id in family_ids:
+        family = [r for r in rows if str(r["family_id"]) == family_id]
+        counts = {
+            "E-B": sum(r["exp_id"] == "E-B" for r in family),
+            "E-A": sum(r["exp_id"] == "E-A" for r in family),
+        }
+        if len(family) != 6 or counts != {"E-B": 3, "E-A": 3}:
+            raise RuntimeError(f"{family_id}: unexpected cell layout total={len(family)} counts={counts}")
+
+
 def analyze(config_path: Path) -> dict[str, Any]:
     config = load_yaml(config_path)
+    assert_frozen_design(config)
     thresholds = load_yaml(ROOT / config["thresholds"])["pilot"]
-    blind_key = {str(r["evaluation_id"]): r for r in read_jsonl(ROOT / config["blind_key_path"])}
+
+    blind_key_rows = read_jsonl(ROOT / config["blind_key_path"])
+    if len(blind_key_rows) != 48 or len({str(r["evaluation_id"]) for r in blind_key_rows}) != 48:
+        raise RuntimeError("blind key must contain exactly 48 unique evaluation rows")
+    blind_key = {str(r["evaluation_id"]): r for r in blind_key_rows}
+
     eval_success = _latest(read_jsonl(ROOT / config["evaluation_results_path"]), "evaluation_id")
     generation_success = _latest(read_jsonl(ROOT / config["results_path"]), "run_id")
 
@@ -63,6 +94,8 @@ def analyze(config_path: Path) -> dict[str, Any]:
             "latency": float(parsed["latency"]),
             "experience_action_lexical_repetition": _overlap(action, experience_by_id(exp_id)["packet"]),
         })
+
+    _validate_layout(rows)
 
     by_condition = {
         "E-B": [r for r in rows if r["exp_id"] == "E-B"],
