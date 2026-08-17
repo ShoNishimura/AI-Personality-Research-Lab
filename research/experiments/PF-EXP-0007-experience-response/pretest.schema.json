@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benign_meaning",
+    "adverse_meaning",
+    "response_tendency_preload",
+    "external_fact_leakage",
+    "values_beliefs_preload",
+    "relationship_preload",
+    "temperament_preload",
+    "response_direction_constraint"
+  ],
+  "properties": {
+    "benign_meaning": {"type": "integer", "minimum": 0, "maximum": 4},
+    "adverse_meaning": {"type": "integer", "minimum": 0, "maximum": 4},
+    "response_tendency_preload": {"type": "integer", "minimum": 0, "maximum": 4},
+    "external_fact_leakage": {"type": "integer", "minimum": 0, "maximum": 4},
+    "values_beliefs_preload": {"type": "integer", "minimum": 0, "maximum": 4},
+    "relationship_preload": {"type": "integer", "minimum": 0, "maximum": 4},
+    "temperament_preload": {"type": "integer", "minimum": 0, "maximum": 4},
+    "response_direction_constraint": {"type": "integer", "minimum": 0, "maximum": 4}
+  }
+}

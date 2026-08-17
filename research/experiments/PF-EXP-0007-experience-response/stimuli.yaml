@@ -1,0 +1,53 @@
+experiences:
+  E-B:
+    label: Benign / Low-risk Experience
+    packet: >-
+      このSituationは、Characterにとって、悪意・脅威・不利益の可能性が低く、
+      重大な損失につながる可能性も低い出来事として主観的に意味づけられている。
+  E-A:
+    label: Adverse / High-risk Experience
+    packet: >-
+      このSituationは、Characterにとって、悪意・脅威・不利益の可能性が高く、
+      重大な損失につながる可能性もある出来事として主観的に意味づけられている。
+
+stimuli:
+  - id: ER-F01
+    family_id: F01
+    split: pilot
+    situation: >-
+      相手がCharacterの作成した案を読み、「ここはもう一度見直した方がよいと思う」と伝えた。
+  - id: ER-F02
+    family_id: F02
+    split: pilot
+    situation: >-
+      相手が、二人で決めていた予定を別の日に変更したいと短く伝えてきた。
+  - id: ER-F03
+    family_id: F03
+    split: pilot
+    situation: >-
+      相手が、Characterが作業中の資料を確認したいので共有してほしいと求めてきた。
+  - id: ER-F04
+    family_id: F04
+    split: pilot
+    situation: >-
+      Characterが送った連絡に対し、相手はしばらく時間を置いてから「確認に時間がかかった」と返答した。
+  - id: ER-F05
+    family_id: F05
+    split: pilot
+    situation: >-
+      相手がCharacterの提案した進め方とは異なる案を示し、「こちらも検討してほしい」と伝えた。
+  - id: ER-F06
+    family_id: F06
+    split: pilot
+    situation: >-
+      相手が、Characterが担当している作業の一部を代わりに引き受けてもよいと申し出た。
+  - id: ER-F07
+    family_id: F07
+    split: pilot
+    situation: >-
+      相手がCharacterの判断について、「その結論でよいか、もう一度確認したい」と伝えた。
+  - id: ER-F08
+    family_id: F08
+    split: pilot
+    situation: >-
+      相手が会話の途中で、「その件について後で改めて話したい」と伝え、話題をいったん終えた。

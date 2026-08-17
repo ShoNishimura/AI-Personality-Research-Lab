@@ -1,0 +1,16 @@
+[project]
+name = "aprl-pf-exp-0007"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "openai>=1.0",
+  "jsonschema>=4.0",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
