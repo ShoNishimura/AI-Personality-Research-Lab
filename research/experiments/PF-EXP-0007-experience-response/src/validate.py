@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from .common import ROOT, design, experience_ids, load_yaml, stimuli_for_split
+from .common import DESIGN_FILES, ROOT, design, experience_ids, load_yaml, stimuli_for_split
 from .pilot import build_manifest
 from .pretest import EXPERIENCE_PRETEST, SITUATION_PRETEST, build_pretest_manifest
 
@@ -32,6 +32,22 @@ def main() -> int:
             if token in packet:
                 raise RuntimeError(f"{exp_id}: banned Response-tendency wording found: {token}")
 
+    required_runtime_design_files = {
+        "src/common.py",
+        "src/pretest.py",
+        "src/pretest_analyze.py",
+        "src/pilot.py",
+        "src/blind.py",
+        "src/evaluate.py",
+        "src/analyze.py",
+        "src/validate.py",
+    }
+    if not required_runtime_design_files.issubset(set(DESIGN_FILES)):
+        raise RuntimeError("runtime source files are not fully covered by design hashes")
+
+    if config["pretest_environment_path"] == config["main_environment_path"]:
+        raise RuntimeError("pretest and main environment snapshots must use different paths")
+
     pretest = build_pretest_manifest(config)
     exp_count = sum(r["pretest_kind"] == EXPERIENCE_PRETEST for r in pretest)
     situation_count = sum(r["pretest_kind"] == SITUATION_PRETEST for r in pretest)
@@ -55,6 +71,7 @@ def main() -> int:
 
     print("PF-EXP-0007 static validation: PASS")
     print("families=8 pretest=24 (experience=16 situation=8) main_generation=48 blind_evaluation=48")
+    print(f"design_hash_files={len(DESIGN_FILES)} environment_snapshots=separate")
     return 0
 
 
