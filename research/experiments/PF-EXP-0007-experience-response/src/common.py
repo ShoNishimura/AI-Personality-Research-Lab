@@ -197,9 +197,14 @@ def runtime_environment() -> dict[str, Any]:
     }
 
 
-def write_runtime_environment(path: Path) -> None:
+def write_runtime_environment(path: Path, *, refuse_change: bool = False) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(runtime_environment(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    proposed = json.dumps(runtime_environment(), ensure_ascii=False, indent=2) + "\n"
+    if path.exists() and refuse_change:
+        if path.read_text(encoding="utf-8") != proposed:
+            raise FileExistsError(f"refusing to overwrite a different frozen environment snapshot: {path}")
+        return
+    path.write_text(proposed, encoding="utf-8", newline="\n")
 
 
 def assert_pretest_execution_design(config: dict[str, Any]) -> None:
