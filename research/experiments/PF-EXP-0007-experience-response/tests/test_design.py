@@ -1,4 +1,4 @@
-from src.common import ROOT, design, experience_by_id, load_yaml, stimuli_for_split
+from src.common import DESIGN_FILES, ROOT, design, experience_by_id, load_yaml, stimuli_for_split
 from src.pilot import build_manifest
 from src.pretest import EXPERIENCE_PRETEST, SITUATION_PRETEST, build_pretest_manifest
 
@@ -47,3 +47,19 @@ def test_planned_thresholds_are_frozen():
     assert thresholds["pilot"]["min_constructive_engagement_effect"] == 0.75
     assert thresholds["pilot"]["min_protective_distancing_effect"] == 0.75
     assert thresholds["pilot"]["min_families_dual_positive_effect"] == 6
+
+
+def test_freeze_covers_runtime_code_and_environment_snapshots_are_separate():
+    config = load_yaml(ROOT / "experiment.yaml")
+    required = {
+        "src/common.py",
+        "src/pretest.py",
+        "src/pretest_analyze.py",
+        "src/pilot.py",
+        "src/blind.py",
+        "src/evaluate.py",
+        "src/analyze.py",
+        "src/validate.py",
+    }
+    assert required.issubset(set(DESIGN_FILES))
+    assert config["pretest_environment_path"] != config["main_environment_path"]
