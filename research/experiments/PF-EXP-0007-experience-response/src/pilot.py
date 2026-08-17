@@ -94,7 +94,7 @@ def run(config_path: Path, dry_run: bool) -> int:
         return 0
 
     assert_frozen_design(config)
-    write_runtime_environment(ROOT / config["main_environment_path"])
+    write_runtime_environment(ROOT / config["main_environment_path"], refuse_change=True)
     from openai import OpenAIError
 
     schema = json.loads((ROOT / config["output_schema"]).read_text(encoding="utf-8"))
