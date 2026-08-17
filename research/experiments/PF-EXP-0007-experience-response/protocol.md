@@ -72,7 +72,7 @@ Experience packetに含めてよいもの：
 
 - Characterにとって現在の出来事がどのような意味を持つ経験となっているか
 - 主観的なbenign / adverse significance
-- 主観的な安心・警戒・不利益可能性等の意味
+- 悪意・脅威・不利益の可能性を高く／低く感じるという主観的意味
 
 Experience packetに含めないもの：
 
@@ -81,13 +81,16 @@ Experience packetに含めないもの：
 - 行動計画
 - 「〜すべき」等のResponse指示
 - Response Intensity / Latency
+- `警戒する`、`身構える`、`距離を取りたい`、`関わり続けたい`等のResponse tendency / behavioral readiness
 - 現在Situationに存在しない外部事実
 - 具体的な過去Episode
 - 「この人を信頼しているから」等のRelationship状態の明示的原因
 - 「協力を重視しているから」等のValues & Beliefsの明示的原因
 - 「新奇性を求める性格だから」等のTemperamentの明示的原因
 
-Experienceは上流状態を再説明するpacketではなく、**現在時点で形成済みの主観的意味**として与える。
+Experienceは上流状態や下流Responseを再説明するpacketではなく、**現在時点で形成済みの主観的意味**として与える。
+
+「危険・不利益の可能性を高く感じる」はExperienceとして許容する。一方、「警戒する」「身構える」のように既にResponse方向の準備状態を含む表現はpilot-001では許容しない。
 
 ## 5. Situation bank policy
 
@@ -135,7 +138,7 @@ ExperienceからResponseを開始するまでの相対的な遅さを表す。
 
 pilot-001のconfirmatory targetはActionの**意味方向**だけとする。
 
-ExperienceのBenign / Adverse差からIntensity / Latencyの一意な方向を理論的に仮定しないため、両者はsecondary outcomeとして記録する。
+ExperienceのBenign / Adverse差からIntensity / Latencyの一意な方向を理論的に仮定しないため、両者はsecondary outcomeとして記録する。blind evaluatorには提示しない。
 
 ## 7. Main generation
 
@@ -159,7 +162,7 @@ Response generatorには以下だけを与える。
 
 ## 8. Main evaluation construct
 
-主要評価軸はActionの意味方向を測る。
+confirmatory evaluationでは**Actionだけ**の意味方向を測る。Intensity / Latencyはblind evaluatorへ渡さない。
 
 ### Constructive Engagement
 
@@ -175,12 +178,14 @@ Response generatorには以下だけを与える。
 
 二軸は一つの連続尺度の両極と仮定しない。
 
-例えば「必要情報だけ確認し、それ以上の共有は保留する」はConstructive EngagementとProtective Distancingの両方を含み得る。
+例えば「必要情報だけ確認し、それ以上の共有は保留する」というActionはConstructive EngagementとProtective Distancingの両方を含み得る。
 
 品質評価として次を別尺度で記録する。
 
-- `non_action_leakage` 0–4
+- `action_validity_failure` 0–4
 - `external_fact_invention` 0–4
+
+`action_validity_failure` は、Action欄が具体的なResponseとして成立せず、Situation / Experienceの解釈説明や言い換えだけになっている程度を測る。Intensity / Latencyはこの尺度の対象に含めない。
 
 補助評価としてIntensity / Latency、二軸のcoactivation等を記録してよいが、confirmatory gateの代替には用いない。
 
@@ -190,17 +195,19 @@ Response generatorには以下だけを与える。
 
 - E-B / E-A condition label
 - Experience packet
+- Intensity
+- Latency
 - family内pair identity
 - generation order
 
 Blind evaluatorには次だけを与える。
 
 1. current Situation
-2. generated Response
+2. generated **Action only**
 
-EvaluatorはResponseのAction意味を `constructive_engagement` / `protective_distancing` で評価する。
+EvaluatorはAction意味を `constructive_engagement` / `protective_distancing` で評価する。
 
-Experienceを見せないことで、「このExperienceならこのResponseであるべき」という評価側のcondition leakageを避ける。
+Experienceを見せないことで、「このExperienceならこのResponseであるべき」という評価側のcondition leakageを避ける。Intensity / Latencyを見せないことで、confirmatory targetでない強度・潜時がAction意味評価へ混入することを避ける。
 
 ## 10. Sample size
 
@@ -216,7 +223,7 @@ Main generation:
 
 Blind evaluation:
 
-`48 Responses`
+`48 Actions`
 
 Pretestは評価対象を混ぜないため分離する。
 
@@ -250,12 +257,24 @@ planned thresholds:
 
 評価尺度は実装時に0–4で固定する。
 
-#### P2 No Response directiveness
+#### P2 No Response-tendency preload
 
-Experience packetが現在のAction、意思決定、行動計画、Intensity / Latencyを直接指示しないこと。
+Experience packetがResponse方向を先取りしていないことを確認する。
+
+評価対象には次を含む。
+
+- Action
+- 意思決定
+- 行動計画
+- Response Intensity / Latency
+- `警戒する`、`身構える`、`距離を取りたい`、`関わり続けたい`等のbehavioral readiness / Response tendency
+
+planned thresholds:
 
 - mean `<= 0.50`
 - max `<= 1`
+
+P2は単に明示的なAction指示がないことだけでなく、Experience packet自体がConstructive Engagement / Protective Distancingのどちらかを行動準備状態として埋め込んでいないことを確認するGateとする。
 
 #### P3 No external-fact leakage
 
@@ -264,7 +283,7 @@ Experience packetがcurrent Situationに存在しない外部事実をResponse�
 - mean `<= 0.50`
 - max `<= 1`
 
-主観的意味と外部事実を区別する。「危険に感じる」はExperienceとして許容するが、「相手が実際に嘘をついていた」等の未提示事実は許容しない。
+主観的意味と外部事実を区別する。「危険・不利益の可能性を高く感じる」はExperienceとして許容するが、「相手が実際に嘘をついていた」等の未提示事実は許容しない。
 
 #### P4 Upstream-state isolation
 
@@ -354,10 +373,12 @@ Leave-one-family-outでは各familyを一つずつ除外し、残り7 familyで 
 
 ### G5 Response boundary quality
 
-生成ResponseがResponseとして成立し、Situation外の事実を新たな判断根拠として発明していないことを確認する。
+生成されたActionが具体的なResponseとして成立し、Situation外の事実を新たな判断根拠として発明していないことを確認する。
 
-- non-action leakage mean `<= 0.50`, max `<= 1`
-- external-fact invention mean `<= 0.50`, max `<= 1`
+- `action_validity_failure` mean `<= 0.50`, max `<= 1`
+- `external_fact_invention` mean `<= 0.50`, max `<= 1`
+
+Intensity / LatencyはG5の対象に含めない。
 
 Overall PASSはG1〜G5の全PASSとする。
 
