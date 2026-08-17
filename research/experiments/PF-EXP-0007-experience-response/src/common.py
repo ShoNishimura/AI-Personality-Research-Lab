@@ -15,10 +15,28 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 DESIGN_FILES = (
-    "experiment.yaml", "stimuli.yaml", "thresholds.yaml",
-    "output.schema.json", "evaluation.schema.json", "pretest.schema.json",
-    "prompts/system.md", "prompts/task.md", "prompts/evaluator-system.md",
-    "prompts/evaluator-task.md", "prompts/pretest-system.md", "prompts/pretest-task.md",
+    "experiment.yaml",
+    "stimuli.yaml",
+    "thresholds.yaml",
+    "output.schema.json",
+    "evaluation.schema.json",
+    "pretest.schema.json",
+    "pyproject.toml",
+    "prompts/system.md",
+    "prompts/task.md",
+    "prompts/evaluator-system.md",
+    "prompts/evaluator-task.md",
+    "prompts/pretest-system.md",
+    "prompts/pretest-task.md",
+    "src/__init__.py",
+    "src/common.py",
+    "src/pretest.py",
+    "src/pretest_analyze.py",
+    "src/pilot.py",
+    "src/blind.py",
+    "src/evaluate.py",
+    "src/analyze.py",
+    "src/validate.py",
 )
 
 
@@ -182,6 +200,30 @@ def runtime_environment() -> dict[str, Any]:
 def write_runtime_environment(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(runtime_environment(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
+def assert_pretest_execution_design(config: dict[str, Any]) -> None:
+    path = ROOT / config["pretest_environment_path"]
+    if not path.exists():
+        raise RuntimeError("pretest environment snapshot not found; rerun pretest before analysis")
+    snapshot = json.loads(path.read_text(encoding="utf-8"))
+    expected = snapshot.get("design_hashes")
+    current = design_hashes()
+    if expected != current:
+        raise RuntimeError("design hashes changed after pretest execution; refusing pretest analysis")
+
+
+def assert_frozen_design(config: dict[str, Any]) -> None:
+    path = ROOT / config["pretest_analysis_path"]
+    if not path.exists():
+        raise RuntimeError("pretest analysis not found; run pretest and pretest_analyze first")
+    result = json.loads(path.read_text(encoding="utf-8"))
+    if config.get("require_pretest_pass", False) and not result.get("all_gates_pass"):
+        raise RuntimeError("pretest did not pass; downstream execution is prohibited")
+    expected = result.get("design_hashes")
+    current = design_hashes()
+    if expected != current:
+        raise RuntimeError("design hashes changed after pretest; refusing downstream execution")
 
 
 def make_api_failure(exc: Exception, row: dict[str, Any], config: dict[str, Any], attempt: int) -> dict[str, Any]:
