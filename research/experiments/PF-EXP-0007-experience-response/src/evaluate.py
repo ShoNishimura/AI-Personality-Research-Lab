@@ -14,6 +14,7 @@ from .common import (
     ROOT,
     ResponseOutputError,
     append_jsonl,
+    assert_frozen_design,
     completed_ids,
     create_openai_client,
     load_yaml,
@@ -52,6 +53,7 @@ def evaluate_row(client: Any, config: dict[str, Any], row: dict[str, Any], schem
 
 def run(config_path: Path, dry_run: bool) -> int:
     config = load_yaml(config_path)
+    assert_frozen_design(config)
     blind_path = ROOT / config["blind_set_path"]
     if not blind_path.exists():
         raise RuntimeError(f"blind set not found: {blind_path}; run python -m src.blind first")
