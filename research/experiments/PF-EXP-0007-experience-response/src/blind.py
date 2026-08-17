@@ -5,7 +5,16 @@ import random
 from pathlib import Path
 from typing import Any
 
-from .common import ROOT, canonical_json, load_yaml, read_jsonl, sha256_text, stimuli_for_split, write_jsonl
+from .common import (
+    ROOT,
+    assert_frozen_design,
+    canonical_json,
+    load_yaml,
+    read_jsonl,
+    sha256_text,
+    stimuli_for_split,
+    write_jsonl,
+)
 
 
 def _latest(rows: list[dict[str, Any]], key: str) -> dict[str, dict[str, Any]]:
@@ -17,6 +26,7 @@ def _latest(rows: list[dict[str, Any]], key: str) -> dict[str, dict[str, Any]]:
 
 
 def build_blind_set(config: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    assert_frozen_design(config)
     manifest = read_jsonl(ROOT / config["manifest_path"])
     successes = _latest(read_jsonl(ROOT / config["results_path"]), "run_id")
     missing = {str(r["run_id"]) for r in manifest} - set(successes)
