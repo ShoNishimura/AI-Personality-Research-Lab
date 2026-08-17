@@ -33,4 +33,5 @@ blind_set_path: runs/pilot-001/private/blind-evaluation.jsonl
 blind_key_path: runs/pilot-001/private/blind-key.jsonl
 evaluation_results_path: runs/pilot-001/evaluation-results.jsonl
 analysis_path: runs/pilot-001/private/gates.json
-environment_path: runs/pilot-001/private/environment.json
+pretest_environment_path: runs/pilot-001/private/pretest-environment.json
+main_environment_path: runs/pilot-001/private/main-environment.json
