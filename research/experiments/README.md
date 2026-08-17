@@ -16,6 +16,7 @@
 | [PF-EXP-0004](PF-EXP-0004-history-conditioned-response/) | **pilot-001 pretest FAIL / main not run** | 同一Perceptionのもとで、過去の結果履歴は現在のResponseを再現可能に変えるか |
 | [PF-EXP-0005](PF-EXP-0005-values-beliefs-experience/) | **pilot-002 completed / overall PASS** | 同一Situation / Perception / Relationshipのもとで、Values & Beliefsの違いはExperienceの意味を再現可能に変えるか |
 | [PF-EXP-0006](PF-EXP-0006-relationship-experience/) | **pilot-001 completed / overall PASS** | 同一Situation / Perception / Values & Beliefsのもとで、RelationshipのTrust状態はExperienceの意味を再現可能に変えるか |
+| [PF-EXP-0007](PF-EXP-0007-experience-response/) | **plan ready / implementation not started** | 同一Situationのもとで、Experienceの主観的意味の違いはResponseを再現可能に変えるか |
 
 ## Experiment continuity
 
@@ -36,5 +37,7 @@ PF-EXP-0005はv1.2の `E_t=h(P_t,VB_t,Rel_t)` のうち `VB → Experience` を�
 PF-EXP-0006は、同じ式の `Relationship → Experience` をTrust一軸で単独検証した。Situation、Perception、target-neutral Values & Beliefsを固定し、RelationshipのTrust状態だけをREL-T / REL-Dで操作した。pretest P1〜P5をすべてPASSした後、main blind evaluation 48件を完了し、G1〜G5をすべてPASSした。`Delta_B=2.5833`、`Delta_S=2.0417`、8 / 8 familyでdual-positive effectを確認したため、今回の実験条件ではH-REL01 `Trust within Relationship → Experience` を支持する。詳細は [`PF-EXP-0006/reports/pilot-001-summary.md`](PF-EXP-0006-relationship-experience/reports/pilot-001-summary.md) を参照する。
 
 PF-EXP-0005とPF-EXP-0006を合わせると、同一Perceptionを固定したままValues & BeliefsとRelationshipのTrust状態をそれぞれ独立に操作し、Experience差を確認したことになる。これはv1.2の `E_t=h(P_t,VB_t,Rel_t)` における両入力の条件付き寄与を支持するが、Relationship全体がTrust一軸で十分であること、人間への一般化、独立Evaluatorによる再現は未検証である。
+
+PF-EXP-0007は、次の未検証中核関係 `R_t=g(E_t,Sit_t)` のうち `Experience → Response` を単独検証する計画である。pilot-001ではSituationを固定し、ExperienceだけをBenign / Low-risk（E-B）とAdverse / High-risk（E-A）の間で操作する。Response生成時にはTemperament、Perception、Values & Beliefs、Relationshipを与えず、Action意味のConstructive Engagement / Protective Distancingをblind評価する。Intensity / Latencyはsecondary outcomeとし、API実行前にpretest P1〜P5とmain G1〜G5を固定する。現時点では計画のみで、実装・pretest・mainは未実行である。
 
 現行系列では、実験IDに `PF-`（Personality Formation）prefixを付け、旧系列の `EXP-0001` と区別する。
